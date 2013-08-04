@@ -103,7 +103,13 @@ $$.Bound__run__ZoneTimer = {"": "BoundClosure;_self,_target,_receiver",
   $is_dynamic_: true
 };
 
-$$.Closure$_processWorkerMessage = {"": "Closure;call$2,$name", $is_void__K_V: true, $is_void__dynamic_SendPort: true, $is_dynamic__dynamic_dynamic: true, $is_void__String_String: true, $is_void__K_V0: true};
+$$.Closure$_processWorkerMessage = {"": "Closure;call$2,$name", $is_void__K_V0: true, $is_void__dynamic_SendPort: true, $is_void__String_String: true, $is_dynamic__dynamic_dynamic: true, $is_void__String_V: true, $is_void__K_V: true};
+
+$$.Closure$_throwFormatException = {"": "Closure;call$1,$name",
+  $signature: function() {
+    return {func: "dynamic__String", args: [$.JSString]};
+  }
+};
 
 $$.Closure$wrapException = {"": "Closure;call$1,$name",
   $signature: function() {
@@ -115,7 +121,7 @@ $$.Closure$toStringWrapper = {"": "Closure;call$0,$name", $is_void_: true, $is_d
 
 $$.Closure$invokeClosure = {"": "Closure;call$5,$name"};
 
-$$.Closure$isAssignable = {"": "Closure;call$2,$name", $is_void__K_V: true, $is_void__dynamic_SendPort: true, $is_dynamic__dynamic_dynamic: true, $is_void__String_String: true, $is_void__K_V0: true};
+$$.Closure$isAssignable = {"": "Closure;call$2,$name", $is_void__K_V0: true, $is_void__dynamic_SendPort: true, $is_void__String_String: true, $is_dynamic__dynamic_dynamic: true, $is_void__String_V: true, $is_void__K_V: true};
 
 $$.Closure$typeNameInChrome = {"": "Closure;call$1,$name",
   $signature: function() {
@@ -153,7 +159,7 @@ $$.Closure$constructorNameFallback = {"": "Closure;call$1,$name",
   }
 };
 
-$$.Closure$callDartFunctionWith1Arg = {"": "Closure;call$2,$name", $is_void__K_V: true, $is_void__dynamic_SendPort: true, $is_dynamic__dynamic_dynamic: true, $is_void__String_String: true, $is_void__K_V0: true};
+$$.Closure$callDartFunctionWith1Arg = {"": "Closure;call$2,$name", $is_void__K_V0: true, $is_void__dynamic_SendPort: true, $is_void__String_String: true, $is_dynamic__dynamic_dynamic: true, $is_void__String_V: true, $is_void__K_V: true};
 
 $$.Closure$main = {"": "Closure;call$0,$name", $is_void_: true, $is_dynamic_: true};
 
@@ -184,6 +190,18 @@ $$.Closure$_nullErrorHandler = {"": "Closure;call$1,$name",
 };
 
 $$.Closure$_nullDoneHandler = {"": "Closure;call$0,$name", $is_void_: true, $is_dynamic_: true};
+
+$$.Closure$localeExists = {"": "Closure;call$1,$name",
+  $signature: function() {
+    return {func: "bool__dynamic", ret: $.JSBool, args: [null]};
+  }
+};
+
+$$.Closure$_throwLocaleError = {"": "Closure;call$1,$name",
+  $signature: function() {
+    return {func: "String__String", ret: $.JSString, args: [$.JSString]};
+  }
+};
 
 (function (reflectionData) {
   if (!init.libraries) init.libraries = [];
@@ -399,8 +417,18 @@ JSArray: {"": "List/Interceptor;",
   forEach$1: function(receiver, f) {
     return $.voidTypeCheck($.IterableMixinWorkaround_forEach(receiver, $.assertFunctionSubtype(f, "void__E0", "JSArray", receiver)));
   },
+  map$1: function(receiver, f) {
+    var t1;
+    $.assertFunctionSubtype(f, "dynamic__E0", "JSArray", receiver);
+    $.assertFunctionSubtype(f, "dynamic__dynamic");
+    $.listSuperNativeTypeCheck(receiver, "$isIterable");
+    $.assertFunctionSubtype(f, "T__S", "MappedListIterable", null, [null, null]);
+    t1 = new $.MappedListIterable($.listSuperNativeTypeCheck(receiver, "$isIterable"), $.assertFunctionSubtype(f, "T__S", "MappedListIterable", null, [null, null]));
+    $.setRuntimeTypeInfo(t1, [null, null]);
+    return t1;
+  },
   elementAt$1: function(receiver, index) {
-    return $.assertSubtypeOfRuntimeType(this.$index(receiver, index), $.getRuntimeTypeArgument(receiver, "JSArray", 0));
+    return $.assertSubtypeOfRuntimeType(this.$index(receiver, $.intTypeCheck(index)), $.getRuntimeTypeArgument(receiver, "JSArray", 0));
   },
   sublist$2: function(receiver, start, end) {
     var t1;
@@ -425,6 +453,13 @@ JSArray: {"": "List/Interceptor;",
     if (t1 > 0)
       return $.assertSubtypeOfRuntimeType(receiver[t1 - 1], $.getRuntimeTypeArgument(receiver, "JSArray", 0));
     throw $.wrapException(new $.StateError("No elements"));
+  },
+  get$reversed: function(receiver) {
+    var t1;
+    $.listSuperNativeTypeCheck(receiver, "$isIterable");
+    t1 = new $.ReversedListIterable($.listSuperNativeTypeCheck(receiver, "$isIterable"));
+    $.setRuntimeTypeInfo(t1, [null]);
+    return $.listSuperNativeTypeCheck(t1, "$isIterable");
   },
   toString$0: function(receiver) {
     return $.IterableMixinWorkaround_toStringIterable(receiver, "[", "]");
@@ -525,6 +560,9 @@ JSNumber: {"": "num/Interceptor;",
   remainder$1: function(receiver, b) {
     return receiver % b;
   },
+  abs$0: function(receiver) {
+    return Math.abs(receiver);
+  },
   toInt$0: function(receiver) {
     var truncated;
     if (isNaN(receiver))
@@ -533,6 +571,12 @@ JSNumber: {"": "num/Interceptor;",
       throw $.wrapException(new $.UnsupportedError("Infinity"));
     truncated = receiver < 0 ? $.doubleTypeCheck(Math.ceil(receiver)) : $.doubleTypeCheck(Math.floor(receiver));
     return $.intTypeCheck(truncated == -0.0 ? 0 : truncated);
+  },
+  roundToDouble$0: function(receiver) {
+    if (receiver < 0)
+      return $.doubleTypeCheck(-Math.round(-receiver));
+    else
+      return $.doubleTypeCheck(Math.round(receiver));
   },
   toString$0: function(receiver) {
     if (receiver === 0 && 1 / receiver < 0)
@@ -544,9 +588,26 @@ JSNumber: {"": "num/Interceptor;",
     return receiver & 0x1FFFFFFF;
   },
   $add: function(receiver, other) {
+    $.numTypeCheck(other);
     if (typeof other !== "number")
       throw $.wrapException(new $.ArgumentError(other));
     return receiver + other;
+  },
+  $sub: function(receiver, other) {
+    if (typeof other !== "number")
+      throw $.wrapException(new $.ArgumentError(other));
+    return receiver - other;
+  },
+  $mod: function(receiver, other) {
+    var result = receiver % other;
+    if (result === 0)
+      return 0;
+    if (result > 0)
+      return result;
+    if (other < 0)
+      return result - other;
+    else
+      return result + other;
   },
   $tdiv: function(receiver, other) {
     if (typeof other !== "number")
@@ -600,6 +661,9 @@ JSString: {"": "String/Interceptor;",
     if (index >= receiver.length)
       throw $.wrapException(new $.RangeError("value " + index));
     return receiver.charCodeAt(index);
+  },
+  $add: function(receiver, other) {
+    return receiver + other;
   },
   replaceAll$2: function(receiver, from, to) {
     return $.stringReplaceAllUnchecked(receiver, from, to);
@@ -1170,11 +1234,12 @@ _BaseSendPort_call_closure: {"": "Closure;completer_0,port_1",
   },
   $isFunction: true,
   $asObject: null,
-  $is_void__K_V: true,
+  $is_void__K_V0: true,
   $is_void__dynamic_SendPort: true,
-  $is_dynamic__dynamic_dynamic: true,
   $is_void__String_String: true,
-  $is_void__K_V0: true
+  $is_dynamic__dynamic_dynamic: true,
+  $is_void__String_V: true,
+  $is_void__K_V: true
 },
 
 _NativeJsSendPort: {"": "_BaseSendPort;_receivePort<,_isolateId",
@@ -1645,11 +1710,12 @@ _Copier_visitMap_closure: {"": "Closure;box_0,this_1",
   },
   $isFunction: true,
   $asObject: null,
-  $is_void__K_V: true,
+  $is_void__K_V0: true,
   $is_void__dynamic_SendPort: true,
-  $is_dynamic__dynamic_dynamic: true,
   $is_void__String_String: true,
-  $is_void__K_V0: true
+  $is_dynamic__dynamic_dynamic: true,
+  $is_void__String_V: true,
+  $is_void__K_V: true
 },
 
 _Serializer: {"": "_MessageTraverser;_nextFreeRefId,_visited",
@@ -1977,6 +2043,81 @@ Primitives_printString: function(string) {
   throw "Unable to print message: " + String(string);
 },
 
+Primitives__throwFormatException: function(string) {
+  throw $.wrapException(new $.FormatException($.stringTypeCheck(string)));
+},
+
+Primitives_parseInt: function(source, radix, handleError) {
+  var match, t1;
+  $.assertFunctionSubtype(handleError, "int__String");
+  handleError = $.assertFunctionSubtype($.Primitives__throwFormatException$closure, "int__String");
+  if (typeof source !== "string")
+    $.throwExpression(new $.ArgumentError(source));
+  match = /^\s*[+-]?((0x[a-f0-9]+)|(\d+)|([a-z0-9]+))\s*$/i.exec(source);
+  if (match != null) {
+    t1 = match.length;
+    if (2 >= t1)
+      throw $.ioore(2);
+    if (match[2] != null)
+      return $.intTypeCheck(parseInt(source, 16));
+    if (3 >= t1)
+      throw $.ioore(3);
+    if (match[3] != null)
+      return $.intTypeCheck(parseInt(source, 10));
+    return $.intTypeCheck(handleError.call$1(source));
+  }
+  radix = 10;
+  if (match == null)
+    return $.intTypeCheck(handleError.call$1(source));
+  return $.intTypeCheck(parseInt(source, radix));
+},
+
+Primitives_parseInt$bailout: function(state0, source, handleError, radix, match, maxCharCode) {
+  switch (state0) {
+    case 0:
+      var t1;
+      $.assertFunctionSubtype(handleError, "int__String");
+      handleError = $.assertFunctionSubtype($.Primitives__throwFormatException$closure, "int__String");
+      if (typeof source !== "string")
+        $.throwExpression(new $.ArgumentError(source));
+      match = /^\s*[+-]?((0x[a-f0-9]+)|(\d+)|([a-z0-9]+))\s*$/i.exec(source);
+      if (match != null) {
+        t1 = match.length;
+        if (2 >= t1)
+          throw $.ioore(2);
+        if (match[2] != null)
+          return $.intTypeCheck(parseInt(source, 16));
+        if (3 >= t1)
+          throw $.ioore(3);
+        if (match[3] != null)
+          return $.intTypeCheck(parseInt(source, 10));
+        return $.intTypeCheck(handleError.call$1(source));
+      }
+      radix = 10;
+      if (match == null)
+        return $.intTypeCheck(handleError.call$1(source));
+      return $.intTypeCheck(parseInt(source, radix));
+  }
+},
+
+Primitives_parseDouble: function(source, handleError) {
+  var result, trimmed;
+  $.assertFunctionSubtype(handleError, "double__String");
+  if (typeof source !== "string")
+    $.throwExpression(new $.ArgumentError(source));
+  handleError = $.assertFunctionSubtype($.Primitives__throwFormatException$closure, "double__String");
+  if (!/^\s*[+-]?(?:Infinity|NaN|(?:\.\d+|\d+(?:\.\d*)?)(?:[eE][+-]?\d+)?)\s*$/.test(source))
+    return $.doubleTypeCheck(handleError.call$1(source));
+  result = parseFloat(source);
+  if (isNaN(result)) {
+    trimmed = $.trim$0$s(source);
+    if (trimmed === "NaN" || trimmed === "+NaN" || trimmed === "-NaN")
+      return $.doubleTypeCheck(result);
+    return $.doubleTypeCheck(handleError.call$1(source));
+  }
+  return $.doubleTypeCheck(result);
+},
+
 Primitives_objectTypeName: function(object) {
   var $name, decompiled, t1;
   $name = $.constructorNameFallback($.getInterceptor(object));
@@ -2001,6 +2142,80 @@ Primitives_newFixedList: function($length) {
   var result = new Array($length);
   result.fixed$length = true;
   return result;
+},
+
+Primitives_valueFromDecomposedDate: function(years, month, day, hours, minutes, seconds, milliseconds, isUtc) {
+  var jsMonth, value;
+  if (typeof years !== "number" || Math.floor(years) !== years)
+    $.throwExpression(new $.ArgumentError(years));
+  if (typeof month !== "number" || Math.floor(month) !== month)
+    $.throwExpression(new $.ArgumentError(month));
+  if (typeof day !== "number" || Math.floor(day) !== day)
+    $.throwExpression(new $.ArgumentError(day));
+  if (typeof hours !== "number" || Math.floor(hours) !== hours)
+    $.throwExpression(new $.ArgumentError(hours));
+  if (typeof minutes !== "number" || Math.floor(minutes) !== minutes)
+    $.throwExpression(new $.ArgumentError(minutes));
+  if (typeof seconds !== "number" || Math.floor(seconds) !== seconds)
+    $.throwExpression(new $.ArgumentError(seconds));
+  if (month == null)
+    throw month.$sub();
+  jsMonth = month - 1;
+  value = isUtc ? Date.UTC(years, jsMonth, day, hours, minutes, seconds, milliseconds) : new Date(years, jsMonth, day, hours, minutes, seconds, milliseconds).valueOf();
+  if (isNaN(value) || value < -8640000000000000 || value > 8640000000000000)
+    throw $.wrapException(new $.ArgumentError(null));
+  if (years == null)
+    throw years.$le();
+  if (years <= 0 || years < 100)
+    return $.Primitives_patchUpY2K(value, years, isUtc);
+  return value;
+},
+
+Primitives_patchUpY2K: function(value, years, isUtc) {
+  var date = new Date(value);
+  if (isUtc)
+    date.setUTCFullYear(years);
+  else
+    date.setFullYear(years);
+  return date.valueOf();
+},
+
+Primitives_lazyAsJsDate: function(receiver) {
+  if (receiver.date === void 0)
+    receiver.date = new Date(receiver.millisecondsSinceEpoch);
+  return receiver.date;
+},
+
+Primitives_getYear: function(receiver) {
+  return $.boolConversionCheck(receiver.isUtc) ? $.Primitives_lazyAsJsDate(receiver).getUTCFullYear() + 0 : $.Primitives_lazyAsJsDate(receiver).getFullYear() + 0;
+},
+
+Primitives_getMonth: function(receiver) {
+  return $.boolConversionCheck(receiver.isUtc) ? $.Primitives_lazyAsJsDate(receiver).getUTCMonth() + 1 : $.Primitives_lazyAsJsDate(receiver).getMonth() + 1;
+},
+
+Primitives_getDay: function(receiver) {
+  return $.boolConversionCheck(receiver.isUtc) ? $.Primitives_lazyAsJsDate(receiver).getUTCDate() + 0 : $.Primitives_lazyAsJsDate(receiver).getDate() + 0;
+},
+
+Primitives_getHours: function(receiver) {
+  return $.boolConversionCheck(receiver.isUtc) ? $.Primitives_lazyAsJsDate(receiver).getUTCHours() + 0 : $.Primitives_lazyAsJsDate(receiver).getHours() + 0;
+},
+
+Primitives_getMinutes: function(receiver) {
+  return $.boolConversionCheck(receiver.isUtc) ? $.Primitives_lazyAsJsDate(receiver).getUTCMinutes() + 0 : $.Primitives_lazyAsJsDate(receiver).getMinutes() + 0;
+},
+
+Primitives_getSeconds: function(receiver) {
+  return $.boolConversionCheck(receiver.isUtc) ? $.Primitives_lazyAsJsDate(receiver).getUTCSeconds() + 0 : $.Primitives_lazyAsJsDate(receiver).getSeconds() + 0;
+},
+
+Primitives_getMilliseconds: function(receiver) {
+  return $.boolConversionCheck(receiver.isUtc) ? $.Primitives_lazyAsJsDate(receiver).getUTCMilliseconds() + 0 : $.Primitives_lazyAsJsDate(receiver).getMilliseconds() + 0;
+},
+
+Primitives_getWeekday: function(receiver) {
+  return $.JSInt_methods.$mod(($.boolConversionCheck(receiver.isUtc) ? $.Primitives_lazyAsJsDate(receiver).getUTCDay() + 0 : $.Primitives_lazyAsJsDate(receiver).getDay() + 0) + 6, 7) + 1;
 },
 
 Primitives_getProperty: function(object, key) {
@@ -2861,24 +3076,165 @@ lookupDispatchRecord: function(obj) {
     return $.makeDispatchRecord(interceptor, Object.getPrototypeOf(obj), null, null);
 },
 
+regExpGetGlobalNative: function(regexp) {
+  regexp = regexp.get$_nativeGlobalVersion();
+  regexp.lastIndex = 0;
+  return regexp;
+},
+
 stringReplaceAllUnchecked: function(receiver, from, to) {
   var result, $length, i, t1;
-  if (from === "")
-    if (receiver === "")
-      return to;
-    else {
-      result = $.StringBuffer$("");
-      $length = receiver.length;
-      result.write$1(to);
-      for (i = 0; i < $length; ++i) {
-        t1 = receiver[i];
-        result._contents = result._contents + t1;
-        result._contents = result._contents + to;
+  if (typeof from === "string")
+    if (from === "")
+      if (receiver === "")
+        return to;
+      else {
+        result = $.StringBuffer$("");
+        $length = receiver.length;
+        result.write$1(to);
+        for (i = 0; i < $length; ++i) {
+          t1 = receiver[i];
+          result._contents = result._contents + t1;
+          result._contents = result._contents + to;
+        }
+        return result._contents;
       }
-      return result._contents;
-    }
+    else
+      return receiver.replace(new RegExp(from.replace(new RegExp("[[\\]{}()*+?.\\\\^$|]", 'g'), "\\$&"), 'g'), to.replace("$", "$$$$"));
+  else if (typeof from === "object" && from !== null && !!$.getInterceptor(from).$isJSSyntaxRegExp)
+    return receiver.replace($.regExpGetGlobalNative(from), to.replace("$", "$$$$"));
   else
-    return receiver.replace(new RegExp(from.replace(new RegExp("[[\\]{}()*+?.\\\\^$|]", 'g'), "\\$&"), 'g'), to.replace("$", "$$$$"));
+    throw $.wrapException("String.replaceAll(Pattern) UNIMPLEMENTED");
+},
+
+ConstantMap: {"": "Object;length>,_jsObject,_keys",
+  containsKey$1: function(key) {
+    if (key === "__proto__")
+      return false;
+    return this._jsObject.hasOwnProperty(key);
+  },
+  $index: function(_, key) {
+    var $arguments, t1, t2;
+    $.stringTypeCheck(key);
+    if (!this.containsKey$1(key)) {
+      $arguments = $.substitute(this.$asConstantMap, $.getRuntimeTypeInfo(this));
+      if ($arguments == null)
+        t1 = null;
+      else {
+        $.assertHelper(typeof $arguments === "object" && $arguments !== null && $arguments.constructor === Array);
+        t1 = $arguments[0];
+      }
+      return $.assertSubtypeOfRuntimeType(null, t1);
+    }
+    t1 = this._jsObject[key];
+    $arguments = $.substitute(this.$asConstantMap, $.getRuntimeTypeInfo(this));
+    if ($arguments == null)
+      t2 = null;
+    else {
+      $.assertHelper(typeof $arguments === "object" && $arguments !== null && $arguments.constructor === Array);
+      t2 = $arguments[0];
+    }
+    return $.assertSubtypeOfRuntimeType(t1, t2);
+  },
+  forEach$1: function(_, f) {
+    $.forEach$1$ax(this._keys, new $.ConstantMap_forEach_closure(this, $.assertFunctionSubtype(f, "void__String_V", "ConstantMap", this)));
+  },
+  get$keys: function() {
+    return $.listSuperNativeTypeCheck(new $._ConstantMapKeyIterable(this), "$isIterable");
+  },
+  get$values: function(_) {
+    return $.listSuperNativeTypeCheck($.map$1$ax(this._keys, new $.ConstantMap_values_closure(this)), "$isIterable");
+  },
+  toString$0: function(_) {
+    return $.Maps_mapToString(this);
+  },
+  _throwUnmodifiable$0: function() {
+    throw $.wrapException(new $.UnsupportedError("Cannot modify unmodifiable Map"));
+  },
+  $indexSet: function(_, key, val) {
+    $.stringTypeCheck(key);
+    $.assertSubtypeOfRuntimeType(val, $.getRuntimeTypeArgument(this, "ConstantMap", 0));
+    return $.voidTypeCheck(this._throwUnmodifiable$0());
+  },
+  $isConstantMap: true,
+  $isMap: true,
+  $asMap: function(V) {
+    return [$.JSString, V];
+  },
+  $asObject: null
+},
+
+ConstantMap_forEach_closure: {"": "Closure;this_0,f_1",
+  call$1: function(key) {
+    $.stringTypeCheck(key);
+    return this.f_1.call$2(key, $.$index$asx(this.this_0, key));
+  },
+  $isFunction: true,
+  $asObject: null,
+  $signature: function() {
+    return {func: "dynamic__String", args: [$.JSString]};
+  }
+},
+
+ConstantMap_values_closure: {"": "Closure;this_0",
+  call$1: function(key) {
+    return $.$index$asx(this.this_0, $.stringTypeCheck(key));
+  },
+  $isFunction: true,
+  $asObject: null,
+  $signature: function() {
+    return {func: "dynamic__String", args: [$.JSString]};
+  }
+},
+
+ConstantProtoMap: {"": "ConstantMap;_protoValue,length,_jsObject,_keys",
+  containsKey$1: function(key) {
+    if (key === "__proto__")
+      return true;
+    return $.ConstantMap.prototype.containsKey$1.call(this, key);
+  },
+  $index: function(_, key) {
+    var $arguments, t1, t2;
+    $.stringTypeCheck(key);
+    if (key === "__proto__") {
+      $arguments = $.substitute(this.$asConstantProtoMap, $.getRuntimeTypeInfo(this));
+      if ($arguments == null)
+        t1 = null;
+      else {
+        $.assertHelper(typeof $arguments === "object" && $arguments !== null && $arguments.constructor === Array);
+        t1 = $arguments[0];
+      }
+      return $.assertSubtypeOfRuntimeType(this._protoValue, t1);
+    }
+    t1 = $.ConstantMap.prototype.$index.call(this, this, key);
+    $arguments = $.substitute(this.$asConstantProtoMap, $.getRuntimeTypeInfo(this));
+    if ($arguments == null)
+      t2 = null;
+    else {
+      $.assertHelper(typeof $arguments === "object" && $arguments !== null && $arguments.constructor === Array);
+      t2 = $arguments[0];
+    }
+    return $.assertSubtypeOfRuntimeType(t1, t2);
+  },
+  $asConstantMap: null,
+  $asConstantMap: null,
+  $asMap: function(V) {
+    return [$.JSString, V];
+  },
+  $asObject: null
+},
+
+_ConstantMapKeyIterable: {"": "IterableBase;_liblib5$_map",
+  get$iterator: function(_) {
+    return $.assertSubtype($.get$iterator$ax(this._liblib5$_map._keys), "$isIterator", [$.JSString], "$asIterator");
+  },
+  $asIterableBase: function() {
+    return [$.JSString];
+  },
+  $asIterable: function() {
+    return [$.JSString];
+  },
+  $asObject: null
 },
 
 DartError: {"": "Object;",
@@ -3154,6 +3510,181 @@ applyExperimentalFixup_newGetTagDartFunction: {"": "Closure;newGetTagJSFunction_
   }
 },
 
+JSSyntaxRegExp: {"": "Object;_nativeRegExp,_nativeGlobalRegExp,_nativeAnchoredRegExp",
+  get$_nativeGlobalVersion: function() {
+    var t1 = this._nativeGlobalRegExp;
+    if (t1 != null)
+      return t1;
+    t1 = this._nativeRegExp;
+    t1 = $.JSSyntaxRegExp_makeNative(t1.source, t1.multiline, !t1.ignoreCase, true);
+    this._nativeGlobalRegExp = t1;
+    return t1;
+  },
+  firstMatch$1: function(str) {
+    var m;
+    if (typeof str !== "string")
+      $.throwExpression(new $.ArgumentError(str));
+    m = $.interceptedTypeCheck(this._nativeRegExp.exec(str), "$isList");
+    if (m == null)
+      return;
+    return $._MatchImplementation$(this, m);
+  },
+  _execGlobal$2: function(string, start) {
+    var regexp, match;
+    regexp = this.get$_nativeGlobalVersion();
+    regexp.lastIndex = start;
+    match = regexp.exec(string);
+    if (match == null)
+      return;
+    return $._MatchImplementation$(this, match);
+  },
+  $isJSSyntaxRegExp: true,
+  $isRegExp: true,
+  $isPattern: true,
+  $asObject: null,
+  static: {
+JSSyntaxRegExp_makeNative: function(pattern, multiLine, caseSensitive, global) {
+  var m, i, g, regexp, errorMessage;
+  m = multiLine ? "m" : "";
+  i = caseSensitive ? "" : "i";
+  g = global ? "g" : "";
+  regexp = (function() {try {return new RegExp(pattern, m + i + g);} catch (e) {return e;}})();
+  if (regexp instanceof RegExp)
+    return regexp;
+  errorMessage = String(regexp);
+  throw $.wrapException(new $.FormatException("Illegal RegExp pattern: " + pattern + ", " + errorMessage));
+}}
+
+},
+
+_MatchImplementation: {"": "Object;pattern,_match",
+  $index: function(_, index) {
+    var t1;
+    $.intTypeCheck(index);
+    t1 = this._match;
+    if (t1 == null)
+      return this.$$index$bailout(1, index, t1);
+    return $.stringTypeCheck($.JSArray_methods.$index(t1, index));
+  },
+  $$index$bailout: function(state0, index, t1) {
+    return $.stringTypeCheck($.$index$asx(t1, index));
+  },
+  _MatchImplementation$2: function(pattern, _match) {
+    var t1, t2;
+    $.interceptedTypeCheck(_match, "$isList");
+    t1 = this._match;
+    t2 = t1.input;
+    $.assertHelper(typeof t2 === "string");
+    t1 = t1.index;
+    $.assertHelper(typeof t1 === "number" && Math.floor(t1) === t1);
+  },
+  $isMatch: true,
+  $asObject: null,
+  static: {
+_MatchImplementation$: function(pattern, _match) {
+  var t1;
+  $.interceptedTypeCheck(_match, "$isList");
+  t1 = new $._MatchImplementation(pattern, $.interceptedTypeCheck(_match, "$isList"));
+  t1._MatchImplementation$2(pattern, _match);
+  return t1;
+}}
+
+},
+
+_AllMatchesIterable: {"": "IterableBase;_re,_string",
+  get$iterator: function(_) {
+    return $.assertSubtype(new $._AllMatchesIterator(this._re, this._string, null), "$isIterator", [$.Match], "$asIterator");
+  },
+  $asIterableBase: function() {
+    return [$.Match];
+  },
+  $asIterable: function() {
+    return [$.Match];
+  },
+  $asObject: null
+},
+
+_AllMatchesIterator: {"": "Object;_regExp,_string,_liblib5$_current",
+  get$current: function() {
+    return this._liblib5$_current;
+  },
+  moveNext$0: function() {
+    var t1, t2, index;
+    if (this._string == null)
+      return false;
+    t1 = this._liblib5$_current;
+    if (t1 != null) {
+      t1.get$end;
+      t1 = t1._match;
+      t2 = t1.index;
+      if (0 >= t1.length)
+        throw $.ioore(0);
+      t1 = $.get$length$asx(t1[0]);
+      if (t1 !== (t1 | 0))
+        return this.moveNext$0$bailout(1, t2, t1);
+      index = t2 + t1;
+      t1 = this._liblib5$_current;
+      t1.get$start;
+      if (t1._match.index === index)
+        ++index;
+    } else
+      index = 0;
+    this._liblib5$_current = this._regExp._execGlobal$2(this._string, index);
+    if (this._liblib5$_current == null) {
+      this._string = null;
+      return false;
+    }
+    return true;
+  },
+  moveNext$0$bailout: function(state0, t2, t1) {
+    switch (state0) {
+      case 0:
+        if (this._string == null)
+          return false;
+        t1 = this._liblib5$_current;
+      default:
+        var index;
+        if (state0 === 2 || state0 === 1 || state0 === 0 && t1 != null)
+          switch (state0) {
+            case 0:
+              t1.get$end;
+              t1 = t1._match;
+              t2 = t1.index;
+              if (0 >= t1.length)
+                throw $.ioore(0);
+              t1 = $.get$length$asx(t1[0]);
+            case 1:
+              state0 = 0;
+              t1 = $.JSInt_methods.$add(t2, t1);
+              $.intTypeCheck(t1);
+            case 2:
+              state0 = 0;
+              t2 = this._liblib5$_current;
+              t2.get$start;
+              if (t2._match.index === t1) {
+                if (t1 == null)
+                  throw t1.$add();
+                index = t1 + 1;
+              } else
+                index = t1;
+          }
+        else
+          index = 0;
+        this._liblib5$_current = this._regExp._execGlobal$2(this._string, index);
+        if (this._liblib5$_current == null) {
+          this._string = null;
+          return false;
+        }
+        return true;
+    }
+  },
+  $isIterator: true,
+  $asIterator: function() {
+    return [$.Match];
+  },
+  $asObject: null
+},
+
 StringMatch: {"": "Object;start,str,pattern",
   $index: function(_, g) {
     $.intTypeCheck(g);
@@ -3161,6 +3692,7 @@ StringMatch: {"": "Object;start,str,pattern",
       $.throwExpression(new $.RangeError("value " + $.S(g)));
     return this.pattern;
   },
+  $isMatch: true,
   $asObject: null
 }}],
 ["app.dart", "app.dart", , {
@@ -3178,7 +3710,7 @@ onActivityDataLoaded: function(req) {
 },
 
 addActivity: function(activity) {
-  var activityBox, t1, date, originallyShared, t2, body, attachment, t3, iframe, t4, imageElement;
+  var activityBox, t1, date, originallyShared, t2, body, attachment, t3, iframe, t4, width, height, scaleFactor, imageElement;
   $.propertyTypeCheck(activity, "$isMap");
   activityBox = $.interceptedTypeCheck($.HtmlDocument_methods.$$dom_createElement$1(document, "div"), "$isDivElement");
   activityBox.get$classes;
@@ -3188,7 +3720,10 @@ addActivity: function(activity) {
   date.get$classes;
   t1 = new $._ElementCssClassSet(date);
   t1.add$1(t1, "date");
-  date.textContent = $.stringTypeCheck(activity.$index(activity, "published"));
+  t1 = new $.DateFormat(null, null, $.interceptedTypeCheck(null, "$isList"));
+  t1._locale = $.Intl_verifiedLocale(null, $.DateFormat_localeExists$closure, $.Intl__throwLocaleError$closure);
+  t1.addPattern$1("yMMMMd");
+  date.textContent = t1.format$1(t1, $.DateTime_parse(activity.$index(activity, "published")));
   t1 = $.getInterceptor$x(activityBox);
   t1.append$1(activityBox, date);
   if ($.$eq(activity.$index(activity, "verb"), "share")) {
@@ -3216,16 +3751,33 @@ addActivity: function(activity) {
         iframe.get$classes;
         t4 = new $._ElementCssClassSet(iframe);
         t4.add$1(t4, "youtube-player");
-        iframe.width = $.toString$0($.$index$asx(t3.$index(attachment, "image"), "width"));
-        iframe.height = $.toString$0($.$index$asx(t3.$index(attachment, "image"), "height"));
         iframe.src = $.stringTypeCheck($.$index$asx(t3.$index(attachment, "embed"), "url"));
         iframe.get$attributes;
         $.$$dom_setAttribute$2$x($.assertSubtype(new $._ElementAttributeMap(iframe), "$isMap", [$.JSString, $.JSString], "$asMap").get$_element(), "allowFullScreen", "");
+        width = $.$index$asx(t3.$index(attachment, "image"), "width");
+        height = $.$index$asx(t3.$index(attachment, "image"), "height");
+        if (typeof width !== "number")
+          throw width.$div();
+        scaleFactor = width / 240;
+        iframe.width = $.JSNumber_methods.toString$0(width / scaleFactor);
+        if (typeof height !== "number")
+          throw height.$div();
+        iframe.height = $.JSNumber_methods.toString$0(height / scaleFactor);
         t1.append$1(activityBox, iframe);
         break;
       case "album":
         imageElement = $.ImageElement_ImageElement(null, null, null);
         imageElement.src = $.stringTypeCheck($.$index$asx($.$index$asx($.$index$asx(t3.$index(attachment, "thumbnails"), 0), "image"), "url"));
+        t1.append$1(activityBox, imageElement);
+        break;
+      case "photo":
+        imageElement = $.ImageElement_ImageElement(null, null, null);
+        imageElement.src = $.stringTypeCheck($.$index$asx(t3.$index(attachment, "image"), "url"));
+        t1.append$1(activityBox, imageElement);
+        break;
+      case "article":
+        imageElement = $.ImageElement_ImageElement(null, null, null);
+        imageElement.src = $.stringTypeCheck($.$index$asx(t3.$index(attachment, "fullImage"), "url"));
         t1.append$1(activityBox, imageElement);
         break;
       default:
@@ -3404,6 +3956,46 @@ ListIterable: {"": "IterableBase;",
       if ($length == null ? t1 != null : $length !== t1)
         throw $.wrapException(new $.ConcurrentModificationError(this));
     }
+  },
+  map$1: function(_, f) {
+    var t1;
+    $.assertFunctionSubtype(f, "dynamic__E2", "ListIterable", this);
+    $.listSuperNativeTypeCheck(this, "$isIterable");
+    $.assertFunctionSubtype(f, "T__S", "MappedListIterable", null, [null, null]);
+    t1 = new $.MappedListIterable($.listSuperNativeTypeCheck(this, "$isIterable"), $.assertFunctionSubtype(f, "T__S", "MappedListIterable", null, [null, null]));
+    $.setRuntimeTypeInfo(t1, [null, null]);
+    return t1;
+  },
+  toList$1$growable: function(_, growable) {
+    var result, i, t1;
+    if (growable) {
+      result = $.List_List(null, $.getRuntimeTypeArgument(this, "ListIterable", 0));
+      $.setRuntimeTypeInfo(result, [$.getRuntimeTypeArgument(this, "ListIterable", 0)]);
+      $.JSArray_methods.set$length(result, this.get$length(this));
+      $.interceptedTypeCheck(result, "$isList");
+    } else {
+      result = $.List_List(this.get$length(this), $.getRuntimeTypeArgument(this, "ListIterable", 0));
+      $.setRuntimeTypeInfo(result, [$.getRuntimeTypeArgument(this, "ListIterable", 0)]);
+      $.interceptedTypeCheck(result, "$isList");
+    }
+    if (typeof result !== "object" || result === null || (result.constructor !== Array || !!result.immutable$list) && !$.isJsIndexable(result, result[$.dispatchPropertyName]))
+      return this.toList$1$growable$bailout1(1, result);
+    for (i = 0; $.JSInt_methods.$lt(i, this.get$length(this)); ++i) {
+      t1 = this.elementAt$1(this, i);
+      if (i >= result.length)
+        throw $.ioore(i);
+      result[i] = t1;
+    }
+    return $.interceptedTypeCheck(result, "$isList");
+  },
+  toList$1$growable$bailout1: function(state0, result) {
+    var t1, i;
+    for (t1 = $.getInterceptor$ax(result), i = 0; $.JSInt_methods.$lt(i, this.get$length(this)); ++i)
+      t1.$indexSet(result, i, this.elementAt$1(this, i));
+    return $.interceptedTypeCheck(result, "$isList");
+  },
+  toList$0: function($receiver) {
+    return this.toList$1$growable($receiver, true);
   },
   $asIterableBase: null,
   $asIterableBase: null,
@@ -3622,8 +4214,8 @@ MappedIterable: {"": "IterableBase;_iterable,_f",
     t3 = $.getRuntimeTypeArgument(this, "MappedIterable", 0);
     t4 = $.getRuntimeTypeArgument(this, "MappedIterable", 1);
     $.assertSubtype(t1, "$isIterator", [t3], "$asIterator");
-    $.assertFunctionSubtype(t2, "T__S0", "MappedIterator", null, [t3, t4]);
-    t2 = new $.MappedIterator($.assertSubtypeOfRuntimeType(null, t4), $.assertSubtype(t1, "$isIterator", [t3], "$asIterator"), $.assertFunctionSubtype(t2, "T__S0", "MappedIterator", null, [t3, t4]));
+    $.assertFunctionSubtype(t2, "T__S2", "MappedIterator", null, [t3, t4]);
+    t2 = new $.MappedIterator($.assertSubtypeOfRuntimeType(null, t4), $.assertSubtype(t1, "$isIterator", [t3], "$asIterator"), $.assertFunctionSubtype(t2, "T__S2", "MappedIterator", null, [t3, t4]));
     $.setRuntimeTypeInfo(t2, [t3, t4]);
     return $.assertSubtype(t2, "$isIterator", [$.getRuntimeTypeArgument(this, "MappedIterable", 1)], "$asIterator");
   },
@@ -3845,6 +4437,61 @@ FixedLengthListMixin: {"": "Object;",
     $.listSuperNativeTypeCheck(iterable, "$isIterable");
     throw $.wrapException(new $.UnsupportedError("Cannot add to a fixed-length list"));
   }
+},
+
+ReversedListIterable: {"": "ListIterable;_liblib$_source",
+  get$length: function(_) {
+    return $.get$length$asx(this._liblib$_source);
+  },
+  elementAt$1: function(_, index) {
+    var t1, t2, t3, $arguments;
+    $.intTypeCheck(index);
+    if (index == null)
+      return this.elementAt$1$bailout2(1, index);
+    t1 = this._liblib$_source;
+    t2 = $.getInterceptor$asx(t1);
+    t3 = t2.get$length(t1);
+    if (t3 == null)
+      return this.elementAt$1$bailout2(2, index, t3, t1, t2);
+    t3 = t2.elementAt$1(t1, t3 - 1 - index);
+    $arguments = $.substitute(this.$asReversedListIterable, $.getRuntimeTypeInfo(this));
+    if ($arguments == null)
+      t1 = null;
+    else {
+      $.assertHelper(typeof $arguments === "object" && $arguments !== null && $arguments.constructor === Array);
+      t1 = $arguments[0];
+    }
+    return $.assertSubtypeOfRuntimeType(t3, t1);
+  },
+  elementAt$1$bailout2: function(state0, index, t3, t1, t2) {
+    switch (state0) {
+      case 0:
+        $.intTypeCheck(index);
+      case 1:
+        state0 = 0;
+        t1 = this._liblib$_source;
+        t2 = $.getInterceptor$asx(t1);
+        t3 = t2.get$length(t1);
+      case 2:
+        var $arguments;
+        state0 = 0;
+        if (t3 == null)
+          throw t3.$sub();
+        t3 = t2.elementAt$1(t1, $.JSInt_methods.$sub(t3 - 1, index));
+        $arguments = $.substitute(this.$asReversedListIterable, $.getRuntimeTypeInfo(this));
+        if ($arguments == null)
+          t1 = null;
+        else {
+          $.assertHelper(typeof $arguments === "object" && $arguments !== null && $arguments.constructor === Array);
+          t1 = $arguments[0];
+        }
+        return $.assertSubtypeOfRuntimeType(t3, t1);
+    }
+  },
+  $asListIterable: null,
+  $asIterableBase: null,
+  $asIterable: null,
+  $asObject: null
 }}],
 ["dart.async", "dart:async", , {
 _attachStackTrace: function(o, st) {
@@ -4049,7 +4696,7 @@ _FutureImpl: {"": "Object;_state<,_zone<,_resultOrListeners<",
   },
   then$2$onError: function(f, onError) {
     var t1, t2;
-    $.assertFunctionSubtype(f, "dynamic__T", "_FutureImpl", this);
+    $.assertFunctionSubtype(f, "dynamic__T0", "_FutureImpl", this);
     $.assertFunctionSubtype(onError, "dynamic__dynamic");
     if (onError == null) {
       t1 = new $._ThenFuture(f, null, 0, $.get$_Zone__current().fork$0(), null);
@@ -4728,6 +5375,16 @@ _WhenFuture__zonedSendError_closure: {"": "Closure;box_0,this_1",
 },
 
 Stream: {"": "Object;",
+  map$1: function(_, convert) {
+    var t1, t2;
+    $.assertFunctionSubtype(convert, "dynamic__T", "Stream", this);
+    t1 = $.getRuntimeTypeArgument(this, "Stream", 0);
+    $.assertSubtype(this, "$isStream", [t1], "$asStream");
+    $.assertFunctionSubtype(convert, "T__S1", "_MapStream", null, [t1, null]);
+    t2 = new $._MapStream($.assertFunctionSubtype(convert, "dynamic__dynamic"), $.assertSubtype(this, "$isStream", [t1], "$asStream"));
+    $.setRuntimeTypeInfo(t2, [t1, null]);
+    return t2;
+  },
   forEach$1: function(_, action) {
     var t1, future;
     t1 = {};
@@ -4759,7 +5416,7 @@ Stream_forEach_closure: {"": "Closure;box_0,this_1,action_2,future_3",
   $asObject: null,
   $signature: function() {
     return $.computeSignature(function(T) {
-      return {func: "dynamic__T0", args: [T]};
+      return {func: "dynamic__T", args: [T]};
     }, this.this_1, "Stream");
   }
 },
@@ -5045,8 +5702,9 @@ _BufferingStreamSubscription: {"": "Object;_liblib2$_onData,_onError,_onDone,_zo
       t2 = false;
     if (t2) {
       this._state = (t1 & 4294967263) >>> 0;
-      if ((this._state & 4) !== 0 && this.get$_mayResumeInput())
-        this._state = (this._state & 4294967291) >>> 0;
+      t1 = this._state;
+      if ((t1 & 4) !== 0 && this.get$_mayResumeInput())
+        this._state = (t1 & 4294967291) >>> 0;
     }
     for (; true; wasInputPaused = isInputPaused) {
       t1 = this._state;
@@ -5644,7 +6302,7 @@ HashMapKeyIterable: {"": "IterableBase;_map",
     keys = t1._computeKeys$0();
     for ($length = keys.length, i = 0; i < $length; ++i) {
       f.call$1(keys[i]);
-      if (keys !== t1._keys)
+      if (keys !== t1._liblib1$_keys)
         throw $.wrapException(new $.ConcurrentModificationError(t1));
     }
   },
@@ -5654,7 +6312,7 @@ HashMapKeyIterable: {"": "IterableBase;_map",
   $asObject: null
 },
 
-HashMapKeyIterator: {"": "Object;_map,_keys,_offset,_liblib1$_current?",
+HashMapKeyIterator: {"": "Object;_map,_liblib1$_keys,_offset,_liblib1$_current?",
   get$current: function() {
     var t1, $arguments, t2;
     t1 = this._liblib1$_current;
@@ -5669,10 +6327,10 @@ HashMapKeyIterator: {"": "Object;_map,_keys,_offset,_liblib1$_current?",
   },
   moveNext$0: function() {
     var keys, offset, t1;
-    keys = this._keys;
+    keys = this._liblib1$_keys;
     offset = this._offset;
     t1 = this._map;
-    if (keys !== t1._keys)
+    if (keys !== t1._liblib1$_keys)
       throw $.wrapException(new $.ConcurrentModificationError(t1));
     else if (offset >= keys.length) {
       this.set$_liblib1$_current(null);
@@ -5800,7 +6458,7 @@ LinkedHashSetIterator: {"": "Object;_set,_modifications,_cell,_liblib1$_current?
   $asObject: null
 },
 
-HashMap: {"": "Object;_liblib1$_length,_strings,_nums,_rest,_keys",
+HashMap: {"": "Object;_liblib1$_length,_strings,_nums,_rest,_liblib1$_keys",
   get$length: function(_) {
     return this._liblib1$_length;
   },
@@ -5815,11 +6473,11 @@ HashMap: {"": "Object;_liblib1$_length,_strings,_nums,_rest,_keys",
     $.setRuntimeTypeInfo(t1, [$.getRuntimeTypeArgument(this, "HashMap", 0)]);
     $.listSuperNativeTypeCheck(t1, "$isIterable");
     t2 = new $.HashMap_values_closure(this);
-    $.assertFunctionSubtype(t2, "dynamic__E", "IterableBase", t1);
+    $.assertFunctionSubtype(t2, "dynamic__E1", "IterableBase", t1);
     t3 = $.getRuntimeTypeArgument(t1, "IterableBase", 0);
     $.listSuperNativeTypeCheck(t1, "$isIterable");
-    $.assertFunctionSubtype(t2, "T__S", "MappedIterable", null, [t3, null]);
-    t2 = new $.MappedIterable($.listSuperNativeTypeCheck(t1, "$isIterable"), $.assertFunctionSubtype(t2, "T__S", "MappedIterable", null, [t3, null]));
+    $.assertFunctionSubtype(t2, "T__S0", "MappedIterable", null, [t3, null]);
+    t2 = new $.MappedIterable($.listSuperNativeTypeCheck(t1, "$isIterable"), $.assertFunctionSubtype(t2, "T__S0", "MappedIterable", null, [t3, null]));
     $.setRuntimeTypeInfo(t2, [t3, null]);
     return $.listSuperNativeTypeCheck(t2, "$isIterable");
   },
@@ -5945,7 +6603,7 @@ HashMap: {"": "Object;_liblib1$_length,_strings,_nums,_rest,_keys",
       $.assertSubtypeOfRuntimeType(value, t1);
       if (strings[key] == null) {
         this._liblib1$_length = this._liblib1$_length + 1;
-        this._keys = null;
+        this._liblib1$_keys = null;
       }
       if (value == null)
         strings[key] = strings;
@@ -5981,7 +6639,7 @@ HashMap: {"": "Object;_liblib1$_length,_strings,_nums,_rest,_keys",
       $.assertSubtypeOfRuntimeType(value, t1);
       if (nums[key] == null) {
         this._liblib1$_length = this._liblib1$_length + 1;
-        this._keys = null;
+        this._liblib1$_keys = null;
       }
       if (value == null)
         nums[key] = nums;
@@ -6008,7 +6666,7 @@ HashMap: {"": "Object;_liblib1$_length,_strings,_nums,_rest,_keys",
         else
           rest[hash] = t1;
         this._liblib1$_length = this._liblib1$_length + 1;
-        this._keys = null;
+        this._liblib1$_keys = null;
       } else {
         index = $.HashMap__findBucketIndex(bucket, key);
         if (index >= 0)
@@ -6016,7 +6674,7 @@ HashMap: {"": "Object;_liblib1$_length,_strings,_nums,_rest,_keys",
         else {
           bucket.push(key, value);
           this._liblib1$_length = this._liblib1$_length + 1;
-          this._keys = null;
+          this._liblib1$_keys = null;
         }
       }
     }
@@ -6036,7 +6694,7 @@ HashMap: {"": "Object;_liblib1$_length,_strings,_nums,_rest,_keys",
       if (index < 0)
         return $.assertSubtypeOfRuntimeType(null, $.getRuntimeTypeArgument(this, "HashMap", 1));
       this._liblib1$_length = this._liblib1$_length - 1;
-      this._keys = null;
+      this._liblib1$_keys = null;
       return $.assertSubtypeOfRuntimeType(bucket.splice(index, 2)[1], $.getRuntimeTypeArgument(this, "HashMap", 1));
     }
   },
@@ -6047,7 +6705,7 @@ HashMap: {"": "Object;_liblib1$_length,_strings,_nums,_rest,_keys",
     for ($length = keys.length, i = 0; i < $length; ++i) {
       key = keys[i];
       action.call$2(key, this.$index(this, key));
-      if (keys !== this._keys)
+      if (keys !== this._liblib1$_keys)
         throw $.wrapException(new $.ConcurrentModificationError(this));
     }
   },
@@ -6056,7 +6714,7 @@ HashMap: {"": "Object;_liblib1$_length,_strings,_nums,_rest,_keys",
   },
   _computeKeys$0: function() {
     var t1, result, strings, names, entries, index, i, nums, rest, bucket, $length, i0;
-    t1 = this._keys;
+    t1 = this._liblib1$_keys;
     if (t1 != null)
       return t1;
     result = $.List_List(this._liblib1$_length, null);
@@ -6093,7 +6751,7 @@ HashMap: {"": "Object;_liblib1$_length,_strings,_nums,_rest,_keys",
       }
     }
     $.assertHelper(index === this._liblib1$_length);
-    this._keys = result;
+    this._liblib1$_keys = result;
     return result;
   },
   _removeHashTableEntry$2: function(table, key) {
@@ -6103,7 +6761,7 @@ HashMap: {"": "Object;_liblib1$_length,_strings,_nums,_rest,_keys",
       value = $.assertSubtypeOfRuntimeType($.HashMap__getTableEntry(table, key), $.getRuntimeTypeArgument(this, "HashMap", 1));
       delete table[key];
       this._liblib1$_length = this._liblib1$_length - 1;
-      this._keys = null;
+      this._liblib1$_keys = null;
       return $.assertSubtypeOfRuntimeType(value, $.getRuntimeTypeArgument(this, "HashMap", 1));
     } else
       return $.assertSubtypeOfRuntimeType(null, $.getRuntimeTypeArgument(this, "HashMap", 1));
@@ -6144,6 +6802,16 @@ _HashSetBase: {"": "IterableBase;",
 },
 
 IterableBase: {"": "Object;",
+  map$1: function(_, f) {
+    var t1, t2;
+    $.assertFunctionSubtype(f, "dynamic__E1", "IterableBase", this);
+    t1 = $.getRuntimeTypeArgument(this, "IterableBase", 0);
+    $.listSuperNativeTypeCheck(this, "$isIterable");
+    $.assertFunctionSubtype(f, "T__S0", "MappedIterable", null, [t1, null]);
+    t2 = new $.MappedIterable($.listSuperNativeTypeCheck(this, "$isIterable"), $.assertFunctionSubtype(f, "T__S0", "MappedIterable", null, [t1, null]));
+    $.setRuntimeTypeInfo(t2, [t1, null]);
+    return t2;
+  },
   forEach$1: function(_, f) {
     var t1, element, $arguments, t2;
     $.assertFunctionSubtype(f, "void__E", "IterableBase", this);
@@ -6261,6 +6929,25 @@ IterableBase: {"": "Object;",
 },
 
 LinkedHashMap: {"": "Object;_liblib1$_length,_strings,_nums,_rest,_first,_last,_modifications",
+  containsKey$1: function(key) {
+    var strings, nums, rest;
+    if (typeof key === "string" && key !== "__proto__") {
+      strings = this._strings;
+      if (strings == null)
+        return false;
+      return $.propertyTypeCheck(strings[key], "$isLinkedHashMapCell") != null;
+    } else if (typeof key === "number" && (key & 0x3ffffff) === key) {
+      nums = this._nums;
+      if (nums == null)
+        return false;
+      return $.propertyTypeCheck(nums[key], "$isLinkedHashMapCell") != null;
+    } else {
+      rest = this._rest;
+      if (rest == null)
+        return false;
+      return $.LinkedHashMap__findBucketIndex($.listTypeCheck(rest[$.get$hashCode$(key) & 0x3ffffff]), key) >= 0;
+    }
+  },
   $index: function(_, key) {
     var strings, $arguments, t1, cell, t2, nums, rest, bucket, index;
     if (typeof key === "string" && key !== "__proto__") {
@@ -6474,11 +7161,11 @@ LinkedHashMap: {"": "Object;_liblib1$_length,_strings,_nums,_rest,_first,_last,_
     $.setRuntimeTypeInfo(t1, [$.getRuntimeTypeArgument(this, "LinkedHashMap", 0)]);
     $.listSuperNativeTypeCheck(t1, "$isIterable");
     t2 = new $.LinkedHashMap_values_closure(this);
-    $.assertFunctionSubtype(t2, "dynamic__E", "IterableBase", t1);
+    $.assertFunctionSubtype(t2, "dynamic__E1", "IterableBase", t1);
     t3 = $.getRuntimeTypeArgument(t1, "IterableBase", 0);
     $.listSuperNativeTypeCheck(t1, "$isIterable");
-    $.assertFunctionSubtype(t2, "T__S", "MappedIterable", null, [t3, null]);
-    t2 = new $.MappedIterable($.listSuperNativeTypeCheck(t1, "$isIterable"), $.assertFunctionSubtype(t2, "T__S", "MappedIterable", null, [t3, null]));
+    $.assertFunctionSubtype(t2, "T__S0", "MappedIterable", null, [t3, null]);
+    t2 = new $.MappedIterable($.listSuperNativeTypeCheck(t1, "$isIterable"), $.assertFunctionSubtype(t2, "T__S0", "MappedIterable", null, [t3, null]));
     $.setRuntimeTypeInfo(t2, [t3, null]);
     return $.listSuperNativeTypeCheck(t2, "$isIterable");
   },
@@ -6655,7 +7342,7 @@ ListMixin: {"": "Object;",
     return $.assertSubtype(t2, "$isIterator", [$.getRuntimeTypeArgument(receiver, "ListMixin", 0)], "$asIterator");
   },
   elementAt$1: function(receiver, index) {
-    return $.assertSubtypeOfRuntimeType(this.$index(receiver, index), $.getRuntimeTypeArgument(receiver, "ListMixin", 0));
+    return $.assertSubtypeOfRuntimeType(this.$index(receiver, $.intTypeCheck(index)), $.getRuntimeTypeArgument(receiver, "ListMixin", 0));
   },
   forEach$1: function(receiver, action) {
     var $length, i;
@@ -6687,6 +7374,15 @@ ListMixin: {"": "Object;",
     t2 = new $.WhereIterable($.listSuperNativeTypeCheck(receiver, "$isIterable"), test);
     $.setRuntimeTypeInfo(t2, [t1]);
     return $.listSuperNativeTypeCheck(t2, "$isIterable");
+  },
+  map$1: function(receiver, f) {
+    var t1;
+    $.assertFunctionSubtype(f, "dynamic__E", "ListMixin", receiver);
+    $.listSuperNativeTypeCheck(receiver, "$isIterable");
+    $.assertFunctionSubtype(f, "T__S", "MappedListIterable", null, [null, null]);
+    t1 = new $.MappedListIterable($.listSuperNativeTypeCheck(receiver, "$isIterable"), $.assertFunctionSubtype(f, "T__S", "MappedListIterable", null, [null, null]));
+    $.setRuntimeTypeInfo(t1, [null, null]);
+    return t1;
   },
   toList$1$growable: function(receiver, growable) {
     var result, t1, t2, i, t3;
@@ -6766,6 +7462,13 @@ ListMixin: {"": "Object;",
       this.$indexSet(receiver, t2, element);
     }
   },
+  get$reversed: function(receiver) {
+    var t1;
+    $.listSuperNativeTypeCheck(receiver, "$isIterable");
+    t1 = new $.ReversedListIterable($.listSuperNativeTypeCheck(receiver, "$isIterable"));
+    $.setRuntimeTypeInfo(t1, [null]);
+    return $.listSuperNativeTypeCheck(t1, "$isIterable");
+  },
   toString$0: function(receiver) {
     var result, i, t1;
     for (i = 0; i < $.get$ListMixin__toStringList().length; ++i) {
@@ -6810,11 +7513,12 @@ Maps_mapToString_closure: {"": "Closure;box_0,result_1",
   },
   $isFunction: true,
   $asObject: null,
-  $is_void__K_V: true,
+  $is_void__K_V0: true,
   $is_void__dynamic_SendPort: true,
-  $is_dynamic__dynamic_dynamic: true,
   $is_void__String_String: true,
-  $is_void__K_V0: true
+  $is_dynamic__dynamic_dynamic: true,
+  $is_void__String_V: true,
+  $is_void__K_V: true
 },
 
 ListQueue: {"": "IterableBase;_table,_head,_tail,_modificationCount",
@@ -7102,7 +7806,213 @@ NoSuchMethodError_toString_closure: {"": "Closure;box_0",
   }
 },
 
+DateTime: {"": "Object;millisecondsSinceEpoch,isUtc",
+  $eq: function(_, other) {
+    var t1, t2;
+    if (other == null)
+      return false;
+    if (typeof other !== "object" || other === null || !$.getInterceptor(other).$isDateTime)
+      return false;
+    if (this.millisecondsSinceEpoch === other.millisecondsSinceEpoch) {
+      t1 = this.isUtc;
+      t2 = other.isUtc;
+      t2 = t1 == null ? t2 == null : t1 === t2;
+      t1 = t2;
+    } else
+      t1 = false;
+    return t1;
+  },
+  get$hashCode: function(_) {
+    return this.millisecondsSinceEpoch;
+  },
+  toString$0: function(_) {
+    var t1, y, m, d, h, min, sec, ms;
+    t1 = new $.DateTime_toString_twoDigits();
+    y = $.stringTypeCheck(new $.DateTime_toString_fourDigits().call$1($.Primitives_getYear(this)));
+    m = $.stringTypeCheck(t1.call$1($.Primitives_getMonth(this)));
+    d = $.stringTypeCheck(t1.call$1($.Primitives_getDay(this)));
+    h = $.stringTypeCheck(t1.call$1($.Primitives_getHours(this)));
+    min = $.stringTypeCheck(t1.call$1($.Primitives_getMinutes(this)));
+    sec = $.stringTypeCheck(t1.call$1($.Primitives_getSeconds(this)));
+    ms = $.stringTypeCheck(new $.DateTime_toString_threeDigits().call$1($.Primitives_getMilliseconds(this)));
+    if ($.boolConversionCheck(this.isUtc))
+      return y + "-" + m + "-" + d + " " + h + ":" + min + ":" + sec + "." + ms + "Z";
+    else
+      return y + "-" + m + "-" + d + " " + h + ":" + min + ":" + sec + "." + ms;
+  },
+  add$1: function(_, duration) {
+    return $.DateTime$fromMillisecondsSinceEpoch(this.millisecondsSinceEpoch + $.propertyTypeCheck(duration, "$isDuration").get$inMilliseconds(), this.isUtc);
+  },
+  DateTime$fromMillisecondsSinceEpoch$2$isUtc: function(millisecondsSinceEpoch, isUtc) {
+    $.intTypeCheck(millisecondsSinceEpoch);
+    if (Math.abs(millisecondsSinceEpoch) > 8640000000000000)
+      throw $.wrapException(new $.ArgumentError(millisecondsSinceEpoch));
+    if (isUtc == null)
+      throw $.wrapException(new $.ArgumentError(isUtc));
+  },
+  $isDateTime: true,
+  $asObject: null,
+  static: {
+"": "DateTime_MONDAY,DateTime_TUESDAY,DateTime_WEDNESDAY,DateTime_THURSDAY,DateTime_FRIDAY,DateTime_SATURDAY,DateTime_SUNDAY,DateTime_DAYS_PER_WEEK,DateTime_JANUARY,DateTime_FEBRUARY,DateTime_MARCH,DateTime_APRIL,DateTime_MAY,DateTime_JUNE,DateTime_JULY,DateTime_AUGUST,DateTime_SEPTEMBER,DateTime_OCTOBER,DateTime_NOVEMBER,DateTime_DECEMBER,DateTime_MONTHS_PER_YEAR,DateTime__MAX_MILLISECONDS_SINCE_EPOCH",
+DateTime_parse: function(formattedString) {
+  var match, t1, t2, t3, years, month, day, hour, minute, second, millisecond, addOneMillisecond, isUtc, millisecondsSinceEpoch;
+  $.stringTypeCheck(formattedString);
+  match = new $.JSSyntaxRegExp($.JSSyntaxRegExp_makeNative("^([+-]?\\d?\\d\\d\\d\\d)-?(\\d\\d)-?(\\d\\d)(?:[ T](\\d\\d)(?::?(\\d\\d)(?::?(\\d\\d)(.\\d{1,6})?)?)? ?([zZ])?)?$", false, true, false), null, null).firstMatch$1(formattedString);
+  if (match != null) {
+    t1 = new $.DateTime_parse_parseIntOrZero();
+    match.$index;
+    t2 = match._match;
+    if (1 >= t2.length)
+      throw $.ioore(1);
+    t3 = $.stringTypeCheck(t2[1]);
+    $.assertFunctionSubtype(null, "int__String");
+    years = $.Primitives_parseInt(t3, null, null);
+    if (2 >= t2.length)
+      throw $.ioore(2);
+    month = $.Primitives_parseInt($.stringTypeCheck(t2[2]), null, null);
+    if (3 >= t2.length)
+      throw $.ioore(3);
+    day = $.Primitives_parseInt($.stringTypeCheck(t2[3]), null, null);
+    if (4 >= t2.length)
+      throw $.ioore(4);
+    hour = $.intTypeCheck(t1.call$1($.stringTypeCheck(t2[4])));
+    if (5 >= t2.length)
+      throw $.ioore(5);
+    minute = $.intTypeCheck(t1.call$1($.stringTypeCheck(t2[5])));
+    if (6 >= t2.length)
+      throw $.ioore(6);
+    second = $.intTypeCheck(t1.call$1($.stringTypeCheck(t2[6])));
+    if (7 >= t2.length)
+      throw $.ioore(7);
+    t1 = new $.DateTime_parse_parseDoubleOrZero().call$1($.stringTypeCheck(t2[7]));
+    if (typeof t1 !== "number")
+      throw t1.$mul();
+    millisecond = $.JSNumber_methods.toInt$0($.JSNumber_methods.roundToDouble$0(t1 * 1000));
+    if (millisecond === 1000) {
+      addOneMillisecond = true;
+      millisecond = 999;
+    } else
+      addOneMillisecond = false;
+    if (8 >= t2.length)
+      throw $.ioore(8);
+    t1 = $.stringTypeCheck(t2[8]);
+    isUtc = t1 != null && t1 !== "";
+    millisecondsSinceEpoch = $.intTypeCheck($.Primitives_valueFromDecomposedDate(years, month, day, hour, minute, second, millisecond, isUtc));
+    if (millisecondsSinceEpoch == null)
+      throw $.wrapException(new $.ArgumentError(formattedString));
+    if (addOneMillisecond) {
+      if (millisecondsSinceEpoch == null)
+        throw millisecondsSinceEpoch.$add();
+      ++millisecondsSinceEpoch;
+    }
+    return $.DateTime$fromMillisecondsSinceEpoch(millisecondsSinceEpoch, isUtc);
+  } else
+    throw $.wrapException(new $.ArgumentError(formattedString));
+},
+
+DateTime$fromMillisecondsSinceEpoch: function(millisecondsSinceEpoch, isUtc) {
+  var t1;
+  $.intTypeCheck(millisecondsSinceEpoch);
+  t1 = new $.DateTime(millisecondsSinceEpoch, isUtc);
+  t1.DateTime$fromMillisecondsSinceEpoch$2$isUtc(millisecondsSinceEpoch, isUtc);
+  return t1;
+}}
+
+},
+
+DateTime_parse_parseIntOrZero: {"": "Closure;",
+  call$1: function(matched) {
+    $.stringTypeCheck(matched);
+    if (matched == null)
+      return 0;
+    $.assertFunctionSubtype(null, "int__String");
+    return $.Primitives_parseInt(matched, null, null);
+  },
+  $isFunction: true,
+  $asObject: null,
+  $signature: function() {
+    return {func: "int__String", ret: $.JSInt, args: [$.JSString]};
+  }
+},
+
+DateTime_parse_parseDoubleOrZero: {"": "Closure;",
+  call$1: function(matched) {
+    $.stringTypeCheck(matched);
+    if (matched == null)
+      return $.doubleTypeCheck(0);
+    $.assertFunctionSubtype(null, "double__String");
+    return $.Primitives_parseDouble(matched, null);
+  },
+  $isFunction: true,
+  $asObject: null,
+  $signature: function() {
+    return {func: "double__String", ret: $.JSDouble, args: [$.JSString]};
+  }
+},
+
+DateTime_toString_fourDigits: {"": "Closure;",
+  call$1: function(n) {
+    var absN, sign;
+    $.intTypeCheck(n);
+    absN = $.intTypeCheck($.abs$0$n(n));
+    if (n == null)
+      throw n.$lt();
+    sign = n < 0 ? "-" : "";
+    if (absN == null)
+      throw absN.$ge();
+    if (absN >= 1000)
+      return "" + n;
+    if (absN >= 100)
+      return sign + "0" + absN;
+    if (absN >= 10)
+      return sign + "00" + absN;
+    return sign + "000" + absN;
+  },
+  $isFunction: true,
+  $asObject: null,
+  $signature: function() {
+    return {func: "String__int", ret: $.JSString, args: [$.JSInt]};
+  }
+},
+
+DateTime_toString_threeDigits: {"": "Closure;",
+  call$1: function(n) {
+    $.intTypeCheck(n);
+    if (n == null)
+      throw n.$ge();
+    if (n >= 100)
+      return "" + n;
+    if (n >= 10)
+      return "0" + n;
+    return "00" + n;
+  },
+  $isFunction: true,
+  $asObject: null,
+  $signature: function() {
+    return {func: "String__int", ret: $.JSString, args: [$.JSInt]};
+  }
+},
+
+DateTime_toString_twoDigits: {"": "Closure;",
+  call$1: function(n) {
+    $.intTypeCheck(n);
+    if (n == null)
+      throw n.$ge();
+    if (n >= 10)
+      return "" + n;
+    return "0" + n;
+  },
+  $isFunction: true,
+  $asObject: null,
+  $signature: function() {
+    return {func: "String__int", ret: $.JSString, args: [$.JSInt]};
+  }
+},
+
 Duration: {"": "Object;_duration",
+  get$inMilliseconds: function() {
+    return $.JSInt_methods.$tdiv(this._duration, 1000);
+  },
   $eq: function(_, other) {
     if (other == null)
       return false;
@@ -7450,6 +8360,10 @@ Object: {"": ";",
   $asObject: null
 },
 
+Match: {"": "Object;", $isMatch: true},
+
+RegExp: {"": "Object;", $isRegExp: true, $isPattern: true, $asObject: null},
+
 Set: {"": "IterableBase;", $isSet: true, $asIterableBase: null, $asIterableBase: null, $asIterable: null, $asObject: null},
 
 StringBuffer: {"": "Object;_contents<",
@@ -7539,7 +8453,7 @@ HttpRequest_request: function(url, method, mimeType, onProgress, requestHeaders,
   $.assertFunctionSubtype(t2, "void__T2", "_EventStream", t1);
   $.assertFunctionSubtype(null, "void_");
   $.assertFunctionSubtype(null, "void__dynamic");
-  t3 = t1.get$_liblib3$_target();
+  t3 = t1.get$_liblib4$_target();
   t5 = t1.get$_eventType();
   t6 = t1.get$_useCapture();
   t6 = new $._EventStreamSubscription(0, t3, t5, t2, t6);
@@ -7552,7 +8466,7 @@ HttpRequest_request: function(url, method, mimeType, onProgress, requestHeaders,
   t1 = $.assertSubtype($.assertSubtype(t1, "$isStream", [$.getRuntimeTypeArgument($.EventStreamProvider_error, "EventStreamProvider", 0)], "$asStream"), "$isStream", [$.ProgressEvent], "$asStream");
   t6 = new $.HttpRequest_request_closure1(t4);
   $.assertFunctionSubtype(t6, "void__T2", "_EventStream", t1);
-  t2 = t1.get$_liblib3$_target();
+  t2 = t1.get$_liblib4$_target();
   t5 = t1.get$_eventType();
   t3 = t1.get$_useCapture();
   t3 = new $._EventStreamSubscription(0, t2, t5, t6, t3);
@@ -7665,11 +8579,12 @@ HttpRequest_request_closure: {"": "Closure;xhr_0",
   },
   $isFunction: true,
   $asObject: null,
-  $is_void__K_V: true,
+  $is_void__K_V0: true,
   $is_void__dynamic_SendPort: true,
-  $is_dynamic__dynamic_dynamic: true,
   $is_void__String_String: true,
-  $is_void__K_V0: true
+  $is_dynamic__dynamic_dynamic: true,
+  $is_void__String_V: true,
+  $is_void__K_V: true
 },
 
 HttpRequest_request_closure0: {"": "Closure;completer_1,xhr_2",
@@ -7852,6 +8767,9 @@ _AttributeMap: {"": "Object;_element<",
 },
 
 _ElementAttributeMap: {"": "_AttributeMap;_element",
+  containsKey$1: function(key) {
+    return $.$$dom_hasAttribute$1$x(this._element, $.stringTypeCheck(key));
+  },
   $index: function(_, key) {
     return $.$$dom_getAttribute$1$x(this._element, $.stringTypeCheck(key));
   },
@@ -7893,13 +8811,13 @@ _ElementCssClassSet: {"": "CssClassSetImpl;_element",
   }
 },
 
-_EventStream: {"": "Stream;_liblib3$_target<,_eventType<,_useCapture<",
+_EventStream: {"": "Stream;_liblib4$_target<,_eventType<,_useCapture<",
   listen$4$cancelOnError$onDone$onError: function(onData, cancelOnError, onDone, onError) {
     var t1;
     $.assertFunctionSubtype(onData, "void__T2", "_EventStream", this);
     $.assertFunctionSubtype(onDone, "void_");
     $.assertFunctionSubtype(onError, "void__dynamic");
-    t1 = new $._EventStreamSubscription(0, this._liblib3$_target, this._eventType, onData, this._useCapture);
+    t1 = new $._EventStreamSubscription(0, this._liblib4$_target, this._eventType, onData, this._useCapture);
     $.setRuntimeTypeInfo(t1, [$.getRuntimeTypeArgument(this, "_EventStream", 0)]);
     t1._tryResume$0();
     return $.assertSubtype(t1, "$isStreamSubscription", [$.getRuntimeTypeArgument(this, "_EventStream", 0)], "$asStreamSubscription");
@@ -7912,16 +8830,16 @@ _EventStream: {"": "Stream;_liblib3$_target<,_eventType<,_useCapture<",
   $asObject: null
 },
 
-_EventStreamSubscription: {"": "StreamSubscription;_pauseCount,_liblib3$_target,_eventType,_onData,_useCapture",
+_EventStreamSubscription: {"": "StreamSubscription;_pauseCount,_liblib4$_target,_eventType,_onData,_useCapture",
   cancel$0: function() {
-    if (this._liblib3$_target == null)
+    if (this._liblib4$_target == null)
       return;
     this._unlisten$0();
-    this._liblib3$_target = null;
+    this._liblib4$_target = null;
     this._onData = null;
   },
   pause$1: function(_, resumeSignal) {
-    if (this._liblib3$_target == null)
+    if (this._liblib4$_target == null)
       return;
     this._pauseCount = this._pauseCount + 1;
     this._unlisten$0();
@@ -7930,7 +8848,7 @@ _EventStreamSubscription: {"": "StreamSubscription;_pauseCount,_liblib3$_target,
     return this.pause$1($receiver, null);
   },
   resume$0: function() {
-    if (this._liblib3$_target == null || this._pauseCount <= 0)
+    if (this._liblib4$_target == null || this._pauseCount <= 0)
       return;
     this._pauseCount = this._pauseCount - 1;
     this._tryResume$0();
@@ -7938,12 +8856,12 @@ _EventStreamSubscription: {"": "StreamSubscription;_pauseCount,_liblib3$_target,
   _tryResume$0: function() {
     var t1 = this._onData;
     if (t1 != null && this._pauseCount <= 0)
-      $.$$dom_addEventListener$3$x(this._liblib3$_target, this._eventType, t1, this._useCapture);
+      $.$$dom_addEventListener$3$x(this._liblib4$_target, this._eventType, t1, this._useCapture);
   },
   _unlisten$0: function() {
     var t1 = this._onData;
     if (t1 != null)
-      $.$$dom_removeEventListener$3$x(this._liblib3$_target, this._eventType, t1, this._useCapture);
+      $.$$dom_removeEventListener$3$x(this._liblib4$_target, this._eventType, t1, this._useCapture);
   },
   $asStreamSubscription: null,
   $asObject: null
@@ -7969,6 +8887,8 @@ ImmutableListMixin: {"": "Object;",
   $asIterable: null,
   $asObject: null
 },
+
+_DOMWindowCrossFrame: {"": "Object;_window", $asObject: null},
 
 FixedSizeListIterator: {"": "Object;_array,_length,_position,_current?",
   moveNext$0: function() {
@@ -8135,6 +9055,9 @@ Element: {"": "Node;$$dom_children:children=",
   $$dom_getAttribute$1: function(receiver, $name) {
     return receiver.getAttribute($name);
   },
+  $$dom_hasAttribute$1: function(receiver, $name) {
+    return receiver.hasAttribute($name);
+  },
   $$dom_setAttribute$2: function(receiver, $name, value) {
     return receiver.setAttribute($name, value);
   },
@@ -8183,7 +9106,7 @@ HtmlCollection: {"": "Interceptor_ListMixin_ImmutableListMixin;",
     throw $.wrapException(new $.UnsupportedError("Cannot resize immutable List."));
   },
   elementAt$1: function(receiver, index) {
-    return this.$index(receiver, index);
+    return this.$index(receiver, $.intTypeCheck(index));
   },
   $isHtmlCollection: true,
   $asHtmlCollection: null,
@@ -8305,7 +9228,7 @@ NodeList: {"": "Interceptor_ListMixin_ImmutableListMixin0;",
     throw $.wrapException(new $.UnsupportedError("Cannot resize immutable List."));
   },
   elementAt$1: function(receiver, index) {
-    return this.$index(receiver, index);
+    return this.$index(receiver, $.intTypeCheck(index));
   },
   $isList: true,
   $asList: function() {
@@ -8383,7 +9306,7 @@ _NamedNodeMap: {"": "Interceptor_ListMixin_ImmutableListMixin1;",
     throw $.wrapException(new $.UnsupportedError("Cannot resize immutable List."));
   },
   elementAt$1: function(receiver, index) {
-    return this.$index(receiver, index);
+    return this.$index(receiver, $.intTypeCheck(index));
   },
   $isList: true,
   $asList: function() {
@@ -8398,10 +9321,10 @@ _NamedNodeMap: {"": "Interceptor_ListMixin_ImmutableListMixin1;",
   $asJavaScriptIndexingBehavior: null
 }}],
 ["dart.dom.svg", "dart:svg", , {
-_AttributeClassSet: {"": "CssClassSetImpl;_liblib4$_element",
+_AttributeClassSet: {"": "CssClassSetImpl;_liblib3$_element",
   readClasses$0: function() {
     var classname, s, t1, t2, t3, $arguments, trimmed;
-    classname = $.$$dom_getAttribute$1$x($.assertSubtype(new $._ElementAttributeMap(this._liblib4$_element), "$isMap", [$.JSString, $.JSString], "$asMap").get$_element(), "class");
+    classname = $.$$dom_getAttribute$1$x($.assertSubtype(new $._ElementAttributeMap(this._liblib3$_element), "$isMap", [$.JSString, $.JSString], "$asMap").get$_element(), "class");
     s = new $.LinkedHashSet(0, null, null, null, null, null, 0);
     $.setRuntimeTypeInfo(s, [$.JSString]);
     $.assertSubtype(s, "$isSet", [$.JSString], "$asSet");
@@ -8424,7 +9347,7 @@ _AttributeClassSet: {"": "CssClassSetImpl;_liblib4$_element",
   },
   writeClasses$1: function(s) {
     var t1, t2;
-    t1 = $.assertSubtype(new $._ElementAttributeMap(this._liblib4$_element), "$isMap", [$.JSString, $.JSString], "$asMap");
+    t1 = $.assertSubtype(new $._ElementAttributeMap(this._liblib3$_element), "$isMap", [$.JSString, $.JSString], "$asMap");
     t2 = s.join$1(s, " ");
     $.$$dom_setAttribute$2$x(t1.get$_element(), "class", t2);
   }
@@ -8432,7 +9355,12 @@ _AttributeClassSet: {"": "CssClassSetImpl;_liblib4$_element",
 
 AElement: {"": "StyledElement;", $asObject: null},
 
-AltGlyphElement: {"": "TextPositioningElement;", $asObject: null},
+AltGlyphElement: {"": "TextPositioningElement;",
+  format$1: function($receiver, arg0) {
+    return this.format.call$1(arg0);
+  },
+  $asObject: null
+},
 
 AnimationElement: {"": "SvgElement;", $asObject: null},
 
@@ -8603,11 +9531,12 @@ _convertJsonToDart_closure: {"": "Closure;",
   },
   $isFunction: true,
   $asObject: null,
-  $is_void__K_V: true,
+  $is_void__K_V0: true,
   $is_void__dynamic_SendPort: true,
-  $is_dynamic__dynamic_dynamic: true,
   $is_void__String_String: true,
-  $is_void__K_V0: true
+  $is_dynamic__dynamic_dynamic: true,
+  $is_void__String_V: true,
+  $is_void__K_V: true
 },
 
 _convertJsonToDart_walk: {"": "Closure;revive_0",
@@ -8805,6 +9734,13 @@ Uint8List: {"": "TypedData_ListMixin_FixedLengthListMixin;",
   $isJavaScriptIndexingBehavior: true,
   $asJavaScriptIndexingBehavior: null
 }}],
+["date_symbols", "package:intl/date_symbols.dart", , {
+DateSymbols: {"": "Object;NAME,ERAS,ERANAMES,NARROWMONTHS,STANDALONENARROWMONTHS,MONTHS,STANDALONEMONTHS,SHORTMONTHS,STANDALONESHORTMONTHS,WEEKDAYS,STANDALONEWEEKDAYS,SHORTWEEKDAYS,STANDALONESHORTWEEKDAYS,NARROWWEEKDAYS,STANDALONENARROWWEEKDAYS,SHORTQUARTERS,QUARTERS,AMPMS,DATEFORMATS,TIMEFORMATS,AVAILABLEFORMATS,FIRSTDAYOFWEEK,WEEKENDRANGE,FIRSTWEEKCUTOFFDAY",
+  toString$0: function(_) {
+    return this.NAME;
+  },
+  $isDateSymbols: true
+}}],
 ["html_common", "dart:html_common", , {
 CssClassSetImpl: {"": "Object;",
   toString$0: function(_) {
@@ -8830,6 +9766,18 @@ CssClassSetImpl: {"": "Object;",
     $.stringTypeCheck(separator);
     t1 = this.readClasses$0();
     return t1.join$1(t1, separator);
+  },
+  map$1: function(_, f) {
+    var t1, t2;
+    $.assertFunctionSubtype(f, "dynamic__String");
+    t1 = this.readClasses$0();
+    $.assertFunctionSubtype(f, "dynamic__E1", "IterableBase", t1);
+    t2 = $.getRuntimeTypeArgument(t1, "IterableBase", 0);
+    $.listSuperNativeTypeCheck(t1, "$isIterable");
+    $.assertFunctionSubtype(f, "T__S0", "MappedIterable", null, [t2, null]);
+    t1 = new $.MappedIterable($.listSuperNativeTypeCheck(t1, "$isIterable"), $.assertFunctionSubtype(f, "T__S0", "MappedIterable", null, [t2, null]));
+    $.setRuntimeTypeInfo(t1, [t2, null]);
+    return t1;
   },
   get$length: function(_) {
     return this.readClasses$0()._liblib1$_length;
@@ -8916,6 +9864,14 @@ FilteredElementList: {"": "ListBase;_node,_childNodes<",
     for (t1 = $.get$iterator$ax($.listSuperNativeTypeCheck(iterable, "$isIterable")), t2 = this._childNodes._this, t3 = $.getInterceptor$x(t2); $.boolConversionCheck(t1.moveNext$0());)
       t3.append$1(t2, $.interceptedTypeCheck(t1.get$current(), "$isElement"));
   },
+  get$reversed: function(_) {
+    var t1, t2;
+    t1 = this.get$_filtered();
+    $.listSuperNativeTypeCheck(t1, "$isIterable");
+    t2 = new $.ReversedListIterable($.listSuperNativeTypeCheck(t1, "$isIterable"));
+    $.setRuntimeTypeInfo(t2, [null]);
+    return $.listSuperNativeTypeCheck($.listSuperNativeTypeCheck(t2, "$isIterable"), "$isIterable");
+  },
   removeRange$2: function(_, start, end) {
     var t1, t2;
     t1 = $.JSArray_methods.sublist$2(this.get$_filtered(), start, end);
@@ -8968,6 +9924,578 @@ FilteredElementList_removeRange_closure: {"": "Closure;",
     return {func: "dynamic__dynamic", args: [null]};
   }
 }}],
+["intl", "package:intl/intl.dart", , {
+Intl_verifiedLocale: function(newLocale, localeExists, onFailure) {
+  var t1, t2, t3, $arguments;
+  if (newLocale == null)
+    return $.Intl_getCurrentLocale();
+  if ($.boolConversionCheck(localeExists.call$1(newLocale)))
+    return newLocale;
+  for (t1 = [$.Intl_canonicalizedLocale(newLocale), $.Intl_shortLocale(newLocale)], t2 = $.getRuntimeTypeArgument(t1, "JSArray", 0), $.listSuperNativeTypeCheck(t1, "$isIterable"), t3 = new $.ListIterator($.listSuperNativeTypeCheck(t1, "$isIterable"), 2, 0, $.assertSubtypeOfRuntimeType(null, t2)), $.setRuntimeTypeInfo(t3, [t2]), $.assertSubtype(t3, "$isIterator", [$.getRuntimeTypeArgument(t1, "JSArray", 0)], "$asIterator"); $.boolConversionCheck(t3.moveNext$0());) {
+    t1 = t3.get$_liblib$_current();
+    $arguments = $.substitute(t3.$asListIterator, $.getRuntimeTypeInfo(t3));
+    if ($arguments == null)
+      t2 = null;
+    else {
+      $.assertHelper(typeof $arguments === "object" && $arguments !== null && $arguments.constructor === Array);
+      t2 = $arguments[0];
+    }
+    $.assertSubtypeOfRuntimeType(t1, t2);
+    if ($.boolConversionCheck(localeExists.call$1(t1)))
+      return $.stringTypeCheck(t1);
+  }
+  return $.stringTypeCheck(onFailure.call$1(newLocale));
+},
+
+Intl__throwLocaleError: function(localeName) {
+  throw $.wrapException(new $.ArgumentError("Invalid locale '" + $.stringTypeCheck(localeName) + "'"));
+},
+
+Intl_shortLocale: function(aLocale) {
+  if (aLocale.length < 2)
+    return aLocale;
+  return $.substring$2$s(aLocale, 0, 2).toLowerCase();
+},
+
+Intl_canonicalizedLocale: function(aLocale) {
+  var t1, t2, lastRegionLetter;
+  if (aLocale == null)
+    return $.Intl_systemLocale;
+  if (aLocale === "C")
+    return "en_ISO";
+  t1 = aLocale.length;
+  if (t1 < 5 || t1 > 6)
+    return aLocale;
+  if (2 >= t1)
+    throw $.ioore(2);
+  t2 = aLocale[2];
+  if (t2 !== "-" && t2 !== "_")
+    return aLocale;
+  if (t1 === 5)
+    lastRegionLetter = "";
+  else {
+    if (5 >= t1)
+      throw $.ioore(5);
+    lastRegionLetter = aLocale[5].toUpperCase();
+  }
+  t2 = aLocale[0] + aLocale[1] + "_";
+  if (3 >= t1)
+    throw $.ioore(3);
+  t2 += aLocale[3].toUpperCase();
+  if (4 >= t1)
+    throw $.ioore(4);
+  return t2 + aLocale[4].toUpperCase() + lastRegionLetter;
+},
+
+Intl_getCurrentLocale: function() {
+  if ($.Intl__defaultLocale == null)
+    $.Intl__defaultLocale = $.Intl_systemLocale;
+  return $.Intl__defaultLocale;
+},
+
+DateFormat: {"": "Object;_locale,_liblib6$_pattern,_formatFieldsPrivate",
+  set$_formatFieldsPrivate: function(v) {
+    this._formatFieldsPrivate = $.listTypeCheck(v);
+  },
+  format$1: function(_, date) {
+    var result = $.StringBuffer$("");
+    $.forEach$1$ax(this.get$_formatFields(), new $.DateFormat_format_closure(date, result));
+    return result._contents;
+  },
+  get$_formatFields: function() {
+    if (this._formatFieldsPrivate == null) {
+      if (this._liblib6$_pattern == null) {
+        this.addPattern$1("yMMMMd");
+        this.addPattern$1("jms");
+      }
+      this.set$_formatFieldsPrivate(this.parsePattern$1(this._liblib6$_pattern));
+    }
+    return this._formatFieldsPrivate;
+  },
+  _appendPattern$2: function(inputPattern, separator) {
+    var t1;
+    $.stringTypeCheck(inputPattern);
+    t1 = this._liblib6$_pattern;
+    if (t1 == null)
+      this._liblib6$_pattern = inputPattern;
+    else
+      this._liblib6$_pattern = t1 + separator + inputPattern;
+  },
+  addPattern$2: function(inputPattern, separator) {
+    var t1;
+    this.set$_formatFieldsPrivate(null);
+    if (inputPattern == null)
+      return this;
+    t1 = $.get$dateTimePatterns();
+    if (!$.boolConversionCheck($.propertyTypeCheck(this._locale === "en_US" ? t1.fallbackData : t1._throwException$0(), "$isMap").containsKey$1(inputPattern)))
+      this._appendPattern$2(inputPattern, separator);
+    else {
+      t1 = $.get$dateTimePatterns();
+      t1 = $.propertyTypeCheck(this._locale === "en_US" ? t1.fallbackData : t1._throwException$0(), "$isMap");
+      this._appendPattern$2(t1.$index(t1, inputPattern), separator);
+    }
+    return this;
+  },
+  addPattern$1: function(inputPattern) {
+    return this.addPattern$2(inputPattern, " ");
+  },
+  parsePattern$1: function(pattern) {
+    var t1;
+    if (pattern == null)
+      return;
+    t1 = $.get$reversed$ax(this._parsePatternHelper$1(pattern));
+    return t1.toList$0(t1);
+  },
+  _parsePatternHelper$1: function(pattern) {
+    var t1, matched, parsed;
+    t1 = $.getInterceptor$asx(pattern);
+    if (t1.get$isEmpty(pattern))
+      return [];
+    matched = this._liblib6$_match$1(pattern);
+    if (matched == null)
+      return [];
+    parsed = this._parsePatternHelper$1(t1.substring$1(pattern, matched.fullPattern$0().length));
+    $.add$1$ax(parsed, matched);
+    return parsed;
+  },
+  _liblib6$_match$1: function(pattern) {
+    var i, match, t1, t2;
+    for (i = 0; $.get$DateFormat__matchers(), i < 3; ++i) {
+      match = $.get$DateFormat__matchers()[i].firstMatch$1(pattern);
+      if (match != null) {
+        t1 = $.DateFormat__fieldConstructors();
+        if (i >= t1.length)
+          throw $.ioore(i);
+        t1 = t1[i];
+        match.group$1;
+        t2 = match._match;
+        if (0 >= t2.length)
+          throw $.ioore(0);
+        return $.propertyTypeCheck(t1.call$2($.stringTypeCheck(t2[0]), this), "$is_DateFormatField");
+      }
+    }
+  },
+  $isDateFormat: true,
+  static: {
+"": "DateFormat_ABBR_MONTH,DateFormat_DAY,DateFormat_ABBR_WEEKDAY,DateFormat_WEEKDAY,DateFormat_ABBR_STANDALONE_MONTH,DateFormat_STANDALONE_MONTH,DateFormat_NUM_MONTH,DateFormat_NUM_MONTH_DAY,DateFormat_NUM_MONTH_WEEKDAY_DAY,DateFormat_ABBR_MONTH_DAY,DateFormat_ABBR_MONTH_WEEKDAY_DAY,DateFormat_MONTH,DateFormat_MONTH_DAY,DateFormat_MONTH_WEEKDAY_DAY,DateFormat_ABBR_QUARTER,DateFormat_QUARTER,DateFormat_YEAR,DateFormat_YEAR_NUM_MONTH,DateFormat_YEAR_NUM_MONTH_DAY,DateFormat_YEAR_NUM_MONTH_WEEKDAY_DAY,DateFormat_YEAR_ABBR_MONTH,DateFormat_YEAR_ABBR_MONTH_DAY,DateFormat_YEAR_ABBR_MONTH_WEEKDAY_DAY,DateFormat_YEAR_MONTH,DateFormat_YEAR_MONTH_DAY,DateFormat_YEAR_MONTH_WEEKDAY_DAY,DateFormat_YEAR_ABBR_QUARTER,DateFormat_YEAR_QUARTER,DateFormat_HOUR24,DateFormat_HOUR24_MINUTE,DateFormat_HOUR24_MINUTE_SECOND,DateFormat_HOUR,DateFormat_HOUR_MINUTE,DateFormat_HOUR_MINUTE_SECOND,DateFormat_HOUR_MINUTE_GENERIC_TZ,DateFormat_HOUR_MINUTE_TZ,DateFormat_HOUR_GENERIC_TZ,DateFormat_HOUR_TZ,DateFormat_MINUTE,DateFormat_MINUTE_SECOND,DateFormat_SECOND,DateFormat__matchers",
+DateFormat_localeExists: function(localeName) {
+  var t1;
+  if (localeName == null)
+    return false;
+  t1 = $.get$dateTimeSymbols();
+  $.stringTypeCheck(localeName);
+  return $.boolTypeCheck($.$eq(localeName, "en_US") ? true : t1._throwException$0());
+},
+
+DateFormat__fieldConstructors: function() {
+  return [new $.DateFormat__fieldConstructors_closure(), new $.DateFormat__fieldConstructors_closure0(), new $.DateFormat__fieldConstructors_closure1()];
+}}
+
+},
+
+DateFormat_format_closure: {"": "Closure;date_0,result_1",
+  call$1: function(field) {
+    return this.result_1.write$1($.format$1$x(field, this.date_0));
+  },
+  $isFunction: true,
+  $asObject: null,
+  $signature: function() {
+    return {func: "dynamic__dynamic", args: [null]};
+  }
+},
+
+DateFormat__fieldConstructors_closure: {"": "Closure;",
+  call$2: function(pattern, $parent) {
+    var t1;
+    $.stringTypeCheck(pattern);
+    t1 = new $._DateFormatQuotedField(null, pattern, $.propertyTypeCheck($parent, "$isDateFormat"));
+    t1._fullPattern = pattern;
+    t1.patchQuotes$0();
+    return t1;
+  },
+  $isFunction: true,
+  $asObject: null,
+  $is_void__K_V0: true,
+  $is_void__dynamic_SendPort: true,
+  $is_void__String_String: true,
+  $is_dynamic__dynamic_dynamic: true,
+  $is_void__String_V: true,
+  $is_void__K_V: true
+},
+
+DateFormat__fieldConstructors_closure0: {"": "Closure;",
+  call$2: function(pattern, $parent) {
+    return new $._DateFormatPatternField($.stringTypeCheck(pattern), $.propertyTypeCheck($parent, "$isDateFormat"));
+  },
+  $isFunction: true,
+  $asObject: null,
+  $is_void__K_V0: true,
+  $is_void__dynamic_SendPort: true,
+  $is_void__String_String: true,
+  $is_dynamic__dynamic_dynamic: true,
+  $is_void__String_V: true,
+  $is_void__K_V: true
+},
+
+DateFormat__fieldConstructors_closure1: {"": "Closure;",
+  call$2: function(pattern, $parent) {
+    return new $._DateFormatLiteralField($.stringTypeCheck(pattern), $.propertyTypeCheck($parent, "$isDateFormat"));
+  },
+  $isFunction: true,
+  $asObject: null,
+  $is_void__K_V0: true,
+  $is_void__dynamic_SendPort: true,
+  $is_void__String_String: true,
+  $is_dynamic__dynamic_dynamic: true,
+  $is_void__String_V: true,
+  $is_void__K_V: true
+},
+
+_DateFormatField: {"": "Object;",
+  fullPattern$0: function() {
+    return this.pattern;
+  },
+  toString$0: function(_) {
+    return this.pattern;
+  },
+  format$1: function(_, date) {
+    return this.pattern;
+  },
+  $is_DateFormatField: true
+},
+
+_DateFormatLiteralField: {"": "_DateFormatField;pattern,parent"},
+
+_DateFormatQuotedField: {"": "_DateFormatField;_fullPattern,pattern,parent",
+  fullPattern$0: function() {
+    return this._fullPattern;
+  },
+  patchQuotes$0: function() {
+    var t1 = this.pattern;
+    if (t1 === "''")
+      this.pattern = "'";
+    else {
+      this.pattern = $.substring$2$s(t1, 1, t1.length - 1);
+      t1 = $.JSSyntaxRegExp_makeNative("''", false, true, false);
+      this.pattern = $.replaceAll$2$s(this.pattern, new $.JSSyntaxRegExp(t1, null, null), "'");
+    }
+  }
+},
+
+_DateFormatPatternField: {"": "_DateFormatField;pattern,parent",
+  format$1: function(_, date) {
+    return this.formatField$1(date);
+  },
+  formatField$1: function(date) {
+    var t1, t2;
+    t1 = this.pattern;
+    t2 = t1.length;
+    if (0 >= t2)
+      throw $.ioore(0);
+    switch (t1[0]) {
+      case "a":
+        return this.formatAmPm$1(date);
+      case "c":
+        return this.formatStandaloneDay$1(date);
+      case "d":
+        date.get$day;
+        return this.padTo$2(t2, $.Primitives_getDay(date));
+      case "E":
+        return this.formatDayOfWeek$1(date);
+      case "G":
+        return this.formatEra$1(date);
+      case "h":
+        return this.format1To12Hours$1(date);
+      case "H":
+        date.get$hour;
+        return this.padTo$2(t2, $.Primitives_getHours(date));
+      case "K":
+        date.get$hour;
+        return this.padTo$2(t2, $.JSInt_methods.$mod($.Primitives_getHours(date), 12));
+      case "k":
+        date.get$hour;
+        return this.padTo$2(t2, $.Primitives_getHours(date));
+      case "L":
+        return this.formatStandaloneMonth$1(date);
+      case "M":
+        return this.formatMonth$1(date);
+      case "m":
+        date.get$minute;
+        return this.padTo$2(t2, $.Primitives_getMinutes(date));
+      case "Q":
+        return this.formatQuarter$1(date);
+      case "S":
+        return this.formatFractionalSeconds$1(date);
+      case "s":
+        date.get$second;
+        return this.padTo$2(t2, $.Primitives_getSeconds(date));
+      case "v":
+        return this.formatTimeZoneId$1(date);
+      case "y":
+        return this.formatYear$1(date);
+      case "z":
+        return this.formatTimeZone$1(date);
+      case "Z":
+        return this.formatTimeZoneRFC$1(date);
+      default:
+        return "";
+    }
+  },
+  formatEra$1: function(date) {
+    var era, t1, t2;
+    date.get$year;
+    era = $.Primitives_getYear(date) > 0 ? 1 : 0;
+    t1 = this.parent;
+    if (this.pattern.length >= 4) {
+      t2 = $.get$dateTimeSymbols();
+      t1.get$locale;
+      t1 = $.propertyTypeCheck(t1._locale === "en_US" ? t2.fallbackData : t2._throwException$0(), "$isDateSymbols").ERANAMES[era];
+    } else {
+      t2 = $.get$dateTimeSymbols();
+      t1.get$locale;
+      t1 = $.propertyTypeCheck(t1._locale === "en_US" ? t2.fallbackData : t2._throwException$0(), "$isDateSymbols").ERAS[era];
+    }
+    return t1;
+  },
+  formatYear$1: function(date) {
+    var year;
+    date.get$year;
+    year = $.Primitives_getYear(date);
+    if (year < 0)
+      year = -year;
+    return this.pattern.length === 2 ? this.padTo$2(2, $.JSInt_methods.$mod(year, 100)) : $.JSInt_methods.toString$0(year);
+  },
+  formatMonth$1: function(date) {
+    var t1, t2;
+    t1 = this.pattern.length;
+    switch (t1) {
+      case 5:
+        t1 = $.get$dateTimeSymbols();
+        t2 = this.parent;
+        t2.get$locale;
+        t1 = $.propertyTypeCheck(t2._locale === "en_US" ? t1.fallbackData : t1._throwException$0(), "$isDateSymbols").NARROWMONTHS;
+        date.get$month;
+        t2 = $.Primitives_getMonth(date) - 1;
+        if (t2 < 0 || t2 >= 12)
+          throw $.ioore(t2);
+        return t1[t2];
+      case 4:
+        t1 = $.get$dateTimeSymbols();
+        t2 = this.parent;
+        t2.get$locale;
+        t1 = $.propertyTypeCheck(t2._locale === "en_US" ? t1.fallbackData : t1._throwException$0(), "$isDateSymbols").MONTHS;
+        date.get$month;
+        t2 = $.Primitives_getMonth(date) - 1;
+        if (t2 < 0 || t2 >= 12)
+          throw $.ioore(t2);
+        return t1[t2];
+      case 3:
+        t1 = $.get$dateTimeSymbols();
+        t2 = this.parent;
+        t2.get$locale;
+        t1 = $.propertyTypeCheck(t2._locale === "en_US" ? t1.fallbackData : t1._throwException$0(), "$isDateSymbols").SHORTMONTHS;
+        date.get$month;
+        t2 = $.Primitives_getMonth(date) - 1;
+        if (t2 < 0 || t2 >= 12)
+          throw $.ioore(t2);
+        return t1[t2];
+      default:
+        date.get$month;
+        return this.padTo$2(t1, $.Primitives_getMonth(date));
+    }
+  },
+  formatFractionalSeconds$1: function(date) {
+    var basic, t1;
+    date.get$millisecond;
+    basic = this.padTo$2(3, $.Primitives_getMilliseconds(date));
+    t1 = this.pattern.length - 3;
+    if (t1 > 0)
+      return $.JSString_methods.$add(basic, this.padTo$2(t1, 0));
+    else
+      return basic;
+  },
+  formatAmPm$1: function(date) {
+    var t1, index, t2;
+    date.get$hour;
+    $.Primitives_getHours(date);
+    date.get$hour;
+    if ($.Primitives_getHours(date) >= 12) {
+      date.get$hour;
+      t1 = $.Primitives_getHours(date) < 24;
+    } else
+      t1 = false;
+    index = t1 ? 1 : 0;
+    t1 = $.get$dateTimeSymbols();
+    t2 = this.parent;
+    t2.get$locale;
+    return $.propertyTypeCheck(t2._locale === "en_US" ? t1.fallbackData : t1._throwException$0(), "$isDateSymbols").AMPMS[index];
+  },
+  format1To12Hours$1: function(date) {
+    var hours;
+    date.get$hour;
+    hours = $.Primitives_getHours(date);
+    date.get$hour;
+    if ($.Primitives_getHours(date) > 12)
+      hours -= 12;
+    if (hours === 0)
+      hours = 12;
+    return this.padTo$2(this.pattern.length, hours);
+  },
+  formatStandaloneDay$1: function(date) {
+    var t1, t2;
+    switch (this.pattern.length) {
+      case 5:
+        t1 = $.get$dateTimeSymbols();
+        t2 = this.parent;
+        t2.get$locale;
+        t1 = $.propertyTypeCheck(t2._locale === "en_US" ? t1.fallbackData : t1._throwException$0(), "$isDateSymbols").STANDALONENARROWWEEKDAYS;
+        date.get$weekday;
+        t2 = $.JSInt_methods.$mod($.Primitives_getWeekday(date), 7);
+        if (t2 < 0 || t2 >= 7)
+          throw $.ioore(t2);
+        return t1[t2];
+      case 4:
+        t1 = $.get$dateTimeSymbols();
+        t2 = this.parent;
+        t2.get$locale;
+        t1 = $.propertyTypeCheck(t2._locale === "en_US" ? t1.fallbackData : t1._throwException$0(), "$isDateSymbols").STANDALONEWEEKDAYS;
+        date.get$weekday;
+        t2 = $.JSInt_methods.$mod($.Primitives_getWeekday(date), 7);
+        if (t2 < 0 || t2 >= 7)
+          throw $.ioore(t2);
+        return t1[t2];
+      case 3:
+        t1 = $.get$dateTimeSymbols();
+        t2 = this.parent;
+        t2.get$locale;
+        t1 = $.propertyTypeCheck(t2._locale === "en_US" ? t1.fallbackData : t1._throwException$0(), "$isDateSymbols").STANDALONESHORTWEEKDAYS;
+        date.get$weekday;
+        t2 = $.JSInt_methods.$mod($.Primitives_getWeekday(date), 7);
+        if (t2 < 0 || t2 >= 7)
+          throw $.ioore(t2);
+        return t1[t2];
+      default:
+        date.get$day;
+        return this.padTo$2(1, $.Primitives_getDay(date));
+    }
+  },
+  formatStandaloneMonth$1: function(date) {
+    var t1, t2;
+    t1 = this.pattern.length;
+    switch (t1) {
+      case 5:
+        t1 = $.get$dateTimeSymbols();
+        t2 = this.parent;
+        t2.get$locale;
+        t1 = $.propertyTypeCheck(t2._locale === "en_US" ? t1.fallbackData : t1._throwException$0(), "$isDateSymbols").STANDALONENARROWMONTHS;
+        date.get$month;
+        t2 = $.Primitives_getMonth(date) - 1;
+        if (t2 < 0 || t2 >= 12)
+          throw $.ioore(t2);
+        return t1[t2];
+      case 4:
+        t1 = $.get$dateTimeSymbols();
+        t2 = this.parent;
+        t2.get$locale;
+        t1 = $.propertyTypeCheck(t2._locale === "en_US" ? t1.fallbackData : t1._throwException$0(), "$isDateSymbols").STANDALONEMONTHS;
+        date.get$month;
+        t2 = $.Primitives_getMonth(date) - 1;
+        if (t2 < 0 || t2 >= 12)
+          throw $.ioore(t2);
+        return t1[t2];
+      case 3:
+        t1 = $.get$dateTimeSymbols();
+        t2 = this.parent;
+        t2.get$locale;
+        t1 = $.propertyTypeCheck(t2._locale === "en_US" ? t1.fallbackData : t1._throwException$0(), "$isDateSymbols").STANDALONESHORTMONTHS;
+        date.get$month;
+        t2 = $.Primitives_getMonth(date) - 1;
+        if (t2 < 0 || t2 >= 12)
+          throw $.ioore(t2);
+        return t1[t2];
+      default:
+        date.get$month;
+        return this.padTo$2(t1, $.Primitives_getMonth(date));
+    }
+  },
+  formatQuarter$1: function(date) {
+    var quarter, t1, t2;
+    date.get$month;
+    quarter = $.JSInt_methods.toInt$0($.Primitives_getMonth(date) / 3);
+    t1 = this.parent;
+    if (this.pattern.length < 4) {
+      t2 = $.get$dateTimeSymbols();
+      t1.get$locale;
+      t1 = $.propertyTypeCheck(t1._locale === "en_US" ? t2.fallbackData : t2._throwException$0(), "$isDateSymbols").SHORTQUARTERS;
+      if (quarter < 0 || quarter >= 4)
+        throw $.ioore(quarter);
+      return t1[quarter];
+    } else {
+      t2 = $.get$dateTimeSymbols();
+      t1.get$locale;
+      t1 = $.propertyTypeCheck(t1._locale === "en_US" ? t2.fallbackData : t2._throwException$0(), "$isDateSymbols").QUARTERS;
+      if (quarter < 0 || quarter >= 4)
+        throw $.ioore(quarter);
+      return t1[quarter];
+    }
+  },
+  formatDayOfWeek$1: function(date) {
+    var t1, t2;
+    t1 = this.parent;
+    if (this.pattern.length >= 4) {
+      t2 = $.get$dateTimeSymbols();
+      t1.get$locale;
+      t1 = $.propertyTypeCheck(t1._locale === "en_US" ? t2.fallbackData : t2._throwException$0(), "$isDateSymbols").WEEKDAYS;
+    } else {
+      t2 = $.get$dateTimeSymbols();
+      t1.get$locale;
+      t1 = $.propertyTypeCheck(t1._locale === "en_US" ? t2.fallbackData : t2._throwException$0(), "$isDateSymbols").SHORTWEEKDAYS;
+    }
+    date.get$weekday;
+    t2 = $.JSInt_methods.$mod($.Primitives_getWeekday(date), 7);
+    if (t2 < 0 || t2 >= t1.length)
+      throw $.ioore(t2);
+    return $.stringTypeCheck(t1[t2]);
+  },
+  formatTimeZoneId$1: function(date) {
+    throw $.wrapException(new $.UnimplementedError(null));
+  },
+  formatTimeZone$1: function(date) {
+    throw $.wrapException(new $.UnimplementedError(null));
+  },
+  formatTimeZoneRFC$1: function(date) {
+    throw $.wrapException(new $.UnimplementedError(null));
+  },
+  padTo$2: function(width, toBePrinted) {
+    var basicString, t1, buffer, i;
+    basicString = $.JSNumber_methods.toString$0(toBePrinted);
+    t1 = basicString.length;
+    if (t1 >= width)
+      return basicString;
+    buffer = $.StringBuffer$("");
+    for (t1 = width - t1, i = 0; i < t1; ++i)
+      buffer._contents = buffer._contents + "0";
+    buffer.write$1(basicString);
+    return buffer._contents;
+  }
+}}],
+["intl_helpers", "package:intl/src/intl_helpers.dart", , {
+UninitializedLocaleData: {"": "Object;message,fallbackData",
+  $index: function(_, key) {
+    return $.stringTypeCheck(key) === "en_US" ? this.fallbackData : this._throwException$0();
+  },
+  _throwException$0: function() {
+    throw $.wrapException(new $.LocaleDataException("Locale data has not been initialized, call " + this.message + "."));
+  }
+},
+
+LocaleDataException: {"": "Object;message",
+  toString$0: function(_) {
+    return "LocaleDataException: " + this.message;
+  },
+  $isException: true,
+  $asObject: null
+}}],
 ["metadata", "../dart-sdk/lib/html/html_common/metadata.dart", , {
 SupportedBrowser: {"": "Object;browserName,minimumVersion", static: {
 "": "SupportedBrowser_CHROME,SupportedBrowser_FIREFOX,SupportedBrowser_IE,SupportedBrowser_OPERA,SupportedBrowser_SAFARI",
@@ -8986,6 +10514,7 @@ Isolate.$finishClasses($$, $, null);
 $$ = null;
 
 $.IsolateNatives__processWorkerMessage$closure = new $.Closure$_processWorkerMessage($.IsolateNatives__processWorkerMessage, "IsolateNatives__processWorkerMessage$closure");
+$.Primitives__throwFormatException$closure = new $.Closure$_throwFormatException($.Primitives__throwFormatException, "Primitives__throwFormatException$closure");
 $.wrapException$closure = new $.Closure$wrapException($.wrapException, "wrapException$closure");
 $.DartError_toStringWrapper$closure = new $.Closure$toStringWrapper($.DartError_toStringWrapper, "DartError_toStringWrapper$closure");
 $.invokeClosure$closure = new $.Closure$invokeClosure($.invokeClosure, "invokeClosure$closure");
@@ -9004,78 +10533,87 @@ $._asyncRunCallback$closure = new $.Closure$_asyncRunCallback($._asyncRunCallbac
 $._nullDataHandler$closure = new $.Closure$_nullDataHandler($._nullDataHandler, "_nullDataHandler$closure");
 $._nullErrorHandler$closure = new $.Closure$_nullErrorHandler($._nullErrorHandler, "_nullErrorHandler$closure");
 $._nullDoneHandler$closure = new $.Closure$_nullDoneHandler($._nullDoneHandler, "_nullDoneHandler$closure");
+$.DateFormat_localeExists$closure = new $.Closure$localeExists($.DateFormat_localeExists, "DateFormat_localeExists$closure");
+$.Intl__throwLocaleError$closure = new $.Closure$_throwLocaleError($.Intl__throwLocaleError, "Intl__throwLocaleError$closure");
 $.Duration.$isObject = true;
 $.JSBool.$isbool = true;
 $.JSBool.$isObject = true;
 $.Object.$isObject = true;
 $.Map.$isMap = true;
 $.Map.$isObject = true;
-$.Node.$isObject = true;
+$.Match.$isObject = true;
+$.Match.$isMatch = true;
 $.Node.$isNode = true;
-$._EventSink.$is_EventSink = true;
-$._EventSink.$isObject = true;
-$.Set.$isSet = true;
-$.Set.$isObject = true;
+$.Node.$isObject = true;
 $.ProgressEvent.$isProgressEvent = true;
 $.ProgressEvent.$isEvent = true;
 $.ProgressEvent.$isObject = true;
-$.Element.$isObject = true;
+$._EventSink.$is_EventSink = true;
+$._EventSink.$isObject = true;
 $.Element.$isElement = true;
 $.Element.$isNode = true;
+$.Element.$isObject = true;
+$.SendPort.$isSendPort = true;
+$.SendPort.$isObject = true;
 $.ReceivePort.$isReceivePort = true;
 $.ReceivePort.$isObject = true;
-$.JSArray.$isList = true;
 $.JSArray.$isObject = true;
+$.JSArray.$isList = true;
 $.JSNumber.$isObject = true;
 $.JSInt.$isint = true;
 $.JSInt.$isObject = true;
-$.SendPort.$isSendPort = true;
-$.SendPort.$isObject = true;
+$.JSDouble.$isdouble = true;
+$.JSDouble.$isObject = true;
 $.JSString.$isString = true;
 $.JSString.$isObject = true;
+$.Set.$isSet = true;
+$.Set.$isObject = true;
 $.HttpRequest.$isHttpRequest = true;
 $.HttpRequest.$isObject = true;
 $._IsolateContext.$is_IsolateContext = true;
 $._IsolateContext.$isObject = true;
-$.Event.$isEvent = true;
-$.Event.$isObject = true;
 $._IsolateEvent.$is_IsolateEvent = true;
 $._IsolateEvent.$isObject = true;
+$.Event.$isEvent = true;
+$.Event.$isObject = true;
 $.Function.$isFunction = true;
 $.Function.$isObject = true;
 $.Future.$isFuture = true;
 $.Future.$isObject = true;
 $.$signature_void__Element = {func: "void__Element", void: true, args: [$.Element]};
-$.$signature_void__ProgressEvent = {func: "void__ProgressEvent", void: true, args: [$.ProgressEvent]};
 $.$signature_void__dynamic_SendPort = {func: "void__dynamic_SendPort", void: true, args: [null, $.SendPort]};
-$.$signature_dynamic__dynamic = {func: "dynamic__dynamic", args: [null]};
+$.$signature_dynamic__dynamic_dynamic = {func: "dynamic__dynamic_dynamic", args: [null, null]};
 $.$signature_void__String = {func: "void__String", void: true, args: [$.JSString]};
 $.$signature_void__dynamic = {func: "void__dynamic", void: true, args: [null]};
 $.$signature_dynamic__Set = {func: "dynamic__Set", args: [[$.Set, $.JSString]]};
-$.$signature_dynamic__dynamic_dynamic = {func: "dynamic__dynamic_dynamic", args: [null, null]};
-$.$signature_bool__dynamic = {func: "bool__dynamic", ret: $.JSBool, args: [null]};
 $.$signature_void__String_String = {func: "void__String_String", void: true, args: [$.JSString, $.JSString]};
+$.$signature_int__String = {func: "int__String", ret: $.JSInt, args: [$.JSString]};
 $.$signature_dynamic__Event = {func: "dynamic__Event", args: [$.Event]};
+$.$signature_dynamic__dynamic = {func: "dynamic__dynamic", args: [null]};
+$.$signature_void__ProgressEvent = {func: "void__ProgressEvent", void: true, args: [$.ProgressEvent]};
+$.$signature_double__String = {func: "double__String", ret: $.JSDouble, args: [$.JSString]};
+$.$signature_dynamic__String = {func: "dynamic__String", args: [$.JSString]};
+$.$signature_bool__dynamic = {func: "bool__dynamic", ret: $.JSBool, args: [null]};
 $.ListIterable.$signature_void__E2 = function(E) {
   return {func: "void__E2", void: true, args: [E]};
 };
-$.MappedIterable.$signature_T__S = function(S, T) {
-  return {func: "T__S", ret: T, args: [S]};
+$.ListIterable.$signature_dynamic__E2 = function(E) {
+  return {func: "dynamic__E2", args: [E]};
 };
-$.MappedIterator.$signature_T__S0 = function(S, T) {
+$.MappedIterable.$signature_T__S0 = function(S, T) {
   return {func: "T__S0", ret: T, args: [S]};
 };
-$._FutureImpl.$signature_dynamic__T = function(T) {
-  return {func: "dynamic__T", args: [T]};
+$.MappedIterator.$signature_T__S2 = function(S, T) {
+  return {func: "T__S2", ret: T, args: [S]};
+};
+$._FutureImpl.$signature_dynamic__T0 = function(T) {
+  return {func: "dynamic__T0", args: [T]};
 };
 $._EventStream.$signature_void__T2 = function(T) {
   return {func: "void__T2", void: true, args: [T]};
 };
-$._BufferingStreamSubscription.$signature_void__T1 = function(T) {
-  return {func: "void__T1", void: true, args: [T]};
-};
-$.JSArray.$signature_void__E0 = function(E) {
-  return {func: "void__E0", void: true, args: [E]};
+$.MappedListIterable.$signature_T__S = function(S, T) {
+  return {func: "T__S", ret: T, args: [S]};
 };
 $._SubscribeFuture.$signature_dynamic__S = function(S, T) {
   return {func: "dynamic__S", args: [S]};
@@ -9083,11 +10621,20 @@ $._SubscribeFuture.$signature_dynamic__S = function(S, T) {
 $.Stream.$signature_void__T3 = function(T) {
   return {func: "void__T3", void: true, args: [T]};
 };
+$.Stream.$signature_dynamic__T = function(T) {
+  return {func: "dynamic__T", args: [T]};
+};
 $.HashMap.$signature_void__K_V0 = function(K, V) {
   return {func: "void__K_V0", void: true, args: [K, V]};
 };
+$._BufferingStreamSubscription.$signature_void__T1 = function(T) {
+  return {func: "void__T1", void: true, args: [T]};
+};
 $.ListMixin.$signature_void__E1 = function(E) {
   return {func: "void__E1", void: true, args: [E]};
+};
+$.ListMixin.$signature_dynamic__E = function(E) {
+  return {func: "dynamic__E", args: [E]};
 };
 $.ListMixin.$signature_bool__E = function(E) {
   return {func: "bool__E", ret: $.JSBool, args: [E]};
@@ -9098,14 +10645,23 @@ $.LinkedHashSet.$signature_void__E5 = function(E) {
 $.LinkedHashMap.$signature_void__K_V = function(K, V) {
   return {func: "void__K_V", void: true, args: [K, V]};
 };
+$.JSArray.$signature_dynamic__E0 = function(E) {
+  return {func: "dynamic__E0", args: [E]};
+};
+$.JSArray.$signature_void__E0 = function(E) {
+  return {func: "void__E0", void: true, args: [E]};
+};
 $.HashMapKeyIterable.$signature_void__E4 = function(E) {
   return {func: "void__E4", void: true, args: [E]};
 };
 $.IterableBase.$signature_void__E = function(E) {
   return {func: "void__E", void: true, args: [E]};
 };
-$.IterableBase.$signature_dynamic__E = function(E) {
-  return {func: "dynamic__E", args: [E]};
+$.IterableBase.$signature_dynamic__E1 = function(E) {
+  return {func: "dynamic__E1", args: [E]};
+};
+$.ConstantMap.$signature_void__String_V = function(V) {
+  return {func: "void__String_V", void: true, args: [$.JSString, V]};
 };
 $._ForwardingStream.$signature_void__T = function(S, T) {
   return {func: "void__T", void: true, args: [T]};
@@ -9113,11 +10669,14 @@ $._ForwardingStream.$signature_void__T = function(S, T) {
 $._ForwardingStreamSubscription.$signature_void__T0 = function(S, T) {
   return {func: "void__T0", void: true, args: [T]};
 };
-$.LinkedHashMapKeyIterable.$signature_void__E3 = function(E) {
-  return {func: "void__E3", void: true, args: [E]};
+$._MapStream.$signature_T__S1 = function(S, T) {
+  return {func: "T__S1", ret: T, args: [S]};
 };
 $.ListQueue.$signature_void__E6 = function(E) {
   return {func: "void__E6", void: true, args: [E]};
+};
+$.LinkedHashMapKeyIterable.$signature_void__E3 = function(E) {
+  return {func: "void__E3", void: true, args: [E]};
 };
 $.getInterceptor = function(receiver) {
   if (typeof receiver == "number") {
@@ -9201,13 +10760,30 @@ $.HtmlDocument_methods = $.HtmlDocument.prototype;
 $.HttpRequest_methods = $.HttpRequest.prototype;
 $.JSArray_methods = $.JSArray.prototype;
 $.JSInt_methods = $.JSInt.prototype;
+$.JSNumber_methods = $.JSNumber.prototype;
 $.JSString_methods = $.JSString.prototype;
 Isolate.makeConstantList = function(list) {
   list.immutable$list = true;
   list.fixed$length = true;
   return list;
 };
+$.List_3US = Isolate.makeConstantList(["S", "M", "T", "W", "T", "F", "S"]);
+$.List_5_6 = Isolate.makeConstantList([5, 6]);
+$.List_6xs = Isolate.makeConstantList(["Before Christ", "Anno Domini"]);
+$.List_AM_PM = Isolate.makeConstantList(["AM", "PM"]);
+$.List_BC_AD = Isolate.makeConstantList(["BC", "AD"]);
+$.List_EQM = $.setRuntimeTypeInfo(Isolate.makeConstantList(["d", "E", "EEEE", "LLL", "LLLL", "M", "Md", "MEd", "MMM", "MMMd", "MMMEd", "MMMM", "MMMMd", "MMMMEEEEd", "QQQ", "QQQQ", "y", "yM", "yMd", "yMEd", "yMMM", "yMMMd", "yMMMEd", "yMMMM", "yMMMMd", "yMMMMEEEEd", "yQQQ", "yQQQQ", "H", "Hm", "Hms", "j", "jm", "jms", "jmv", "jmz", "jz", "m", "ms", "s", "v", "z", "zzzz", "ZZZZ"]), [$.JSString]);
+$.List_Q1_Q2_Q3_Q4 = Isolate.makeConstantList(["Q1", "Q2", "Q3", "Q4"]);
+$.List_bJM = Isolate.makeConstantList(["1st quarter", "2nd quarter", "3rd quarter", "4th quarter"]);
+$.List_cIc = Isolate.makeConstantList(["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]);
+$.List_cno = Isolate.makeConstantList(["EEEE, MMMM d, y", "MMMM d, y", "MMM d, y", "M/d/yy"]);
 $.List_empty = Isolate.makeConstantList([]);
+$.List_gc6 = Isolate.makeConstantList(["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]);
+$.List_h8w = Isolate.makeConstantList(["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]);
+$.List_kWG = Isolate.makeConstantList(["h:mm:ss a zzzz", "h:mm:ss a z", "h:mm:ss a", "h:mm a"]);
+$.List_qpm = Isolate.makeConstantList(["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"]);
+$.List_wMy = Isolate.makeConstantList(["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]);
+$.Map_EQBCk = $.setRuntimeTypeInfo(new $.ConstantMap(44, {d: "d", E: "EEE", EEEE: "EEEE", LLL: "LLL", LLLL: "LLLL", M: "L", Md: "M/d", MEd: "EEE, M/d", MMM: "LLL", MMMd: "MMM d", MMMEd: "EEE, MMM d", MMMM: "LLLL", MMMMd: "MMMM d", MMMMEEEEd: "EEEE, MMMM d", QQQ: "QQQ", QQQQ: "QQQQ", y: "y", yM: "M/y", yMd: "M/d/y", yMEd: "EEE, M/d/y", yMMM: "MMM y", yMMMd: "MMM d, y", yMMMEd: "EEE, MMM d, y", yMMMM: "MMMM y", yMMMMd: "MMMM d, y", yMMMMEEEEd: "EEEE, MMMM d, y", yQQQ: "QQQ y", yQQQQ: "QQQQ y", H: "HH", Hm: "HH:mm", Hms: "HH:mm:ss", j: "h a", jm: "h:mm a", jms: "h:mm:ss a", jmv: "h:mm a v", jmz: "h:mm a z", jz: "h a z", m: "m", ms: "mm:ss", s: "s", v: "v", z: "z", zzzz: "zzzz", ZZZZ: "ZZZZ"}, $.List_EQM), [null]);
 $.NodeList_methods = $.NodeList.prototype;
 $.dispatchPropertyName = null;
 $.lazyPort = null;
@@ -9216,11 +10792,17 @@ $.interceptorsByTag = null;
 $.leafTags = null;
 $._callbacksAreEnqueued = false;
 $.Expando__keyCount = 0;
+$.en_USPatterns = $.Map_EQBCk;
+$.Intl__defaultLocale = null;
+$.Intl_systemLocale = "en_US";
 $.$$dom_addEventListener$3$x = function(receiver, a0, a1, a2) {
   return $.getInterceptor$x(receiver).$$dom_addEventListener$3(receiver, a0, a1, a2);
 };
 $.$$dom_getAttribute$1$x = function(receiver, a0) {
   return $.getInterceptor$x(receiver).$$dom_getAttribute$1(receiver, a0);
+};
+$.$$dom_hasAttribute$1$x = function(receiver, a0) {
+  return $.getInterceptor$x(receiver).$$dom_hasAttribute$1(receiver, a0);
 };
 $.$$dom_removeChild$1$x = function(receiver, a0) {
   return $.getInterceptor$x(receiver).$$dom_removeChild$1(receiver, a0);
@@ -9252,6 +10834,9 @@ $.$index$asx = function(receiver, a0) {
       return receiver[a0];
   return $.getInterceptor$asx(receiver).$index(receiver, a0);
 };
+$.abs$0$n = function(receiver) {
+  return $.getInterceptor$n(receiver).abs$0(receiver);
+};
 $.add$1$ax = function(receiver, a0) {
   return $.getInterceptor$ax(receiver).add$1(receiver, a0);
 };
@@ -9266,6 +10851,9 @@ $.elementAt$1$ax = function(receiver, a0) {
 };
 $.forEach$1$ax = function(receiver, a0) {
   return $.getInterceptor$ax(receiver).forEach$1(receiver, a0);
+};
+$.format$1$x = function(receiver, a0) {
+  return $.getInterceptor$x(receiver).format$1(receiver, a0);
 };
 $.get$children$x = function(receiver) {
   return $.getInterceptor$x(receiver).get$children(receiver);
@@ -9288,6 +10876,9 @@ $.get$name$x = function(receiver) {
 $.get$responseText$x = function(receiver) {
   return $.getInterceptor$x(receiver).get$responseText(receiver);
 };
+$.get$reversed$ax = function(receiver) {
+  return $.getInterceptor$ax(receiver).get$reversed(receiver);
+};
 $.get$value$x = function(receiver) {
   return $.getInterceptor$x(receiver).get$value(receiver);
 };
@@ -9297,8 +10888,14 @@ $.insertAdjacentHtml$2$x = function(receiver, a0, a1) {
 $.insertBefore$2$x = function(receiver, a0, a1) {
   return $.getInterceptor$x(receiver).insertBefore$2(receiver, a0, a1);
 };
+$.map$1$ax = function(receiver, a0) {
+  return $.getInterceptor$ax(receiver).map$1(receiver, a0);
+};
 $.remove$0$ax = function(receiver) {
   return $.getInterceptor$ax(receiver).remove$0(receiver);
+};
+$.replaceAll$2$s = function(receiver, a0, a1) {
+  return $.getInterceptor$s(receiver).replaceAll$2(receiver, a0, a1);
 };
 $.replaceWith$1$x = function(receiver, a0) {
   return $.getInterceptor$x(receiver).replaceWith$1(receiver, a0);
@@ -9397,8 +10994,45 @@ Isolate.$lazy($, "_toStringList", "ListMixin__toStringList", "get$ListMixin__toS
 Isolate.$lazy($, "_toStringList", "Maps__toStringList", "get$Maps__toStringList", function() {
   return $.List_List(null, null);
 });
+Isolate.$lazy($, "dateTimeSymbols", "dateTimeSymbols", "get$dateTimeSymbols", function() {
+  var t1 = new $.UninitializedLocaleData("initializeDateFormatting(<locale>)", $.assertSubtypeOfRuntimeType($.get$en_USSymbols(), null));
+  $.setRuntimeTypeInfo(t1, [null]);
+  return t1;
+});
+Isolate.$lazy($, "dateTimePatterns", "dateTimePatterns", "get$dateTimePatterns", function() {
+  var t1 = new $.UninitializedLocaleData("initializeDateFormatting(<locale>)", $.assertSubtypeOfRuntimeType($.en_USPatterns, null));
+  $.setRuntimeTypeInfo(t1, [null]);
+  return t1;
+});
+Isolate.$lazy($, "en_USSymbols", "en_USSymbols", "get$en_USSymbols", function() {
+  $.interceptedTypeCheck($.List_AM_PM, "$isList");
+  $.assertSubtype(null, "$isMap", [$.JSString, $.JSString], "$asMap");
+  $.interceptedTypeCheck($.List_cno, "$isList");
+  $.interceptedTypeCheck($.List_6xs, "$isList");
+  $.interceptedTypeCheck($.List_BC_AD, "$isList");
+  $.interceptedTypeCheck($.List_cIc, "$isList");
+  $.interceptedTypeCheck($.List_qpm, "$isList");
+  $.interceptedTypeCheck($.List_3US, "$isList");
+  $.interceptedTypeCheck($.List_bJM, "$isList");
+  $.interceptedTypeCheck($.List_h8w, "$isList");
+  $.interceptedTypeCheck($.List_Q1_Q2_Q3_Q4, "$isList");
+  $.interceptedTypeCheck($.List_gc6, "$isList");
+  $.interceptedTypeCheck($.List_cIc, "$isList");
+  $.interceptedTypeCheck($.List_qpm, "$isList");
+  $.interceptedTypeCheck($.List_3US, "$isList");
+  $.interceptedTypeCheck($.List_h8w, "$isList");
+  $.interceptedTypeCheck($.List_gc6, "$isList");
+  $.interceptedTypeCheck($.List_wMy, "$isList");
+  $.interceptedTypeCheck($.List_kWG, "$isList");
+  $.interceptedTypeCheck($.List_wMy, "$isList");
+  $.interceptedTypeCheck($.List_5_6, "$isList");
+  return new $.DateSymbols("en_US", $.interceptedTypeCheck($.List_BC_AD, "$isList"), $.interceptedTypeCheck($.List_6xs, "$isList"), $.interceptedTypeCheck($.List_qpm, "$isList"), $.interceptedTypeCheck($.List_qpm, "$isList"), $.interceptedTypeCheck($.List_cIc, "$isList"), $.interceptedTypeCheck($.List_cIc, "$isList"), $.interceptedTypeCheck($.List_h8w, "$isList"), $.interceptedTypeCheck($.List_h8w, "$isList"), $.interceptedTypeCheck($.List_wMy, "$isList"), $.interceptedTypeCheck($.List_wMy, "$isList"), $.interceptedTypeCheck($.List_gc6, "$isList"), $.interceptedTypeCheck($.List_gc6, "$isList"), $.interceptedTypeCheck($.List_3US, "$isList"), $.interceptedTypeCheck($.List_3US, "$isList"), $.interceptedTypeCheck($.List_Q1_Q2_Q3_Q4, "$isList"), $.interceptedTypeCheck($.List_bJM, "$isList"), $.interceptedTypeCheck($.List_AM_PM, "$isList"), $.interceptedTypeCheck($.List_cno, "$isList"), $.interceptedTypeCheck($.List_kWG, "$isList"), $.assertSubtype(null, "$isMap", [$.JSString, $.JSString], "$asMap"), 6, $.interceptedTypeCheck($.List_5_6, "$isList"), 5);
+});
+Isolate.$lazy($, "_matchers", "DateFormat__matchers", "get$DateFormat__matchers", function() {
+  return $.interceptedTypeCheck([new $.JSSyntaxRegExp($.JSSyntaxRegExp_makeNative("^'(?:[^']|'')*'", false, true, false), null, null), new $.JSSyntaxRegExp($.JSSyntaxRegExp_makeNative("^(?:G+|y+|M+|k+|S+|E+|a+|h+|K+|H+|c+|L+|Q+|d+|m+|s+|v+|z+|Z+)", false, true, false), null, null), new $.JSSyntaxRegExp($.JSSyntaxRegExp_makeNative("^[^'GyMkSEahKHcLQdmsvzZ]+", false, true, false), null, null)], "$isList");
+});
 // Native classes
-$.defineNativeMethods("DOMError|FileError|MediaError|MediaKeyError|Navigator|NavigatorUserMediaError|PositionError|SQLError|SQLException|SVGAnimatedNumberList", $.Interceptor);
+$.defineNativeMethods("DOMError|FileError|MediaError|MediaKeyError|Navigator|NavigatorUserMediaError|PositionError|SQLError|SQLException|SVGAnimatedLength|SVGAnimatedNumberList", $.Interceptor);
 
 $.defineNativeMethods("HTMLAreaElement|HTMLBRElement|HTMLBaseElement|HTMLBodyElement|HTMLContentElement|HTMLDListElement|HTMLDataListElement|HTMLDetailsElement|HTMLDialogElement|HTMLHeadElement|HTMLHeadingElement|HTMLHtmlElement|HTMLLabelElement|HTMLLegendElement|HTMLLinkElement|HTMLMenuElement|HTMLModElement|HTMLOListElement|HTMLOptGroupElement|HTMLPreElement|HTMLQuoteElement|HTMLScriptElement|HTMLShadowElement|HTMLSourceElement|HTMLSpanElement|HTMLStyleElement|HTMLTableCaptionElement|HTMLTableCellElement|HTMLTableColElement|HTMLTableDataCellElement|HTMLTableElement|HTMLTableHeaderCellElement|HTMLTableRowElement|HTMLTableSectionElement|HTMLTemplateElement|HTMLTitleElement|HTMLTrackElement|HTMLUListElement|HTMLUnknownElement", $._HTMLElement);
 

@@ -49,4 +49,7 @@ div.activity hr {
 
 div.activity iframe {
     border: 0px;
+    margin: 0 auto;
+    display: block;
+    padding-bottom: 5px;
 }
