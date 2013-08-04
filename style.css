@@ -2,6 +2,10 @@ body {
     background-color: grey;
 }
 
+#activities {
+    width: 840px;
+}
+
 div.activity {
     background-color: white;
     -moz-border-radius: 2px;
