@@ -18,9 +18,21 @@
 
 body {
   background-color: grey;
+  margin: 0;
 
   #activities {
-    width: 840px;
+    width: 810px;
+    overflow: hidden;
+    background-color: #333333;
+    margin-left: auto;
+    margin-right: auto;
+    test-align: center;
+
+    div.column {
+      float: left;
+      display: inline-block;
+      vertical-align: top;
+    }
   
     div.activity {
       background-color: white;
