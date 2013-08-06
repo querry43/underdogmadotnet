@@ -14,9 +14,9 @@ packages:
 	chmod -R a+rX ~/.pub-cache
 
 clean:
-	rm -f *.dart.js *.dart.js.map *.dart.js.deps
+	rm -f *.dart.js.map *.dart.js.deps
 
 distclean: clean
-	rm -rf packages
+	rm -rf packages *.dart.js
 
 .PHONY: clean
