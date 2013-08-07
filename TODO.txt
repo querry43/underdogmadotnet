@@ -3,3 +3,4 @@ improved style for all 4 card types
 image viewer
 defensive coding around service calls
 improved color theme
+html5 compliance validation
