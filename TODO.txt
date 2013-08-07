@@ -1,0 +1,5 @@
+fix video embed on iphone
+improved style for all 4 card types
+image viewer
+defensive coding around service calls
+improved color theme

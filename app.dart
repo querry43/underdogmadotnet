@@ -1,3 +1,5 @@
+library app;
+
 import 'dart:html';
 import 'dart:json';
 import 'package:intl/intl.dart';
@@ -21,6 +23,15 @@ void loadGooglePlusData() {
 void onActivityDataLoaded(String req) {
   Map data = parse(req);
   List activities = data['items'];
+
+  query('#circularG').remove();
+
+  for (int column = 0; column < numColumns; column++) {
+    DivElement columnDiv = new DivElement();
+    columnDiv.classes.add('column');
+    columnDiv.classes.add('col${column}');
+    query('#activities').append(columnDiv);
+  }
 
   int column = 0;
   for (Map activity in data['items']) {
