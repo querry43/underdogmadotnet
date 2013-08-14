@@ -1,12 +1,14 @@
 DART_SDK=/home/matt/dart-sdk
-DART2JS=$(DART_SDK)/bin/dart2js
 DART2JS_FLAGS=-c
 
 .SUFFIXES: .js .dart
 
-all: app.dart.js packages
+all: packages main.dart.js index.html
 
-%.dart.js : %.dart
+index.html: web/index.html
+	ln -sf web/index.html index.html
+
+main.dart.js: main.dart lib/underdogma.dart
 	$(DART_SDK)/bin/dart2js $(DART2JS_FLAGS) $< -o $@
 
 packages:
@@ -17,6 +19,6 @@ clean:
 	rm -f *.dart.js.map *.dart.js.deps
 
 distclean: clean
-	rm -rf packages *.dart.js
+	rm -rf packages *.dart.js index.html
 
 .PHONY: clean

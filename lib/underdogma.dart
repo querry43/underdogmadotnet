@@ -1,4 +1,4 @@
-library app;
+library underdogma;
 
 import 'dart:html';
 import 'dart:json';
@@ -12,10 +12,10 @@ const videoWidth = 240;
 const numColumns = 3;
 const maxResults = numColumns * 4;
 
-main() {
+load() {
   String url =
     debug()
-    ? 'debug.json'
+    ? 'test/debug.json'
     : '${apiUrl}/people/${userId}/activities/public?key=${key}&maxResults=${maxResults}';
 
   HttpRequest.getString(url).then(populate);
