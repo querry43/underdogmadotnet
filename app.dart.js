@@ -15,9 +15,9 @@ var $$ = {};
 
 // Native classes
 // Bound closures
-$$.Bound__setValue__FutureImpl = {"": "BoundClosure;_self,_liblib5$_target,_receiver",
+$$.Bound__setValue__FutureImpl = {"": "BoundClosure;_self,_target,_receiver",
   call$1: function(p0) {
-    return this._self[this._liblib5$_target](p0);
+    return this._self[this._target](p0);
   },
   $signature: function() {
     return $.computeSignature(function(T) {
@@ -26,50 +26,50 @@ $$.Bound__setValue__FutureImpl = {"": "BoundClosure;_self,_liblib5$_target,_rece
   }
 };
 
-$$.Bound__setError__FutureImpl = {"": "BoundClosure;_self,_liblib5$_target,_receiver",
+$$.Bound__setError__FutureImpl = {"": "BoundClosure;_self,_target,_receiver",
   call$1: function(p0) {
-    return this._self[this._liblib5$_target](p0);
+    return this._self[this._target](p0);
   },
   $signature: function() {
     return {func: "void__Object", void: true, args: [$.Object]};
   }
 };
 
-$$.Bound__onPause__BufferingStreamSubscription = {"": "BoundClosure;_self,_liblib5$_target,_receiver",
+$$.Bound__onPause__BufferingStreamSubscription = {"": "BoundClosure;_self,_target,_receiver",
   call$0: function() {
-    return this._self[this._liblib5$_target]();
+    return this._self[this._target]();
   },
   $is_void_: true,
   $is_dynamic_: true
 };
 
-$$.Bound__onResume__BufferingStreamSubscription = {"": "BoundClosure;_self,_liblib5$_target,_receiver",
+$$.Bound__onResume__BufferingStreamSubscription = {"": "BoundClosure;_self,_target,_receiver",
   call$0: function() {
-    return this._self[this._liblib5$_target]();
+    return this._self[this._target]();
   },
   $is_void_: true,
   $is_dynamic_: true
 };
 
-$$.Bound__onPause__ForwardingStreamSubscription = {"": "BoundClosure;_self,_liblib5$_target,_receiver",
+$$.Bound__onPause__ForwardingStreamSubscription = {"": "BoundClosure;_self,_target,_receiver",
   call$0: function() {
-    return this._self[this._liblib5$_target]();
+    return this._self[this._target]();
   },
   $is_void_: true,
   $is_dynamic_: true
 };
 
-$$.Bound__onResume__ForwardingStreamSubscription = {"": "BoundClosure;_self,_liblib5$_target,_receiver",
+$$.Bound__onResume__ForwardingStreamSubscription = {"": "BoundClosure;_self,_target,_receiver",
   call$0: function() {
-    return this._self[this._liblib5$_target]();
+    return this._self[this._target]();
   },
   $is_void_: true,
   $is_dynamic_: true
 };
 
-$$.Bound__handleData__ForwardingStreamSubscription = {"": "BoundClosure;_self,_liblib5$_target,_receiver",
+$$.Bound__handleData__ForwardingStreamSubscription = {"": "BoundClosure;_self,_target,_receiver",
   call$1: function(p0) {
-    return this._self[this._liblib5$_target](p0);
+    return this._self[this._target](p0);
   },
   $signature: function() {
     return $.computeSignature(function(S, T) {
@@ -78,32 +78,32 @@ $$.Bound__handleData__ForwardingStreamSubscription = {"": "BoundClosure;_self,_l
   }
 };
 
-$$.Bound__handleError__ForwardingStreamSubscription = {"": "BoundClosure;_self,_liblib5$_target,_receiver",
+$$.Bound__handleError__ForwardingStreamSubscription = {"": "BoundClosure;_self,_target,_receiver",
   call$1: function(p0) {
-    return this._self[this._liblib5$_target](p0);
+    return this._self[this._target](p0);
   },
   $signature: function() {
     return {func: "void__dynamic", void: true, args: [null]};
   }
 };
 
-$$.Bound__handleDone__ForwardingStreamSubscription = {"": "BoundClosure;_self,_liblib5$_target,_receiver",
+$$.Bound__handleDone__ForwardingStreamSubscription = {"": "BoundClosure;_self,_target,_receiver",
   call$0: function() {
-    return this._self[this._liblib5$_target]();
+    return this._self[this._target]();
   },
   $is_void_: true,
   $is_dynamic_: true
 };
 
-$$.Bound__run__ZoneTimer = {"": "BoundClosure;_self,_liblib5$_target,_receiver",
+$$.Bound__run__ZoneTimer = {"": "BoundClosure;_self,_target,_receiver",
   call$0: function() {
-    return this._self[this._liblib5$_target]();
+    return this._self[this._target]();
   },
   $is_void_: true,
   $is_dynamic_: true
 };
 
-$$.Closure$_processWorkerMessage = {"": "Closure;call$2,$name", $is_void__dynamic_SendPort: true, $is_dynamic__dynamic_dynamic: true, $is_void__String_String: true, $is_void__String_V: true, $is_void__K_V0: true, $is_void__K_V: true};
+$$.Closure$_processWorkerMessage = {"": "Closure;call$2,$name", $is_void__String_V: true, $is_void__K_V0: true, $is_void__K_V: true, $is_void__String_String: true, $is_void__dynamic_SendPort: true, $is_dynamic__dynamic_dynamic: true};
 
 $$.Closure$_throwFormatException = {"": "Closure;call$1,$name",
   $signature: function() {
@@ -121,7 +121,7 @@ $$.Closure$toStringWrapper = {"": "Closure;call$0,$name", $is_void_: true, $is_d
 
 $$.Closure$invokeClosure = {"": "Closure;call$5,$name"};
 
-$$.Closure$isAssignable = {"": "Closure;call$2,$name", $is_void__dynamic_SendPort: true, $is_dynamic__dynamic_dynamic: true, $is_void__String_String: true, $is_void__String_V: true, $is_void__K_V0: true, $is_void__K_V: true};
+$$.Closure$isAssignable = {"": "Closure;call$2,$name", $is_void__String_V: true, $is_void__K_V0: true, $is_void__K_V: true, $is_void__String_String: true, $is_void__dynamic_SendPort: true, $is_dynamic__dynamic_dynamic: true};
 
 $$.Closure$typeNameInChrome = {"": "Closure;call$1,$name",
   $signature: function() {
@@ -159,11 +159,11 @@ $$.Closure$constructorNameFallback = {"": "Closure;call$1,$name",
   }
 };
 
-$$.Closure$callDartFunctionWith1Arg = {"": "Closure;call$2,$name", $is_void__dynamic_SendPort: true, $is_dynamic__dynamic_dynamic: true, $is_void__String_String: true, $is_void__String_V: true, $is_void__K_V0: true, $is_void__K_V: true};
+$$.Closure$callDartFunctionWith1Arg = {"": "Closure;call$2,$name", $is_void__String_V: true, $is_void__K_V0: true, $is_void__K_V: true, $is_void__String_String: true, $is_void__dynamic_SendPort: true, $is_dynamic__dynamic_dynamic: true};
 
 $$.Closure$main = {"": "Closure;call$0,$name", $is_void_: true, $is_dynamic_: true};
 
-$$.Closure$onActivityDataLoaded = {"": "Closure;call$1,$name",
+$$.Closure$populate = {"": "Closure;call$1,$name",
   $signature: function() {
     return {func: "void__String", void: true, args: [$.JSString]};
   }
@@ -340,7 +340,7 @@ Interceptor: {"": "Object;",
     return $.Primitives_objectHashCode(receiver);
   },
   toString$0: function(receiver) {
-    return $.Primitives_objectToString(receiver);
+    return "Instance of '" + $.Primitives_objectTypeName(receiver) + "'";
   }
 },
 
@@ -409,11 +409,11 @@ JSArray: {"": "List/Interceptor;",
     }
   },
   forEach$1: function(receiver, f) {
-    return $.voidTypeCheck($.IterableMixinWorkaround_forEach(receiver, $.assertFunctionSubtype(f, "void__E1", "JSArray", receiver)));
+    return $.voidTypeCheck($.IterableMixinWorkaround_forEach(receiver, $.assertFunctionSubtype(f, "void__E0", "JSArray", receiver)));
   },
   map$1: function(receiver, f) {
     var t1;
-    $.assertFunctionSubtype(f, "dynamic__E1", "JSArray", receiver);
+    $.assertFunctionSubtype(f, "dynamic__E0", "JSArray", receiver);
     $.assertFunctionSubtype(f, "dynamic__dynamic");
     $.listSuperNativeTypeCheck(receiver, "$isIterable");
     $.assertFunctionSubtype(f, "T__S", "MappedListIterable", null, [null, null]);
@@ -454,6 +454,13 @@ JSArray: {"": "List/Interceptor;",
     t1 = new $.ReversedListIterable($.listSuperNativeTypeCheck(receiver, "$isIterable"));
     $.setRuntimeTypeInfo(t1, [null]);
     return $.listSuperNativeTypeCheck(t1, "$isIterable");
+  },
+  contains$1: function(receiver, other) {
+    var t1, i;
+    for (t1 = receiver.length, i = 0; i < t1; ++i)
+      if ($.$eq(receiver[i], other))
+        return true;
+    return false;
   },
   toString$0: function(receiver) {
     return $.IterableMixinWorkaround_toStringIterable(receiver, "[", "]");
@@ -656,6 +663,28 @@ JSString: {"": "String/Interceptor;",
       throw $.wrapException(new $.RangeError("value " + index));
     return receiver.charCodeAt(index);
   },
+  matchAsPrefix$2: function(receiver, string, start) {
+    var t1, t2, i, t3;
+    if (start < 0 || start > string.length)
+      throw $.wrapException(new $.RangeError("value " + start + " not in range 0.." + string.length));
+    t1 = receiver.length;
+    t2 = string.length;
+    if (start + t1 > t2)
+      return;
+    for (i = 0; i < t1; ++i) {
+      t3 = start + i;
+      if (t3 < 0)
+        $.throwExpression(new $.RangeError("value " + t3));
+      if (t3 >= t2)
+        $.throwExpression(new $.RangeError("value " + t3));
+      t3 = string.charCodeAt(t3);
+      if (i >= t1)
+        $.throwExpression(new $.RangeError("value " + i));
+      if (t3 !== receiver.charCodeAt(i))
+        return;
+    }
+    return new $.StringMatch(start, string, receiver);
+  },
   $add: function(receiver, other) {
     return receiver + other;
   },
@@ -709,6 +738,24 @@ JSString: {"": "String/Interceptor;",
     if (startIndex === 0 && endIndex0 === endIndex)
       return receiver;
     return receiver.substring(startIndex, endIndex0);
+  },
+  indexOf$2: function(receiver, pattern, start) {
+    var t1, i;
+    if (start < 0 || start > receiver.length)
+      throw $.wrapException(new $.RangeError("value " + start + " not in range 0.." + receiver.length));
+    return receiver.indexOf(pattern, start);
+    for (t1 = receiver.length, i = start; i <= t1; ++i)
+      if (this.matchAsPrefix$2(pattern, receiver, i) != null)
+        return i;
+    return -1;
+  },
+  contains$2: function(receiver, other, startIndex) {
+    if (startIndex < 0 || startIndex > receiver.length)
+      throw $.wrapException(new $.RangeError("value " + startIndex + " not in range 0.." + receiver.length));
+    return $.boolTypeCheck($.stringContainsUnchecked(receiver, other, startIndex));
+  },
+  contains$1: function($receiver, other) {
+    return this.contains$2($receiver, other, 0);
   },
   get$isEmpty: function(receiver) {
     return receiver.length === 0;
@@ -1066,7 +1113,7 @@ _IsolateContext: {"": "Object;id,ports,isolateStatics<",
   unregister$1: function(portId) {
     var t1 = this.ports;
     t1.remove$1(t1, portId);
-    if (this.ports._length === 0) {
+    if (this.ports._liblib1$_length === 0) {
       t1 = $globalState.isolates;
       t1.remove$1(t1, this.id);
     }
@@ -1103,7 +1150,7 @@ _EventLoop: {"": "Object;events,activeTimerCount",
     return $.propertyTypeCheck(t1.removeFirst$0(), "$is_IsolateEvent");
   },
   checkOpenReceivePortsFromCommandLine$0: function() {
-    if ($globalState.rootContext != null && $globalState.isolates.containsKey$1($globalState.rootContext.id) && $.boolConversionCheck($globalState.fromCommandLine) && $globalState.rootContext.ports._length === 0)
+    if ($globalState.rootContext != null && $globalState.isolates.containsKey$1($globalState.rootContext.id) && $.boolConversionCheck($globalState.fromCommandLine) && $globalState.rootContext.ports._liblib1$_length === 0)
       throw $.wrapException(new $._ExceptionImplementation("Program exited with open ReceivePorts."));
   },
   runIteration$0: function() {
@@ -1115,7 +1162,7 @@ _EventLoop: {"": "Object;events,activeTimerCount",
       if ($.boolConversionCheck(t1.isWorker)) {
         t2 = t1.isolates;
         t2.get$isEmpty;
-        t2 = t2._length === 0 && t1.topEventLoop.activeTimerCount === 0;
+        t2 = t2._liblib1$_length === 0 && t1.topEventLoop.activeTimerCount === 0;
       } else
         t2 = false;
       if (t2) {
@@ -1228,12 +1275,12 @@ _BaseSendPort_call_closure: {"": "Closure;completer_0,port_1",
   },
   $isFunction: true,
   $asObject: null,
-  $is_void__dynamic_SendPort: true,
-  $is_dynamic__dynamic_dynamic: true,
-  $is_void__String_String: true,
   $is_void__String_V: true,
   $is_void__K_V0: true,
-  $is_void__K_V: true
+  $is_void__K_V: true,
+  $is_void__String_String: true,
+  $is_void__dynamic_SendPort: true,
+  $is_dynamic__dynamic_dynamic: true
 },
 
 _NativeJsSendPort: {"": "_BaseSendPort;_receivePort<,_isolateId",
@@ -1704,12 +1751,12 @@ _Copier_visitMap_closure: {"": "Closure;box_0,this_1",
   },
   $isFunction: true,
   $asObject: null,
-  $is_void__dynamic_SendPort: true,
-  $is_dynamic__dynamic_dynamic: true,
-  $is_void__String_String: true,
   $is_void__String_V: true,
   $is_void__K_V0: true,
-  $is_void__K_V: true
+  $is_void__K_V: true,
+  $is_void__String_String: true,
+  $is_void__dynamic_SendPort: true,
+  $is_dynamic__dynamic_dynamic: true
 },
 
 _Serializer: {"": "_MessageTraverser;_nextFreeRefId,_visited",
@@ -2126,10 +2173,6 @@ Primitives_objectTypeName: function(object) {
   t1 = $.getRuntimeTypeInfo(object);
   $.listTypeCheck(t1);
   return $name + $.joinArguments(t1, 0);
-},
-
-Primitives_objectToString: function(object) {
-  return "Instance of '" + $.Primitives_objectTypeName(object) + "'";
 },
 
 Primitives_newFixedList: function($length) {
@@ -3076,6 +3119,10 @@ regExpGetGlobalNative: function(regexp) {
   return regexp;
 },
 
+stringContainsUnchecked: function(receiver, other, startIndex) {
+  return $.JSString_methods.indexOf$2(receiver, other, startIndex) !== -1;
+},
+
 stringReplaceAllUnchecked: function(receiver, from, to) {
   var result, $length, i, t1;
   if (typeof from === "string")
@@ -3451,7 +3498,7 @@ Closure: {"": "Object;",
   $asObject: null
 },
 
-BoundClosure: {"": "Closure;_self,_liblib5$_target,_receiver",
+BoundClosure: {"": "Closure;_self,_target,_receiver",
   $eq: function(_, other) {
     if (other == null)
       return false;
@@ -3459,10 +3506,10 @@ BoundClosure: {"": "Closure;_self,_liblib5$_target,_receiver",
       return true;
     if (typeof other !== "object" || other === null || !$.getInterceptor(other).$isBoundClosure)
       return false;
-    return this._self === other._self && this._liblib5$_target === other._liblib5$_target && this._receiver === other._receiver;
+    return this._self === other._self && this._target === other._target && this._receiver === other._receiver;
   },
   get$hashCode: function(_) {
-    return $.get$hashCode$(this._self) + $.get$hashCode$(this._liblib5$_target) + $.get$hashCode$(this._receiver) & 0x3ffffff;
+    return $.get$hashCode$(this._self) + $.get$hashCode$(this._target) + $.get$hashCode$(this._receiver) & 0x3ffffff;
   },
   $isBoundClosure: true
 },
@@ -3691,18 +3738,27 @@ StringMatch: {"": "Object;start,str,pattern",
 }}],
 ["app", "app.dart", , {
 main: function() {
-  $.loadGooglePlusData();
+  $.HttpRequest_getString($.boolConversionCheck($.debug()) ? "debug.json" : "https://www.googleapis.com/plus/v1/people/104268957202871548605/activities/public?key=AIzaSyDjt9V66sWPDzuxoHhFZEZQGZR-0qySclI&maxResults=12", null, null).then$1($.populate$closure);
 },
 
-loadGooglePlusData: function() {
-  $.HttpRequest_getString("https://www.googleapis.com/plus/v1/people/104268957202871548605/activities/public?key=AIzaSyDjt9V66sWPDzuxoHhFZEZQGZR-0qySclI&maxResults=12", null, null).then$1($.onActivityDataLoaded$closure);
+debug: function() {
+  var request, t1;
+  request = $.interceptedTypeCheck($.toString$0($.get$location$x($._convertNativeToDart_Window(document.defaultView))).split("?"), "$isList");
+  t1 = $.getInterceptor$asx(request);
+  if (t1.get$length(request) !== 2)
+    return false;
+  return $.boolTypeCheck($.contains$1$asx(t1.$index(request, 1), "debug"));
 },
 
-onActivityDataLoaded: function(req) {
-  var data, column, columnDiv, t1, activity;
-  data = $.propertyTypeCheck($.parse($.stringTypeCheck(req), null), "$isMap");
-  $.listTypeCheck(data.$index(data, "items"));
+populate: function(json) {
+  var data = $.propertyTypeCheck($.parse($.stringTypeCheck(json), null), "$isMap");
   $.remove$0$ax($.HtmlDocument_methods.query$1(document, "#circularG"));
+  $.addColumns();
+  $.populateColumns(data.$index(data, "items"));
+},
+
+addColumns: function() {
+  var column, columnDiv, t1;
   for (column = 0; column < 3; ++column) {
     columnDiv = $.interceptedTypeCheck($.HtmlDocument_methods.$$dom_createElement$1(document, "div"), "$isDivElement");
     columnDiv.get$classes;
@@ -3713,7 +3769,11 @@ onActivityDataLoaded: function(req) {
     t1.add$1(t1, "col" + column);
     $.append$1$x($.HtmlDocument_methods.query$1(document, "#activities"), columnDiv);
   }
-  for (t1 = $.get$iterator$ax(data.$index(data, "items")), column = 0; $.boolConversionCheck(t1.moveNext$0());) {
+},
+
+populateColumns: function(activities) {
+  var t1, column, activity;
+  for (t1 = $.get$iterator$ax($.listTypeCheck(activities)), column = 0; $.boolConversionCheck(t1.moveNext$0());) {
     activity = $.propertyTypeCheck(t1.get$current(), "$isMap");
     $.append$1$x($.query$1$x($.HtmlDocument_methods.query$1(document, "#activities"), ".col" + column), $.activityToElement(activity));
     column = $.JSInt_methods.$mod(column + 1, 3);
@@ -3721,7 +3781,7 @@ onActivityDataLoaded: function(req) {
 },
 
 activityToElement: function(activity) {
-  var activityBox, t1, date, originallyShared, t2, body, attachment, iframe, t3, width, height, scaleFactor, imageElement;
+  var activityBox, t1, date, originallyShared, t2, body, attachment, width, height, scaleFactor, iframe, imageElement;
   activityBox = $.interceptedTypeCheck($.HtmlDocument_methods.$$dom_createElement$1(document, "div"), "$isDivElement");
   activityBox.get$classes;
   t1 = new $._ElementCssClassSet(activityBox);
@@ -3755,23 +3815,20 @@ activityToElement: function(activity) {
     attachment = $.propertyTypeCheck(t2.get$current(), "$isMap");
     switch (attachment.$index(attachment, "objectType")) {
       case "video":
-        iframe = $.interceptedTypeCheck($.HtmlDocument_methods.$$dom_createElement$1(document, "iframe"), "$isIFrameElement");
-        iframe.title = "YouTube video player";
-        iframe.get$classes;
-        t3 = new $._ElementCssClassSet(iframe);
-        t3.add$1(t3, "youtube-player");
-        iframe.src = $.stringTypeCheck($.$index$asx(attachment.$index(attachment, "embed"), "url"));
-        iframe.get$attributes;
-        $.$$dom_setAttribute$2$x($.assertSubtype(new $._ElementAttributeMap(iframe), "$isMap", [$.JSString, $.JSString], "$asMap").get$_element(), "allowFullScreen", "");
         width = $.$index$asx(attachment.$index(attachment, "image"), "width");
         height = $.$index$asx(attachment.$index(attachment, "image"), "height");
         if (typeof width !== "number")
           throw width.$div();
         scaleFactor = width / 240;
+        iframe = $.interceptedTypeCheck($.HtmlDocument_methods.$$dom_createElement$1(document, "iframe"), "$isIFrameElement");
+        iframe.id = "ytplayer";
         iframe.width = $.JSNumber_methods.toString$0(width / scaleFactor);
         if (typeof height !== "number")
           throw height.$div();
-        iframe.height = $.JSNumber_methods.toString$0(height / scaleFactor);
+        iframe.height = $.JSNumber_methods.toString$0($.max(200, height / scaleFactor));
+        iframe.src = $.stringTypeCheck($.$index$asx(attachment.$index(attachment, "embed"), "url"));
+        iframe.get$attributes;
+        $.$$dom_setAttribute$2$x($.assertSubtype(new $._ElementAttributeMap(iframe), "$isMap", [$.JSString, $.JSString], "$asMap").get$_element(), "frameborder", "0");
         t1.append$1(activityBox, iframe);
         break;
       case "album":
@@ -3947,7 +4004,7 @@ ListIterable: {"": "IterableBase;",
   },
   forEach$1: function(_, action) {
     var $length, i;
-    $.assertFunctionSubtype(action, "void__E3", "ListIterable", this);
+    $.assertFunctionSubtype(action, "void__E2", "ListIterable", this);
     $length = this.get$length(this);
     if ($length == null)
       return this.forEach$1$bailout1(1, action, $length);
@@ -3965,6 +4022,30 @@ ListIterable: {"": "IterableBase;",
       if ($length == null ? t1 != null : $length !== t1)
         throw $.wrapException(new $.ConcurrentModificationError(this));
     }
+  },
+  contains$1: function(_, element) {
+    var $length, i;
+    $length = this.get$length(this);
+    if ($length == null)
+      return this.contains$1$bailout1(1, element, $length);
+    for (i = 0; i < $length; ++i) {
+      if ($.$eq(this.elementAt$1(this, i), element))
+        return true;
+      if ($length !== this.get$length(this))
+        throw $.wrapException(new $.ConcurrentModificationError(this));
+    }
+    return false;
+  },
+  contains$1$bailout1: function(state0, element, $length) {
+    var i, t1;
+    for (i = 0; $.JSInt_methods.$lt(i, $length); ++i) {
+      if ($.$eq(this.elementAt$1(this, i), element))
+        return true;
+      t1 = this.get$length(this);
+      if ($length == null ? t1 != null : $length !== t1)
+        throw $.wrapException(new $.ConcurrentModificationError(this));
+    }
+    return false;
   },
   map$1: function(_, f) {
     var t1;
@@ -4164,7 +4245,7 @@ SubListIterable: {"": "ListIterable;_iterable,_start,_endOrLength",
   $asObject: null
 },
 
-ListIterator: {"": "Object;_iterable,_liblib1$_length,_index,_current@",
+ListIterator: {"": "Object;_iterable,_length,_index,_current@",
   get$current: function() {
     var t1, $arguments, t2;
     t1 = this._current;
@@ -4184,7 +4265,7 @@ ListIterator: {"": "Object;_iterable,_liblib1$_length,_index,_current@",
     $length = t2.get$length(t1);
     if ($length == null)
       return this.moveNext$0$bailout(1, t2, t1, $length);
-    if (this._liblib1$_length !== $length)
+    if (this._length !== $length)
       throw $.wrapException(new $.ConcurrentModificationError(t1));
     t3 = this._index;
     if (t3 >= $length) {
@@ -4196,7 +4277,7 @@ ListIterator: {"": "Object;_iterable,_liblib1$_length,_index,_current@",
     return true;
   },
   moveNext$0$bailout: function(state0, t2, t1, $length) {
-    var t3 = this._liblib1$_length;
+    var t3 = this._length;
     if (t3 == null ? $length != null : t3 !== $length)
       throw $.wrapException(new $.ConcurrentModificationError(t1));
     if ($.JSInt_methods.$ge(this._index, $length)) {
@@ -4279,16 +4360,16 @@ MappedIterator: {"": "Iterator;_current@,_iterator,_f",
   $asObject: null
 },
 
-MappedListIterable: {"": "ListIterable;_liblib1$_source,_f",
+MappedListIterable: {"": "ListIterable;_liblib4$_source,_f",
   _f$1: function(arg0) {
     return this._f.call$1(arg0);
   },
   get$length: function(_) {
-    return $.get$length$asx(this._liblib1$_source);
+    return $.get$length$asx(this._liblib4$_source);
   },
   elementAt$1: function(_, index) {
     var t1, $arguments, t2;
-    t1 = this._f$1($.elementAt$1$ax(this._liblib1$_source, $.intTypeCheck(index)));
+    t1 = this._f$1($.elementAt$1$ax(this._liblib4$_source, $.intTypeCheck(index)));
     $arguments = $.substitute(this.$asMappedListIterable, $.getRuntimeTypeInfo(this));
     if ($arguments == null)
       t2 = null;
@@ -4448,16 +4529,16 @@ FixedLengthListMixin: {"": "Object;",
   }
 },
 
-ReversedListIterable: {"": "ListIterable;_liblib1$_source",
+ReversedListIterable: {"": "ListIterable;_liblib4$_source",
   get$length: function(_) {
-    return $.get$length$asx(this._liblib1$_source);
+    return $.get$length$asx(this._liblib4$_source);
   },
   elementAt$1: function(_, index) {
     var t1, t2, t3, $arguments;
     $.intTypeCheck(index);
     if (index == null)
       return this.elementAt$1$bailout2(1, index);
-    t1 = this._liblib1$_source;
+    t1 = this._liblib4$_source;
     t2 = $.getInterceptor$asx(t1);
     t3 = t2.get$length(t1);
     if (t3 == null)
@@ -4478,7 +4559,7 @@ ReversedListIterable: {"": "ListIterable;_liblib1$_source",
         $.intTypeCheck(index);
       case 1:
         state0 = 0;
-        t1 = this._liblib1$_source;
+        t1 = this._liblib4$_source;
         t2 = $.getInterceptor$asx(t1);
         t3 = t2.get$length(t1);
       case 2:
@@ -5394,6 +5475,16 @@ Stream: {"": "Object;",
     $.setRuntimeTypeInfo(t2, [t1, null]);
     return t2;
   },
+  contains$1: function(_, needle) {
+    var t1, future;
+    t1 = {};
+    future = new $._FutureImpl(0, $.get$_Zone__current().fork$0(), null);
+    $.setRuntimeTypeInfo(future, [$.JSBool]);
+    $.assertSubtype(future, "$is_FutureImpl", [$.JSBool], "$as_FutureImpl");
+    t1.subscription_0 = null;
+    t1.subscription_0 = this.listen$4$cancelOnError$onDone$onError(new $.Stream_contains_closure(t1, this, needle, future), true, new $.Stream_contains_closure0(future), future.get$_setError());
+    return $.assertSubtype(future, "$isFuture", [$.JSBool], "$asFuture");
+  },
   forEach$1: function(_, action) {
     var t1, future;
     t1 = {};
@@ -5415,6 +5506,65 @@ Stream: {"": "Object;",
     return $.assertSubtype(future, "$isFuture", [$.JSInt], "$asFuture");
   },
   $isStream: true
+},
+
+Stream_contains_closure: {"": "Closure;box_0,this_1,needle_2,future_3",
+  call$1: function(element) {
+    var t1, t2;
+    t1 = this.box_0;
+    t2 = this.future_3;
+    $._runUserCode(new $.Stream_contains__closure(this.needle_2, $.assertSubtypeOfRuntimeType(element, $.getRuntimeTypeArgument(this.this_1, "Stream", 0))), new $.Stream_contains__closure0(t1, t2), $._cancelAndError(t1.subscription_0, t2));
+  },
+  $isFunction: true,
+  $asObject: null,
+  $signature: function() {
+    return $.computeSignature(function(T) {
+      return {func: "dynamic__T", args: [T]};
+    }, this.this_1, "Stream");
+  }
+},
+
+Stream_contains__closure: {"": "Closure;needle_4,element_5",
+  call$0: function() {
+    return $.$eq(this.element_5, this.needle_4);
+  },
+  $isFunction: true,
+  $asObject: null,
+  $is_void_: true,
+  $is_dynamic_: true
+},
+
+Stream_contains__closure0: {"": "Closure;box_0,future_6",
+  call$1: function(isMatch) {
+    var t1;
+    if ($.boolTypeCheck(isMatch)) {
+      this.box_0.subscription_0.cancel$0();
+      t1 = this.future_6;
+      $.assertSubtypeOfRuntimeType(true, $.getRuntimeTypeArgument(t1, "_FutureImpl", 0));
+      if (t1._state !== 0)
+        $.throwExpression(new $.StateError("Future already completed"));
+      t1._setValueUnchecked$1(true);
+    }
+  },
+  $isFunction: true,
+  $asObject: null,
+  $signature: function() {
+    return {func: "dynamic__bool", args: [$.JSBool]};
+  }
+},
+
+Stream_contains_closure0: {"": "Closure;future_7",
+  call$0: function() {
+    var t1 = this.future_7;
+    $.assertSubtypeOfRuntimeType(false, $.getRuntimeTypeArgument(t1, "_FutureImpl", 0));
+    if (t1._state !== 0)
+      $.throwExpression(new $.StateError("Future already completed"));
+    t1._setValueUnchecked$1(false);
+  },
+  $isFunction: true,
+  $asObject: null,
+  $is_void_: true,
+  $is_dynamic_: true
 },
 
 Stream_forEach_closure: {"": "Closure;box_0,this_1,action_2,future_3",
@@ -5498,12 +5648,12 @@ EventSink: {"": "Object;"},
 
 _EventSink: {"": "Object;", $is_EventSink: true},
 
-_BufferingStreamSubscription: {"": "Object;_liblib4$_onData,_onError,_onDone,_zone<,_state<,_pending",
+_BufferingStreamSubscription: {"": "Object;_liblib2$_onData,_onError,_onDone,_zone<,_state<,_pending",
   set$_state: function(v) {
     this._state = $.intTypeCheck(v);
   },
-  _liblib4$_onData$1: function(arg0) {
-    return this._liblib4$_onData.call$1(arg0);
+  _liblib2$_onData$1: function(arg0) {
+    return this._liblib2$_onData.call$1(arg0);
   },
   _onError$1: function(arg0) {
     return this._onError.call$1(arg0);
@@ -5587,7 +5737,7 @@ _BufferingStreamSubscription: {"": "Object;_liblib4$_onData,_onError,_onDone,_zo
         t1._state = 3;
     }
   },
-  _liblib4$_add$1: function(data) {
+  _liblib2$_add$1: function(data) {
     var t1;
     $.assertSubtypeOfRuntimeType(data, $.getRuntimeTypeArgument(this, "_BufferingStreamSubscription", 0));
     $.assertHelper((this._state & 2) === 0);
@@ -5757,7 +5907,7 @@ _BufferingStreamSubscription: {"": "Object;_liblib4$_onData,_onError,_onDone,_zo
 
 _BufferingStreamSubscription__sendData_closure: {"": "Closure;this_0,data_1",
   call$0: function() {
-    return this.this_0._liblib4$_onData$1(this.data_1);
+    return this.this_0._liblib2$_onData$1(this.data_1);
   },
   $isFunction: true,
   $asObject: null,
@@ -5906,7 +6056,7 @@ _ForwardingStream: {"": "Stream;",
   },
   _handleData$2: function(data, sink) {
     $.assertSubtypeOfRuntimeType(data, $.getRuntimeTypeArgument(this, "_ForwardingStream", 0));
-    $.assertSubtype(sink, "$is_EventSink", [$.getRuntimeTypeArgument(this, "_ForwardingStream", 1)], "$as_EventSink")._liblib4$_add$1(data);
+    $.assertSubtype(sink, "$is_EventSink", [$.getRuntimeTypeArgument(this, "_ForwardingStream", 1)], "$as_EventSink")._liblib2$_add$1(data);
   },
   $is_ForwardingStream: true,
   $asStream: function(S, T) {
@@ -5918,15 +6068,15 @@ _ForwardingStream: {"": "Stream;",
   $asObject: null
 },
 
-_ForwardingStreamSubscription: {"": "_BufferingStreamSubscription;_stream,_subscription,_liblib4$_onData,_onError,_onDone,_zone,_state,_pending",
+_ForwardingStreamSubscription: {"": "_BufferingStreamSubscription;_stream,_subscription,_liblib2$_onData,_onError,_onDone,_zone,_state,_pending",
   set$_subscription: function(v) {
     this._subscription = $.propertyTypeCheck(v, "$isStreamSubscription");
   },
-  _liblib4$_add$1: function(data) {
+  _liblib2$_add$1: function(data) {
     $.assertSubtypeOfRuntimeType(data, $.getRuntimeTypeArgument(this, "_ForwardingStreamSubscription", 1));
     if ((this._state & 2) !== 0)
       return;
-    $._BufferingStreamSubscription.prototype._liblib4$_add$1.call(this, data);
+    $._BufferingStreamSubscription.prototype._liblib2$_add$1.call(this, data);
   },
   _addError$1: function(error) {
     if ((this._state & 2) !== 0)
@@ -6043,7 +6193,7 @@ _WhereStream: {"": "_ForwardingStream;_test,_source",
     }
 
     if ($.boolConversionCheck(satisfies))
-      sink._liblib4$_add$1(inputEvent);
+      sink._liblib2$_add$1(inputEvent);
   },
   $as_ForwardingStream: function(T) {
     return [T, T];
@@ -6074,7 +6224,7 @@ _MapStream: {"": "_ForwardingStream;_transform,_source",
       return;
     }
 
-    sink._liblib4$_add$1(outputEvent);
+    sink._liblib2$_add$1(outputEvent);
   },
   $as_ForwardingStream: null,
   $as_ForwardingStream: null,
@@ -6096,7 +6246,7 @@ _SkipStream: {"": "_ForwardingStream;_remaining,_source",
       this._remaining = t1 - 1;
       return;
     }
-    return $.voidTypeCheck(sink._liblib4$_add$1(inputEvent));
+    return $.voidTypeCheck(sink._liblib2$_add$1(inputEvent));
   },
   $as_ForwardingStream: function(T) {
     return [T, T];
@@ -6236,11 +6386,11 @@ _DefaultZone_runAsync_closure: {"": "Closure;f_0,zone_1",
   $is_dynamic_: true
 },
 
-_ZoneTimer: {"": "Object;_zone<,_liblib4$_callback,_timer",
+_ZoneTimer: {"": "Object;_zone<,_liblib2$_callback,_timer",
   _run$0: function() {
     var t1, t2;
     t1 = this._zone;
-    t2 = this._liblib4$_callback;
+    t2 = this._liblib2$_callback;
     $.assertFunctionSubtype(t2, "void_");
     t1._openCallbacks = t1._openCallbacks - 1;
     t1._runInZone$2(t2, true);
@@ -6294,7 +6444,7 @@ HashMap_values_closure: {"": "Closure;this_0",
 
 HashMapKeyIterable: {"": "IterableBase;_map",
   get$length: function(_) {
-    return this._map._length;
+    return this._map._liblib1$_length;
   },
   get$iterator: function(_) {
     var t1, t2;
@@ -6304,14 +6454,17 @@ HashMapKeyIterable: {"": "IterableBase;_map",
     $.setRuntimeTypeInfo(t1, [t2]);
     return $.assertSubtype(t1, "$isIterator", [$.getRuntimeTypeArgument(this, "HashMapKeyIterable", 0)], "$asIterator");
   },
+  contains$1: function(_, element) {
+    return this._map.containsKey$1(element);
+  },
   forEach$1: function(_, f) {
     var t1, keys, $length, i;
-    $.assertFunctionSubtype(f, "void__E5", "HashMapKeyIterable", this);
+    $.assertFunctionSubtype(f, "void__E4", "HashMapKeyIterable", this);
     t1 = this._map;
     keys = t1._computeKeys$0();
     for ($length = keys.length, i = 0; i < $length; ++i) {
       f.call$1(keys[i]);
-      if (keys !== t1._liblib$_keys)
+      if (keys !== t1._liblib1$_keys)
         throw $.wrapException(new $.ConcurrentModificationError(t1));
     }
   },
@@ -6321,10 +6474,10 @@ HashMapKeyIterable: {"": "IterableBase;_map",
   $asObject: null
 },
 
-HashMapKeyIterator: {"": "Object;_map,_liblib$_keys,_offset,_liblib$_current?",
+HashMapKeyIterator: {"": "Object;_map,_liblib1$_keys,_offset,_liblib1$_current?",
   get$current: function() {
     var t1, $arguments, t2;
-    t1 = this._liblib$_current;
+    t1 = this._liblib1$_current;
     $arguments = $.substitute(this.$asHashMapKeyIterator, $.getRuntimeTypeInfo(this));
     if ($arguments == null)
       t2 = null;
@@ -6336,16 +6489,16 @@ HashMapKeyIterator: {"": "Object;_map,_liblib$_keys,_offset,_liblib$_current?",
   },
   moveNext$0: function() {
     var keys, offset, t1;
-    keys = this._liblib$_keys;
+    keys = this._liblib1$_keys;
     offset = this._offset;
     t1 = this._map;
-    if (keys !== t1._liblib$_keys)
+    if (keys !== t1._liblib1$_keys)
       throw $.wrapException(new $.ConcurrentModificationError(t1));
     else if (offset >= keys.length) {
-      this.set$_liblib$_current(null);
+      this.set$_liblib1$_current(null);
       return false;
     } else {
-      this.set$_liblib$_current(keys[offset]);
+      this.set$_liblib1$_current(keys[offset]);
       this._offset = offset + 1;
       return true;
     }
@@ -6369,7 +6522,7 @@ LinkedHashMapCell: {"": "Object;_key,_value,_next,_previous", $isLinkedHashMapCe
 
 LinkedHashMapKeyIterable: {"": "IterableBase;_map",
   get$length: function(_) {
-    return this._map._length;
+    return this._map._liblib1$_length;
   },
   get$iterator: function(_) {
     var t1, t2;
@@ -6380,9 +6533,12 @@ LinkedHashMapKeyIterable: {"": "IterableBase;_map",
     t1._cell = t1._map._first;
     return $.assertSubtype(t1, "$isIterator", [$.getRuntimeTypeArgument(this, "LinkedHashMapKeyIterable", 0)], "$asIterator");
   },
+  contains$1: function(_, element) {
+    return this._map.containsKey$1(element);
+  },
   forEach$1: function(_, f) {
     var t1, cell, modifications;
-    $.assertFunctionSubtype(f, "void__E4", "LinkedHashMapKeyIterable", this);
+    $.assertFunctionSubtype(f, "void__E3", "LinkedHashMapKeyIterable", this);
     t1 = this._map;
     cell = t1._first;
     modifications = t1._modifications;
@@ -6399,10 +6555,10 @@ LinkedHashMapKeyIterable: {"": "IterableBase;_map",
   $asObject: null
 },
 
-LinkedHashMapKeyIterator: {"": "Object;_map,_modifications,_cell,_liblib$_current?",
+LinkedHashMapKeyIterator: {"": "Object;_map,_modifications,_cell,_liblib1$_current?",
   get$current: function() {
     var t1, $arguments, t2;
-    t1 = this._liblib$_current;
+    t1 = this._liblib1$_current;
     $arguments = $.substitute(this.$asLinkedHashMapKeyIterator, $.getRuntimeTypeInfo(this));
     if ($arguments == null)
       t2 = null;
@@ -6419,10 +6575,10 @@ LinkedHashMapKeyIterator: {"": "Object;_map,_modifications,_cell,_liblib$_curren
     else {
       t1 = this._cell;
       if (t1 == null) {
-        this.set$_liblib$_current(null);
+        this.set$_liblib1$_current(null);
         return false;
       } else {
-        this.set$_liblib$_current(t1._key);
+        this.set$_liblib1$_current(t1._key);
         this._cell = this._cell._next;
         return true;
       }
@@ -6432,12 +6588,12 @@ LinkedHashMapKeyIterator: {"": "Object;_map,_modifications,_cell,_liblib$_curren
   $asObject: null
 },
 
-LinkedHashSetCell: {"": "Object;_liblib$_element,_next,_previous", $isLinkedHashSetCell: true},
+LinkedHashSetCell: {"": "Object;_liblib1$_element,_next,_previous", $isLinkedHashSetCell: true},
 
-LinkedHashSetIterator: {"": "Object;_set,_modifications,_cell,_liblib$_current?",
+LinkedHashSetIterator: {"": "Object;_set,_modifications,_cell,_liblib1$_current?",
   get$current: function() {
     var t1, $arguments, t2;
-    t1 = this._liblib$_current;
+    t1 = this._liblib1$_current;
     $arguments = $.substitute(this.$asLinkedHashSetIterator, $.getRuntimeTypeInfo(this));
     if ($arguments == null)
       t2 = null;
@@ -6454,10 +6610,10 @@ LinkedHashSetIterator: {"": "Object;_set,_modifications,_cell,_liblib$_current?"
     else {
       t1 = this._cell;
       if (t1 == null) {
-        this.set$_liblib$_current(null);
+        this.set$_liblib1$_current(null);
         return false;
       } else {
-        this.set$_liblib$_current(t1._liblib$_element);
+        this.set$_liblib1$_current(t1._liblib1$_element);
         this._cell = this._cell._next;
         return true;
       }
@@ -6467,9 +6623,9 @@ LinkedHashSetIterator: {"": "Object;_set,_modifications,_cell,_liblib$_current?"
   $asObject: null
 },
 
-HashMap: {"": "Object;_length,_strings,_nums,_rest,_liblib$_keys",
+HashMap: {"": "Object;_liblib1$_length,_strings,_nums,_rest,_liblib1$_keys",
   get$length: function(_) {
-    return this._length;
+    return this._liblib1$_length;
   },
   get$keys: function() {
     var t1 = new $.HashMapKeyIterable(this);
@@ -6482,7 +6638,7 @@ HashMap: {"": "Object;_length,_strings,_nums,_rest,_liblib$_keys",
     $.setRuntimeTypeInfo(t1, [$.getRuntimeTypeArgument(this, "HashMap", 0)]);
     $.listSuperNativeTypeCheck(t1, "$isIterable");
     t2 = new $.HashMap_values_closure(this);
-    $.assertFunctionSubtype(t2, "dynamic__E0", "IterableBase", t1);
+    $.assertFunctionSubtype(t2, "dynamic__E1", "IterableBase", t1);
     t3 = $.getRuntimeTypeArgument(t1, "IterableBase", 0);
     $.listSuperNativeTypeCheck(t1, "$isIterable");
     $.assertFunctionSubtype(t2, "T__S0", "MappedIterable", null, [t3, null]);
@@ -6492,17 +6648,17 @@ HashMap: {"": "Object;_length,_strings,_nums,_rest,_liblib$_keys",
   },
   containsKey$1: function(key) {
     var strings, nums, rest;
-    if (false) {
+    if (typeof key === "string" && key !== "__proto__") {
       strings = this._strings;
       return strings == null ? false : strings[key] != null;
-    } else if ((key & 0x3ffffff) === key) {
+    } else if (typeof key === "number" && (key & 0x3ffffff) === key) {
       nums = this._nums;
       return nums == null ? false : nums[key] != null;
     } else {
       rest = this._rest;
       if (rest == null)
         return false;
-      return $.HashMap__findBucketIndex($.listTypeCheck(rest[$.JSInt_methods.get$hashCode(key) & 0x3ffffff]), key) >= 0;
+      return $.HashMap__findBucketIndex($.listTypeCheck(rest[$.get$hashCode$(key) & 0x3ffffff]), key) >= 0;
     }
   },
   $index: function(_, key) {
@@ -6611,8 +6767,8 @@ HashMap: {"": "Object;_length,_strings,_nums,_rest,_liblib$_keys",
       }
       $.assertSubtypeOfRuntimeType(value, t1);
       if (strings[key] == null) {
-        this._length = this._length + 1;
-        this._liblib$_keys = null;
+        this._liblib1$_length = this._liblib1$_length + 1;
+        this._liblib1$_keys = null;
       }
       if (value == null)
         strings[key] = strings;
@@ -6647,8 +6803,8 @@ HashMap: {"": "Object;_length,_strings,_nums,_rest,_liblib$_keys",
       }
       $.assertSubtypeOfRuntimeType(value, t1);
       if (nums[key] == null) {
-        this._length = this._length + 1;
-        this._liblib$_keys = null;
+        this._liblib1$_length = this._liblib1$_length + 1;
+        this._liblib1$_keys = null;
       }
       if (value == null)
         nums[key] = nums;
@@ -6674,16 +6830,16 @@ HashMap: {"": "Object;_length,_strings,_nums,_rest,_liblib$_keys",
           rest[hash] = rest;
         else
           rest[hash] = t1;
-        this._length = this._length + 1;
-        this._liblib$_keys = null;
+        this._liblib1$_length = this._liblib1$_length + 1;
+        this._liblib1$_keys = null;
       } else {
         index = $.HashMap__findBucketIndex(bucket, key);
         if (index >= 0)
           bucket[index + 1] = value;
         else {
           bucket.push(key, value);
-          this._length = this._length + 1;
-          this._liblib$_keys = null;
+          this._liblib1$_length = this._liblib1$_length + 1;
+          this._liblib1$_keys = null;
         }
       }
     }
@@ -6702,8 +6858,8 @@ HashMap: {"": "Object;_length,_strings,_nums,_rest,_liblib$_keys",
       index = $.HashMap__findBucketIndex(bucket, key);
       if (index < 0)
         return $.assertSubtypeOfRuntimeType(null, $.getRuntimeTypeArgument(this, "HashMap", 1));
-      this._length = this._length - 1;
-      this._liblib$_keys = null;
+      this._liblib1$_length = this._liblib1$_length - 1;
+      this._liblib1$_keys = null;
       return $.assertSubtypeOfRuntimeType(bucket.splice(index, 2)[1], $.getRuntimeTypeArgument(this, "HashMap", 1));
     }
   },
@@ -6714,7 +6870,7 @@ HashMap: {"": "Object;_length,_strings,_nums,_rest,_liblib$_keys",
     for ($length = keys.length, i = 0; i < $length; ++i) {
       key = keys[i];
       action.call$2(key, this.$index(this, key));
-      if (keys !== this._liblib$_keys)
+      if (keys !== this._liblib1$_keys)
         throw $.wrapException(new $.ConcurrentModificationError(this));
     }
   },
@@ -6723,10 +6879,10 @@ HashMap: {"": "Object;_length,_strings,_nums,_rest,_liblib$_keys",
   },
   _computeKeys$0: function() {
     var t1, result, strings, names, entries, index, i, nums, rest, bucket, $length, i0;
-    t1 = this._liblib$_keys;
+    t1 = this._liblib1$_keys;
     if (t1 != null)
       return t1;
-    result = $.List_List(this._length, null);
+    result = $.List_List(this._liblib1$_length, null);
     strings = this._strings;
     if (strings != null) {
       names = Object.getOwnPropertyNames(strings);
@@ -6759,8 +6915,8 @@ HashMap: {"": "Object;_length,_strings,_nums,_rest,_liblib$_keys",
         }
       }
     }
-    $.assertHelper(index === this._length);
-    this._liblib$_keys = result;
+    $.assertHelper(index === this._liblib1$_length);
+    this._liblib1$_keys = result;
     return result;
   },
   _removeHashTableEntry$2: function(table, key) {
@@ -6769,8 +6925,8 @@ HashMap: {"": "Object;_length,_strings,_nums,_rest,_liblib$_keys",
     if (table != null && table[key] != null) {
       value = $.assertSubtypeOfRuntimeType($.HashMap__getTableEntry(table, key), $.getRuntimeTypeArgument(this, "HashMap", 1));
       delete table[key];
-      this._length = this._length - 1;
-      this._liblib$_keys = null;
+      this._liblib1$_length = this._liblib1$_length - 1;
+      this._liblib1$_keys = null;
       return $.assertSubtypeOfRuntimeType(value, $.getRuntimeTypeArgument(this, "HashMap", 1));
     } else
       return $.assertSubtypeOfRuntimeType(null, $.getRuntimeTypeArgument(this, "HashMap", 1));
@@ -6813,7 +6969,7 @@ _HashSetBase: {"": "IterableBase;",
 IterableBase: {"": "Object;",
   map$1: function(_, f) {
     var t1, t2;
-    $.assertFunctionSubtype(f, "dynamic__E0", "IterableBase", this);
+    $.assertFunctionSubtype(f, "dynamic__E1", "IterableBase", this);
     t1 = $.getRuntimeTypeArgument(this, "IterableBase", 0);
     $.listSuperNativeTypeCheck(this, "$isIterable");
     $.assertFunctionSubtype(f, "T__S0", "MappedIterable", null, [t1, null]);
@@ -6821,9 +6977,25 @@ IterableBase: {"": "Object;",
     $.setRuntimeTypeInfo(t2, [t1, null]);
     return t2;
   },
+  contains$1: function(_, element) {
+    var t1, e, $arguments, t2;
+    for (t1 = this.get$iterator(this); $.boolConversionCheck(t1.moveNext$0());) {
+      e = t1.get$current();
+      $arguments = $.substitute(this.$asIterableBase, $.getRuntimeTypeInfo(this));
+      if ($arguments == null)
+        t2 = null;
+      else {
+        $.assertHelper(typeof $arguments === "object" && $arguments !== null && $arguments.constructor === Array);
+        t2 = $arguments[0];
+      }
+      if ($.$eq($.assertSubtypeOfRuntimeType(e, t2), element))
+        return true;
+    }
+    return false;
+  },
   forEach$1: function(_, f) {
     var t1, element, $arguments, t2;
-    $.assertFunctionSubtype(f, "void__E0", "IterableBase", this);
+    $.assertFunctionSubtype(f, "void__E1", "IterableBase", this);
     for (t1 = this.get$iterator(this); $.boolConversionCheck(t1.moveNext$0());) {
       element = t1.get$current();
       $arguments = $.substitute(this.$asIterableBase, $.getRuntimeTypeInfo(this));
@@ -6937,15 +7109,15 @@ IterableBase: {"": "Object;",
   $asObject: null
 },
 
-LinkedHashMap: {"": "Object;_length,_strings,_nums,_rest,_first,_last,_modifications",
+LinkedHashMap: {"": "Object;_liblib1$_length,_strings,_nums,_rest,_first,_last,_modifications",
   containsKey$1: function(key) {
     var strings, nums, rest;
-    if (typeof key === "string" && key !== "__proto__") {
+    if (key !== "__proto__") {
       strings = this._strings;
       if (strings == null)
         return false;
       return $.propertyTypeCheck(strings[key], "$isLinkedHashMapCell") != null;
-    } else if (typeof key === "number" && (key & 0x3ffffff) === key) {
+    } else if (false) {
       nums = this._nums;
       if (nums == null)
         return false;
@@ -6954,7 +7126,7 @@ LinkedHashMap: {"": "Object;_length,_strings,_nums,_rest,_first,_last,_modificat
       rest = this._rest;
       if (rest == null)
         return false;
-      return $.LinkedHashMap__findBucketIndex($.listTypeCheck(rest[$.get$hashCode$(key) & 0x3ffffff]), key) >= 0;
+      return $.LinkedHashMap__findBucketIndex($.listTypeCheck(rest[$.JSString_methods.get$hashCode(key) & 0x3ffffff]), key) >= 0;
     }
   },
   $index: function(_, key) {
@@ -7170,7 +7342,7 @@ LinkedHashMap: {"": "Object;_length,_strings,_nums,_rest,_first,_last,_modificat
     $.setRuntimeTypeInfo(t1, [$.getRuntimeTypeArgument(this, "LinkedHashMap", 0)]);
     $.listSuperNativeTypeCheck(t1, "$isIterable");
     t2 = new $.LinkedHashMap_values_closure(this);
-    $.assertFunctionSubtype(t2, "dynamic__E0", "IterableBase", t1);
+    $.assertFunctionSubtype(t2, "dynamic__E1", "IterableBase", t1);
     t3 = $.getRuntimeTypeArgument(t1, "IterableBase", 0);
     $.listSuperNativeTypeCheck(t1, "$isIterable");
     $.assertFunctionSubtype(t2, "T__S0", "MappedIterable", null, [t3, null]);
@@ -7179,7 +7351,7 @@ LinkedHashMap: {"": "Object;_length,_strings,_nums,_rest,_first,_last,_modificat
     return $.listSuperNativeTypeCheck(t2, "$isIterable");
   },
   get$length: function(_) {
-    return this._length;
+    return this._liblib1$_length;
   },
   toString$0: function(_) {
     return $.Maps_mapToString(this);
@@ -7196,7 +7368,7 @@ LinkedHashMap: {"": "Object;_length,_strings,_nums,_rest,_first,_last,_modificat
       last._next = cell;
       this._last = cell;
     }
-    this._length = this._length + 1;
+    this._liblib1$_length = this._liblib1$_length + 1;
     this._modifications = this._modifications + 1 & 67108863;
     return cell;
   },
@@ -7216,7 +7388,7 @@ LinkedHashMap__findBucketIndex: function(bucket, key) {
 
 },
 
-LinkedHashSet: {"": "_HashSetBase;_length,_strings,_nums,_rest,_first,_last,_modifications",
+LinkedHashSet: {"": "_HashSetBase;_liblib1$_length,_strings,_nums,_rest,_first,_last,_modifications",
   get$iterator: function(_) {
     var t1 = new $.LinkedHashSetIterator(this, this._modifications, null, $.assertSubtypeOfRuntimeType(null, null));
     $.setRuntimeTypeInfo(t1, [null]);
@@ -7224,15 +7396,34 @@ LinkedHashSet: {"": "_HashSetBase;_length,_strings,_nums,_rest,_first,_last,_mod
     return $.assertSubtype(t1, "$isIterator", [$.getRuntimeTypeArgument(this, "LinkedHashSet", 0)], "$asIterator");
   },
   get$length: function(_) {
-    return this._length;
+    return this._liblib1$_length;
+  },
+  contains$1: function(_, object) {
+    var strings, nums, rest;
+    if (object !== "__proto__") {
+      strings = this._strings;
+      if (strings == null)
+        return false;
+      return $.propertyTypeCheck(strings[object], "$isLinkedHashSetCell") != null;
+    } else if (false) {
+      nums = this._nums;
+      if (nums == null)
+        return false;
+      return $.propertyTypeCheck(nums[object], "$isLinkedHashSetCell") != null;
+    } else {
+      rest = this._rest;
+      if (rest == null)
+        return false;
+      return $.LinkedHashSet__findBucketIndex($.listTypeCheck(rest[$.JSString_methods.get$hashCode(object) & 0x3ffffff]), object) >= 0;
+    }
   },
   forEach$1: function(_, action) {
     var cell, modifications;
-    $.assertFunctionSubtype(action, "void__E2", "LinkedHashSet", this);
+    $.assertFunctionSubtype(action, "void__E5", "LinkedHashSet", this);
     cell = this._first;
     modifications = this._modifications;
     for (; cell != null;) {
-      action.call$1(cell._liblib$_element);
+      action.call$1(cell._liblib1$_element);
       if (modifications !== this._modifications)
         throw $.wrapException(new $.ConcurrentModificationError(this));
       cell = cell._next;
@@ -7314,7 +7505,7 @@ LinkedHashSet: {"": "_HashSetBase;_length,_strings,_nums,_rest,_first,_last,_mod
       last._next = cell;
       this._last = cell;
     }
-    this._length = this._length + 1;
+    this._liblib1$_length = this._liblib1$_length + 1;
     this._modifications = this._modifications + 1 & 67108863;
     return cell;
   },
@@ -7331,7 +7522,7 @@ LinkedHashSet__findBucketIndex: function(bucket, element) {
     return -1;
   $length = bucket.length;
   for (i = 0; i < $length; ++i)
-    if ($.$eq($.propertyTypeCheck(bucket[i], "$isLinkedHashSetCell")._liblib$_element, element))
+    if ($.$eq($.propertyTypeCheck(bucket[i], "$isLinkedHashSetCell")._liblib1$_element, element))
       return i;
   return -1;
 }}
@@ -7373,6 +7564,27 @@ ListMixin: {"": "Object;",
       if ($length == null ? t1 != null : $length !== t1)
         throw $.wrapException(new $.ConcurrentModificationError(receiver));
     }
+  },
+  contains$1: function(receiver, element) {
+    var $length, t1, i;
+    if (typeof receiver !== "string" && (typeof receiver !== "object" || receiver === null || receiver.constructor !== Array && !$.isJsIndexable(receiver, receiver[$.dispatchPropertyName])))
+      return this.contains$1$bailout(1, receiver);
+    $length = receiver.length;
+    for (t1 = $length !== $length, i = 0; i < $length; ++i)
+      if (t1)
+        throw $.wrapException(new $.ConcurrentModificationError(receiver));
+    return false;
+  },
+  contains$1$bailout: function(state0, receiver) {
+    var $length, i, t1;
+    $length = this.get$length(receiver);
+    for (i = 0; $.JSInt_methods.$lt(i, $length); ++i) {
+      this.$index(receiver, i);
+      t1 = this.get$length(receiver);
+      if ($length == null ? t1 != null : $length !== t1)
+        throw $.wrapException(new $.ConcurrentModificationError(receiver));
+    }
+    return false;
   },
   where$1: function(receiver, test) {
     var t1, t2;
@@ -7522,12 +7734,12 @@ Maps_mapToString_closure: {"": "Closure;box_0,result_1",
   },
   $isFunction: true,
   $asObject: null,
-  $is_void__dynamic_SendPort: true,
-  $is_dynamic__dynamic_dynamic: true,
-  $is_void__String_String: true,
   $is_void__String_V: true,
   $is_void__K_V0: true,
-  $is_void__K_V: true
+  $is_void__K_V: true,
+  $is_void__String_String: true,
+  $is_void__dynamic_SendPort: true,
+  $is_dynamic__dynamic_dynamic: true
 },
 
 ListQueue: {"": "IterableBase;_table,_head,_tail,_modificationCount",
@@ -7696,10 +7908,10 @@ ListQueue__nextPowerOf2: function(number) {
 
 },
 
-_ListQueueIterator: {"": "Object;_queue,_end,_modificationCount,_liblib$_position,_liblib$_current?",
+_ListQueueIterator: {"": "Object;_queue,_end,_modificationCount,_liblib1$_position,_liblib1$_current?",
   get$current: function() {
     var t1, $arguments, t2;
-    t1 = this._liblib$_current;
+    t1 = this._liblib1$_current;
     $arguments = $.substitute(this.$as_ListQueueIterator, $.getRuntimeTypeInfo(this));
     if ($arguments == null)
       t2 = null;
@@ -7714,16 +7926,16 @@ _ListQueueIterator: {"": "Object;_queue,_end,_modificationCount,_liblib$_positio
     t1 = this._queue;
     if (this._modificationCount !== t1._modificationCount)
       $.throwExpression(new $.ConcurrentModificationError(t1));
-    t2 = this._liblib$_position;
+    t2 = this._liblib1$_position;
     if (t2 === this._end) {
-      this.set$_liblib$_current(null);
+      this.set$_liblib1$_current(null);
       return false;
     }
     t3 = t1._table;
     if (t2 < 0 || t2 >= t3.length)
       throw $.ioore(t2);
-    this.set$_liblib$_current(t3[t2]);
-    this._liblib$_position = (this._liblib$_position + 1 & t1._table.length - 1) >>> 0;
+    this.set$_liblib1$_current(t3[t2]);
+    this._liblib1$_position = (this._liblib1$_position + 1 & t1._table.length - 1) >>> 0;
     return true;
   },
   $isIterator: true,
@@ -8141,13 +8353,13 @@ AbstractClassInstantiationError: {"": "Error;_className",
   }
 },
 
-NoSuchMethodError: {"": "Error;_liblib0$_receiver,_memberName,_liblib0$_arguments,_namedArguments,_existingArgumentNames",
+NoSuchMethodError: {"": "Error;_liblib$_receiver,_memberName,_liblib$_arguments,_namedArguments,_existingArgumentNames",
   toString$0: function(_) {
     var t1, t2, t3, t4, actualParameters, i, str, formalParameters;
     t1 = {};
     t1.sb_0 = $.StringBuffer$("");
     t1.i_1 = 0;
-    t2 = this._liblib0$_arguments;
+    t2 = this._liblib$_arguments;
     if (typeof t2 !== "string" && (typeof t2 !== "object" || t2 === null || t2.constructor !== Array && !$.isJsIndexable(t2, t2[$.dispatchPropertyName])))
       return this.toString$0$bailout1(1, t1, t2);
     for (; t3 = t1.i_1, t3 < t2.length; t1.i_1 = t1.i_1 + 1) {
@@ -8184,7 +8396,7 @@ NoSuchMethodError: {"": "Error;_liblib0$_receiver,_memberName,_liblib0$_argument
     }
     formalParameters = t1.sb_0._contents;
     t1 = this._memberName;
-    return "NoSuchMethodError: incorrect number of arguments passed to method named '" + $.S(t1) + "'\nReceiver: " + $.Error_safeToString(this._liblib0$_receiver) + "\nTried calling: " + $.S(t1) + "(" + actualParameters + ")\nFound: " + $.S(t1) + "(" + formalParameters + ")";
+    return "NoSuchMethodError: incorrect number of arguments passed to method named '" + $.S(t1) + "'\nReceiver: " + $.Error_safeToString(this._liblib$_receiver) + "\nTried calling: " + $.S(t1) + "(" + actualParameters + ")\nFound: " + $.S(t1) + "(" + formalParameters + ")";
   },
   toString$0$bailout1: function(state0, t1, t2) {
     switch (state0) {
@@ -8192,7 +8404,7 @@ NoSuchMethodError: {"": "Error;_liblib0$_receiver,_memberName,_liblib0$_argument
         t1 = {};
         t1.sb_0 = $.StringBuffer$("");
         t1.i_1 = 0;
-        t2 = this._liblib0$_arguments;
+        t2 = this._liblib$_arguments;
       case 1:
         state0 = 0;
         if (t2 != null)
@@ -8213,7 +8425,7 @@ NoSuchMethodError: {"": "Error;_liblib0$_receiver,_memberName,_liblib0$_argument
         var t3, t4, t5, actualParameters, i, str, formalParameters;
         state0 = 0;
         if (t2 == null)
-          return "NoSuchMethodError : method not found: '" + $.S(this._memberName) + "'\nReceiver: " + $.Error_safeToString(this._liblib0$_receiver) + "\nArguments: [" + $.S(t1.sb_0) + "]";
+          return "NoSuchMethodError : method not found: '" + $.S(this._memberName) + "'\nReceiver: " + $.Error_safeToString(this._liblib$_receiver) + "\nArguments: [" + $.S(t1.sb_0) + "]";
         else {
           actualParameters = t1.sb_0._contents;
           t1.sb_0 = $.StringBuffer$("");
@@ -8229,7 +8441,7 @@ NoSuchMethodError: {"": "Error;_liblib0$_receiver,_memberName,_liblib0$_argument
           }
           formalParameters = t1.sb_0._contents;
           t1 = this._memberName;
-          return "NoSuchMethodError: incorrect number of arguments passed to method named '" + $.S(t1) + "'\nReceiver: " + $.Error_safeToString(this._liblib0$_receiver) + "\nTried calling: " + $.S(t1) + "(" + actualParameters + ")\nFound: " + $.S(t1) + "(" + formalParameters + ")";
+          return "NoSuchMethodError: incorrect number of arguments passed to method named '" + $.S(t1) + "'\nReceiver: " + $.Error_safeToString(this._liblib$_receiver) + "\nTried calling: " + $.S(t1) + "(" + actualParameters + ")\nFound: " + $.S(t1) + "(" + formalParameters + ")";
         }
     }
   }
@@ -8361,7 +8573,7 @@ Object: {"": ";",
     return $.Primitives_objectHashCode(this);
   },
   toString$0: function(_) {
-    return $.Primitives_objectToString(this);
+    return "Instance of '" + $.Primitives_objectTypeName(this) + "'";
   },
   $isObject: true,
   $asObject: null
@@ -8460,7 +8672,7 @@ HttpRequest_request: function(url, method, mimeType, onProgress, requestHeaders,
   $.assertFunctionSubtype(t2, "void__T2", "_EventStream", t1);
   $.assertFunctionSubtype(null, "void_");
   $.assertFunctionSubtype(null, "void__dynamic");
-  t3 = t1.get$_target();
+  t3 = t1.get$_liblib0$_target();
   t5 = t1.get$_eventType();
   t6 = t1.get$_useCapture();
   t6 = new $._EventStreamSubscription(0, t3, t5, t2, t6);
@@ -8473,7 +8685,7 @@ HttpRequest_request: function(url, method, mimeType, onProgress, requestHeaders,
   t1 = $.assertSubtype($.assertSubtype(t1, "$isStream", [$.getRuntimeTypeArgument($.EventStreamProvider_error, "EventStreamProvider", 0)], "$asStream"), "$isStream", [$.ProgressEvent], "$asStream");
   t6 = new $.HttpRequest_request_closure1(t4);
   $.assertFunctionSubtype(t6, "void__T2", "_EventStream", t1);
-  t2 = t1.get$_target();
+  t2 = t1.get$_liblib0$_target();
   t5 = t1.get$_eventType();
   t3 = t1.get$_useCapture();
   t3 = new $._EventStreamSubscription(0, t2, t5, t6, t3);
@@ -8489,7 +8701,28 @@ ImageElement_ImageElement: function(height, src, width) {
   return $.interceptedTypeCheck(e, "$isImageElement");
 },
 
+Window__isDartLocation: function(thing) {
+  var t1, exception;
+  try {
+    t1 = thing;
+    return typeof t1 === "object" && t1 !== null && !!$.getInterceptor(t1).$isLocation;
+  } catch (exception) {
+    $.unwrapException(exception);
+    return false;
+  }
+
+},
+
+_convertNativeToDart_Window: function(win) {
+  if (win == null)
+    return;
+  return $._DOMWindowCrossFrame__createSafe(win);
+},
+
 _ChildrenElementList: {"": "ListBase;_element,_childElements",
+  contains$1: function(_, element) {
+    return $.contains$1$asx(this._childElements, element);
+  },
   get$length: function(_) {
     return this._childElements.length;
   },
@@ -8586,12 +8819,12 @@ HttpRequest_request_closure: {"": "Closure;xhr_0",
   },
   $isFunction: true,
   $asObject: null,
-  $is_void__dynamic_SendPort: true,
-  $is_dynamic__dynamic_dynamic: true,
-  $is_void__String_String: true,
   $is_void__String_V: true,
   $is_void__K_V0: true,
-  $is_void__K_V: true
+  $is_void__K_V: true,
+  $is_void__String_String: true,
+  $is_void__dynamic_SendPort: true,
+  $is_dynamic__dynamic_dynamic: true
 },
 
 HttpRequest_request_closure0: {"": "Closure;completer_1,xhr_2",
@@ -8818,13 +9051,13 @@ _ElementCssClassSet: {"": "CssClassSetImpl;_element",
   }
 },
 
-_EventStream: {"": "Stream;_target<,_eventType<,_useCapture<",
+_EventStream: {"": "Stream;_liblib0$_target<,_eventType<,_useCapture<",
   listen$4$cancelOnError$onDone$onError: function(onData, cancelOnError, onDone, onError) {
     var t1;
     $.assertFunctionSubtype(onData, "void__T2", "_EventStream", this);
     $.assertFunctionSubtype(onDone, "void_");
     $.assertFunctionSubtype(onError, "void__dynamic");
-    t1 = new $._EventStreamSubscription(0, this._target, this._eventType, onData, this._useCapture);
+    t1 = new $._EventStreamSubscription(0, this._liblib0$_target, this._eventType, onData, this._useCapture);
     $.setRuntimeTypeInfo(t1, [$.getRuntimeTypeArgument(this, "_EventStream", 0)]);
     t1._tryResume$0();
     return $.assertSubtype(t1, "$isStreamSubscription", [$.getRuntimeTypeArgument(this, "_EventStream", 0)], "$asStreamSubscription");
@@ -8837,16 +9070,16 @@ _EventStream: {"": "Stream;_target<,_eventType<,_useCapture<",
   $asObject: null
 },
 
-_EventStreamSubscription: {"": "StreamSubscription;_pauseCount,_target,_eventType,_onData,_useCapture",
+_EventStreamSubscription: {"": "StreamSubscription;_pauseCount,_liblib0$_target,_eventType,_onData,_useCapture",
   cancel$0: function() {
-    if (this._target == null)
+    if (this._liblib0$_target == null)
       return;
     this._unlisten$0();
-    this._target = null;
+    this._liblib0$_target = null;
     this._onData = null;
   },
   pause$1: function(_, resumeSignal) {
-    if (this._target == null)
+    if (this._liblib0$_target == null)
       return;
     this._pauseCount = this._pauseCount + 1;
     this._unlisten$0();
@@ -8855,7 +9088,7 @@ _EventStreamSubscription: {"": "StreamSubscription;_pauseCount,_target,_eventTyp
     return this.pause$1($receiver, null);
   },
   resume$0: function() {
-    if (this._target == null || this._pauseCount <= 0)
+    if (this._liblib0$_target == null || this._pauseCount <= 0)
       return;
     this._pauseCount = this._pauseCount - 1;
     this._tryResume$0();
@@ -8863,12 +9096,12 @@ _EventStreamSubscription: {"": "StreamSubscription;_pauseCount,_target,_eventTyp
   _tryResume$0: function() {
     var t1 = this._onData;
     if (t1 != null && this._pauseCount <= 0)
-      $.$$dom_addEventListener$3$x(this._target, this._eventType, t1, this._useCapture);
+      $.$$dom_addEventListener$3$x(this._liblib0$_target, this._eventType, t1, this._useCapture);
   },
   _unlisten$0: function() {
     var t1 = this._onData;
     if (t1 != null)
-      $.$$dom_removeEventListener$3$x(this._target, this._eventType, t1, this._useCapture);
+      $.$$dom_removeEventListener$3$x(this._liblib0$_target, this._eventType, t1, this._useCapture);
   },
   $asStreamSubscription: null,
   $asObject: null
@@ -8895,24 +9128,59 @@ ImmutableListMixin: {"": "Object;",
   $asObject: null
 },
 
-_DOMWindowCrossFrame: {"": "Object;_window", $asObject: null},
+_DOMWindowCrossFrame: {"": "Object;_window",
+  get$location: function(_) {
+    return $._LocationCrossFrame__createSafe(this._window.location);
+  },
+  $isWindowBase: true,
+  $asWindowBase: null,
+  $asObject: null,
+  static: {
+_DOMWindowCrossFrame__createSafe: function(w) {
+  if (w === window)
+    return $.interceptedTypeCheck(w, "$isWindowBase");
+  else
+    return new $._DOMWindowCrossFrame(w);
+}}
 
-FixedSizeListIterator: {"": "Object;_array,_liblib3$_length,_position,_liblib3$_current?",
+},
+
+_LocationCrossFrame: {"": "Object;_location", $isLocationBase: true, $asLocationBase: null, $asObject: null, static: {
+_LocationCrossFrame__createSafe: function($location) {
+  if ($location === $.Window_methods.get$location(window))
+    return $location;
+  else
+    return new $._LocationCrossFrame($location);
+}}
+},
+
+_LocationWrapper: {"": "Object;_ptr",
+  toString$0: function(_) {
+    return this._ptr.toString();
+  },
+  $isLocation: true,
+  $asLocation: null,
+  $isLocationBase: true,
+  $asLocationBase: null,
+  $asObject: null
+},
+
+FixedSizeListIterator: {"": "Object;_array,_liblib0$_length,_position,_liblib0$_current?",
   moveNext$0: function() {
     var nextPosition, t1;
     nextPosition = this._position + 1;
-    t1 = this._liblib3$_length;
+    t1 = this._liblib0$_length;
     if (nextPosition < t1) {
       t1 = this._array;
       if (typeof t1 !== "string" && (typeof t1 !== "object" || t1 === null || t1.constructor !== Array && !$.isJsIndexable(t1, t1[$.dispatchPropertyName])))
         return this.moveNext$0$bailout(1, t1, nextPosition);
       if (nextPosition < 0 || nextPosition >= t1.length)
         throw $.ioore(nextPosition);
-      this.set$_liblib3$_current(t1[nextPosition]);
+      this.set$_liblib0$_current(t1[nextPosition]);
       this._position = nextPosition;
       return true;
     }
-    this.set$_liblib3$_current(null);
+    this.set$_liblib0$_current(null);
     this._position = t1;
     return false;
   },
@@ -8920,7 +9188,7 @@ FixedSizeListIterator: {"": "Object;_array,_liblib3$_length,_position,_liblib3$_
     switch (state0) {
       case 0:
         nextPosition = this._position + 1;
-        t1 = this._liblib3$_length;
+        t1 = this._liblib0$_length;
       case 1:
         if (state0 === 1 || state0 === 0 && nextPosition < t1)
           switch (state0) {
@@ -8928,18 +9196,18 @@ FixedSizeListIterator: {"": "Object;_array,_liblib3$_length,_position,_liblib3$_
               t1 = this._array;
             case 1:
               state0 = 0;
-              this.set$_liblib3$_current($.$index$asx(t1, nextPosition));
+              this.set$_liblib0$_current($.$index$asx(t1, nextPosition));
               this._position = nextPosition;
               return true;
           }
-        this.set$_liblib3$_current(null);
+        this.set$_liblib0$_current(null);
         this._position = t1;
         return false;
     }
   },
   get$current: function() {
     var t1, $arguments, t2;
-    t1 = this._liblib3$_current;
+    t1 = this._liblib0$_current;
     $arguments = $.substitute(this.$asFixedSizeListIterator, $.getRuntimeTypeInfo(this));
     if ($arguments == null)
       t2 = null;
@@ -9165,6 +9433,17 @@ KeygenElement: {"": "_HTMLElement;name="},
 
 LIElement: {"": "_HTMLElement;value="},
 
+Location: {"": "Interceptor;",
+  toString$0: function(receiver) {
+    return receiver.toString();
+  },
+  $isLocation: true,
+  $asLocation: null,
+  $isLocationBase: true,
+  $asLocationBase: null,
+  $asObject: null
+},
+
 MapElement: {"": "_HTMLElement;name="},
 
 MediaElement: {"": "_HTMLElement;"},
@@ -9199,6 +9478,9 @@ Node: {"": "EventTarget;",
   },
   append$1: function(receiver, newChild) {
     return receiver.appendChild(newChild);
+  },
+  contains$1: function(receiver, other) {
+    return receiver.contains($.interceptedTypeCheck(other, "$isNode"));
   },
   insertBefore$2: function(receiver, newChild, refChild) {
     return receiver.insertBefore(newChild, refChild);
@@ -9280,6 +9562,14 @@ TextAreaElement: {"": "_HTMLElement;name=,value="},
 VideoElement: {"": "MediaElement;", $asObject: null},
 
 Window: {"": "EventTarget;",
+  get$location: function(receiver) {
+    var result = receiver.location;
+    if ($.boolConversionCheck($.Window__isDartLocation(result)))
+      return $.interceptedTypeCheck(result, "$isLocation");
+    if (null == receiver._location_wrapper)
+      receiver._location_wrapper = new $._LocationWrapper(result);
+    return receiver._location_wrapper;
+  },
   $$dom_addEventListener$3: function(receiver, type, listener, useCapture) {
     return receiver.addEventListener(type, $.convertDartClosureToJS($.assertFunctionSubtype(listener, "dynamic__Event"), 1), useCapture);
   },
@@ -9289,7 +9579,11 @@ Window: {"": "EventTarget;",
   toString$0: function(receiver) {
     return receiver.toString();
   },
-  $asObject: null
+  $isWindow: true,
+  $asWindow: null,
+  $asObject: null,
+  $isWindowBase: true,
+  $asWindowBase: null
 },
 
 _Attr: {"": "Node;name=,value="},
@@ -9331,10 +9625,10 @@ _NamedNodeMap: {"": "Interceptor_ListMixin_ImmutableListMixin1;",
   $asJavaScriptIndexingBehavior: null
 }}],
 ["dart.dom.svg", "dart:svg", , {
-_AttributeClassSet: {"": "CssClassSetImpl;_liblib2$_element",
+_AttributeClassSet: {"": "CssClassSetImpl;_liblib3$_element",
   readClasses$0: function() {
     var classname, s, t1, t2, t3, $arguments, trimmed;
-    classname = $.$$dom_getAttribute$1$x($.assertSubtype(new $._ElementAttributeMap(this._liblib2$_element), "$isMap", [$.JSString, $.JSString], "$asMap").get$_element(), "class");
+    classname = $.$$dom_getAttribute$1$x($.assertSubtype(new $._ElementAttributeMap(this._liblib3$_element), "$isMap", [$.JSString, $.JSString], "$asMap").get$_element(), "class");
     s = new $.LinkedHashSet(0, null, null, null, null, null, 0);
     $.setRuntimeTypeInfo(s, [$.JSString]);
     $.assertSubtype(s, "$isSet", [$.JSString], "$asSet");
@@ -9357,7 +9651,7 @@ _AttributeClassSet: {"": "CssClassSetImpl;_liblib2$_element",
   },
   writeClasses$1: function(s) {
     var t1, t2;
-    t1 = $.assertSubtype(new $._ElementAttributeMap(this._liblib2$_element), "$isMap", [$.JSString, $.JSString], "$asMap");
+    t1 = $.assertSubtype(new $._ElementAttributeMap(this._liblib3$_element), "$isMap", [$.JSString, $.JSString], "$asMap");
     t2 = s.join$1(s, " ");
     $.$$dom_setAttribute$2$x(t1.get$_element(), "class", t2);
   }
@@ -9541,12 +9835,12 @@ _convertJsonToDart_closure: {"": "Closure;",
   },
   $isFunction: true,
   $asObject: null,
-  $is_void__dynamic_SendPort: true,
-  $is_dynamic__dynamic_dynamic: true,
-  $is_void__String_String: true,
   $is_void__String_V: true,
   $is_void__K_V0: true,
-  $is_void__K_V: true
+  $is_void__K_V: true,
+  $is_void__String_String: true,
+  $is_void__dynamic_SendPort: true,
+  $is_dynamic__dynamic_dynamic: true
 },
 
 _convertJsonToDart_walk: {"": "Closure;revive_0",
@@ -9576,6 +9870,29 @@ _convertJsonToDart_walk: {"": "Closure;revive_0",
   $signature: function() {
     return {func: "dynamic__dynamic", args: [null]};
   }
+}}],
+["dart.math", "dart:math", , {
+max: function(a, b) {
+  var t1;
+  if (a > b)
+    return a;
+  if (a < b)
+    return b;
+  if (typeof b === "number") {
+    if (typeof a === "number")
+      if (a === 0)
+        return a + b;
+    if (isNaN(b))
+      return b;
+    return a;
+  }
+  if (b === 0)
+    t1 = a === 0 ? 1 / a < 0 : a < 0;
+  else
+    t1 = false;
+  if (t1)
+    return b;
+  return a;
 }}],
 ["dart.typed_data", "dart:typed_data", , {
 TypedData_ListMixin: {"": "TypedData+ListMixin;", $isList: true,
@@ -9781,7 +10098,7 @@ CssClassSetImpl: {"": "Object;",
     var t1, t2;
     $.assertFunctionSubtype(f, "dynamic__String");
     t1 = this.readClasses$0();
-    $.assertFunctionSubtype(f, "dynamic__E0", "IterableBase", t1);
+    $.assertFunctionSubtype(f, "dynamic__E1", "IterableBase", t1);
     t2 = $.getRuntimeTypeArgument(t1, "IterableBase", 0);
     $.listSuperNativeTypeCheck(t1, "$isIterable");
     $.assertFunctionSubtype(f, "T__S0", "MappedIterable", null, [t2, null]);
@@ -9790,7 +10107,11 @@ CssClassSetImpl: {"": "Object;",
     return t1;
   },
   get$length: function(_) {
-    return this.readClasses$0()._length;
+    return this.readClasses$0()._liblib1$_length;
+  },
+  contains$1: function(_, value) {
+    var t1 = this.readClasses$0();
+    return t1.contains$1(t1, value);
   },
   add$1: function(_, value) {
     var t1, s;
@@ -9836,7 +10157,7 @@ FilteredElementList: {"": "ListBase;_node,_childNodes<",
     var t1;
     $.assertFunctionSubtype(f, "void__Element");
     t1 = this.get$_filtered();
-    $.assertFunctionSubtype(f, "void__E1", "JSArray", t1);
+    $.assertFunctionSubtype(f, "void__E0", "JSArray", t1);
     $.voidTypeCheck($.IterableMixinWorkaround_forEach(t1, f));
   },
   $indexSet: function(_, index, value) {
@@ -9874,6 +10195,10 @@ FilteredElementList: {"": "ListBase;_node,_childNodes<",
     for (t1 = $.get$iterator$ax($.listSuperNativeTypeCheck(iterable, "$isIterable")), t2 = this._childNodes._this, t3 = $.getInterceptor$x(t2); $.boolConversionCheck(t1.moveNext$0());)
       t3.append$1(t2, $.interceptedTypeCheck(t1.get$current(), "$isElement"));
   },
+  contains$1: function(_, needle) {
+    return false;
+    return $.interceptedTypeCheck(needle, "$isElement").parentNode === this._node;
+  },
   get$reversed: function(_) {
     var t1, t2;
     t1 = this.get$_filtered();
@@ -9886,7 +10211,7 @@ FilteredElementList: {"": "ListBase;_node,_childNodes<",
     var t1, t2;
     t1 = $.JSArray_methods.sublist$2(this.get$_filtered(), start, end);
     t2 = new $.FilteredElementList_removeRange_closure();
-    $.assertFunctionSubtype(t2, "void__E1", "JSArray", t1);
+    $.assertFunctionSubtype(t2, "void__E0", "JSArray", t1);
     $.voidTypeCheck($.IterableMixinWorkaround_forEach(t1, t2));
   },
   get$length: function(_) {
@@ -10125,12 +10450,12 @@ DateFormat__fieldConstructors_closure: {"": "Closure;",
   },
   $isFunction: true,
   $asObject: null,
-  $is_void__dynamic_SendPort: true,
-  $is_dynamic__dynamic_dynamic: true,
-  $is_void__String_String: true,
   $is_void__String_V: true,
   $is_void__K_V0: true,
-  $is_void__K_V: true
+  $is_void__K_V: true,
+  $is_void__String_String: true,
+  $is_void__dynamic_SendPort: true,
+  $is_dynamic__dynamic_dynamic: true
 },
 
 DateFormat__fieldConstructors_closure0: {"": "Closure;",
@@ -10139,12 +10464,12 @@ DateFormat__fieldConstructors_closure0: {"": "Closure;",
   },
   $isFunction: true,
   $asObject: null,
-  $is_void__dynamic_SendPort: true,
-  $is_dynamic__dynamic_dynamic: true,
-  $is_void__String_String: true,
   $is_void__String_V: true,
   $is_void__K_V0: true,
-  $is_void__K_V: true
+  $is_void__K_V: true,
+  $is_void__String_String: true,
+  $is_void__dynamic_SendPort: true,
+  $is_dynamic__dynamic_dynamic: true
 },
 
 DateFormat__fieldConstructors_closure1: {"": "Closure;",
@@ -10153,12 +10478,12 @@ DateFormat__fieldConstructors_closure1: {"": "Closure;",
   },
   $isFunction: true,
   $asObject: null,
-  $is_void__dynamic_SendPort: true,
-  $is_dynamic__dynamic_dynamic: true,
-  $is_void__String_String: true,
   $is_void__String_V: true,
   $is_void__K_V0: true,
-  $is_void__K_V: true
+  $is_void__K_V: true,
+  $is_void__String_String: true,
+  $is_void__dynamic_SendPort: true,
+  $is_dynamic__dynamic_dynamic: true
 },
 
 _DateFormatField: {"": "Object;",
@@ -10537,7 +10862,7 @@ $.typeNameInIE$closure = new $.Closure$typeNameInIE($.typeNameInIE, "typeNameInI
 $.constructorNameFallback$closure = new $.Closure$constructorNameFallback($.constructorNameFallback, "constructorNameFallback$closure");
 $.callDartFunctionWith1Arg$closure = new $.Closure$callDartFunctionWith1Arg($.callDartFunctionWith1Arg, "callDartFunctionWith1Arg$closure");
 $.main$closure = new $.Closure$main($.main, "main$closure");
-$.onActivityDataLoaded$closure = new $.Closure$onActivityDataLoaded($.onActivityDataLoaded, "onActivityDataLoaded$closure");
+$.populate$closure = new $.Closure$populate($.populate, "populate$closure");
 $._asyncRunCallback$closure = new $.Closure$_asyncRunCallback($._asyncRunCallback, "_asyncRunCallback$closure");
 $._nullDataHandler$closure = new $.Closure$_nullDataHandler($._nullDataHandler, "_nullDataHandler$closure");
 $._nullErrorHandler$closure = new $.Closure$_nullErrorHandler($._nullErrorHandler, "_nullErrorHandler$closure");
@@ -10596,19 +10921,16 @@ $.$signature_dynamic__Set = {func: "dynamic__Set", args: [[$.Set, $.JSString]]};
 $.$signature_void__String_String = {func: "void__String_String", void: true, args: [$.JSString, $.JSString]};
 $.$signature_int__String = {func: "int__String", ret: $.JSInt, args: [$.JSString]};
 $.$signature_dynamic__Event = {func: "dynamic__Event", args: [$.Event]};
-$.$signature_dynamic__dynamic = {func: "dynamic__dynamic", args: [null]};
+$.$signature_dynamic__String = {func: "dynamic__String", args: [$.JSString]};
 $.$signature_void__ProgressEvent = {func: "void__ProgressEvent", void: true, args: [$.ProgressEvent]};
 $.$signature_double__String = {func: "double__String", ret: $.JSDouble, args: [$.JSString]};
-$.$signature_dynamic__String = {func: "dynamic__String", args: [$.JSString]};
+$.$signature_dynamic__dynamic = {func: "dynamic__dynamic", args: [null]};
 $.$signature_bool__dynamic = {func: "bool__dynamic", ret: $.JSBool, args: [null]};
 $.ListIterable.$signature_dynamic__E2 = function(E) {
   return {func: "dynamic__E2", args: [E]};
 };
-$.ListIterable.$signature_void__E3 = function(E) {
-  return {func: "void__E3", void: true, args: [E]};
-};
-$._EventStream.$signature_void__T2 = function(T) {
-  return {func: "void__T2", void: true, args: [T]};
+$.ListIterable.$signature_void__E2 = function(E) {
+  return {func: "void__E2", void: true, args: [E]};
 };
 $.MappedIterable.$signature_T__S0 = function(S, T) {
   return {func: "T__S0", ret: T, args: [S]};
@@ -10616,32 +10938,29 @@ $.MappedIterable.$signature_T__S0 = function(S, T) {
 $.MappedIterator.$signature_T__S2 = function(S, T) {
   return {func: "T__S2", ret: T, args: [S]};
 };
-$.MappedListIterable.$signature_T__S = function(S, T) {
-  return {func: "T__S", ret: T, args: [S]};
-};
 $._FutureImpl.$signature_dynamic__T0 = function(T) {
   return {func: "dynamic__T0", args: [T]};
 };
-$._BufferingStreamSubscription.$signature_void__T1 = function(T) {
-  return {func: "void__T1", void: true, args: [T]};
+$._EventStream.$signature_void__T2 = function(T) {
+  return {func: "void__T2", void: true, args: [T]};
 };
-$.JSArray.$signature_dynamic__E1 = function(E) {
-  return {func: "dynamic__E1", args: [E]};
-};
-$.JSArray.$signature_void__E1 = function(E) {
-  return {func: "void__E1", void: true, args: [E]};
+$.MappedListIterable.$signature_T__S = function(S, T) {
+  return {func: "T__S", ret: T, args: [S]};
 };
 $._SubscribeFuture.$signature_dynamic__S = function(S, T) {
   return {func: "dynamic__S", args: [S]};
 };
-$.Stream.$signature_dynamic__T = function(T) {
-  return {func: "dynamic__T", args: [T]};
-};
 $.Stream.$signature_void__T3 = function(T) {
   return {func: "void__T3", void: true, args: [T]};
 };
+$.Stream.$signature_dynamic__T = function(T) {
+  return {func: "dynamic__T", args: [T]};
+};
 $.HashMap.$signature_void__K_V0 = function(K, V) {
   return {func: "void__K_V0", void: true, args: [K, V]};
+};
+$._BufferingStreamSubscription.$signature_void__T1 = function(T) {
+  return {func: "void__T1", void: true, args: [T]};
 };
 $.ListMixin.$signature_dynamic__E = function(E) {
   return {func: "dynamic__E", args: [E]};
@@ -10652,26 +10971,32 @@ $.ListMixin.$signature_bool__E = function(E) {
 $.ListMixin.$signature_void__E = function(E) {
   return {func: "void__E", void: true, args: [E]};
 };
-$.LinkedHashSet.$signature_void__E2 = function(E) {
-  return {func: "void__E2", void: true, args: [E]};
+$.LinkedHashSet.$signature_void__E5 = function(E) {
+  return {func: "void__E5", void: true, args: [E]};
 };
 $.LinkedHashMap.$signature_void__K_V = function(K, V) {
   return {func: "void__K_V", void: true, args: [K, V]};
 };
-$.HashMapKeyIterable.$signature_void__E5 = function(E) {
-  return {func: "void__E5", void: true, args: [E]};
+$.JSArray.$signature_dynamic__E0 = function(E) {
+  return {func: "dynamic__E0", args: [E]};
 };
-$.IterableBase.$signature_void__E0 = function(E) {
+$.JSArray.$signature_void__E0 = function(E) {
   return {func: "void__E0", void: true, args: [E]};
 };
-$.IterableBase.$signature_dynamic__E0 = function(E) {
-  return {func: "dynamic__E0", args: [E]};
+$.IterableBase.$signature_dynamic__E1 = function(E) {
+  return {func: "dynamic__E1", args: [E]};
+};
+$.IterableBase.$signature_void__E1 = function(E) {
+  return {func: "void__E1", void: true, args: [E]};
+};
+$.HashMapKeyIterable.$signature_void__E4 = function(E) {
+  return {func: "void__E4", void: true, args: [E]};
 };
 $.ConstantMap.$signature_void__String_V = function(V) {
   return {func: "void__String_V", void: true, args: [$.JSString, V]};
 };
-$.LinkedHashMapKeyIterable.$signature_void__E4 = function(E) {
-  return {func: "void__E4", void: true, args: [E]};
+$._ForwardingStream.$signature_void__T = function(S, T) {
+  return {func: "void__T", void: true, args: [T]};
 };
 $._ForwardingStreamSubscription.$signature_void__T0 = function(S, T) {
   return {func: "void__T0", void: true, args: [T]};
@@ -10682,8 +11007,8 @@ $._MapStream.$signature_T__S1 = function(S, T) {
 $.ListQueue.$signature_void__E6 = function(E) {
   return {func: "void__E6", void: true, args: [E]};
 };
-$._ForwardingStream.$signature_void__T = function(S, T) {
-  return {func: "void__T", void: true, args: [T]};
+$.LinkedHashMapKeyIterable.$signature_void__E3 = function(E) {
+  return {func: "void__E3", void: true, args: [E]};
 };
 $.getInterceptor = function(receiver) {
   if (typeof receiver == "number") {
@@ -10792,6 +11117,7 @@ $.List_qpm = Isolate.makeConstantList(["J", "F", "M", "A", "M", "J", "J", "A", "
 $.List_wMy = Isolate.makeConstantList(["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]);
 $.Map_EQBCk = $.setRuntimeTypeInfo(new $.ConstantMap(44, {d: "d", E: "EEE", EEEE: "EEEE", LLL: "LLL", LLLL: "LLLL", M: "L", Md: "M/d", MEd: "EEE, M/d", MMM: "LLL", MMMd: "MMM d", MMMEd: "EEE, MMM d", MMMM: "LLLL", MMMMd: "MMMM d", MMMMEEEEd: "EEEE, MMMM d", QQQ: "QQQ", QQQQ: "QQQQ", y: "y", yM: "M/y", yMd: "M/d/y", yMEd: "EEE, M/d/y", yMMM: "MMM y", yMMMd: "MMM d, y", yMMMEd: "EEE, MMM d, y", yMMMM: "MMMM y", yMMMMd: "MMMM d, y", yMMMMEEEEd: "EEEE, MMMM d, y", yQQQ: "QQQ y", yQQQQ: "QQQQ y", H: "HH", Hm: "HH:mm", Hms: "HH:mm:ss", j: "h a", jm: "h:mm a", jms: "h:mm:ss a", jmv: "h:mm a v", jmz: "h:mm a z", jz: "h a z", m: "m", ms: "mm:ss", s: "s", v: "v", z: "z", zzzz: "zzzz", ZZZZ: "ZZZZ"}, $.List_EQM), [null]);
 $.NodeList_methods = $.NodeList.prototype;
+$.Window_methods = $.Window.prototype;
 $.dispatchPropertyName = null;
 $.lazyPort = null;
 $.ReceivePortImpl__nextFreeId = 1;
@@ -10853,6 +11179,9 @@ $.addAll$1$ax = function(receiver, a0) {
 $.append$1$x = function(receiver, a0) {
   return $.getInterceptor$x(receiver).append$1(receiver, a0);
 };
+$.contains$1$asx = function(receiver, a0) {
+  return $.getInterceptor$asx(receiver).contains$1(receiver, a0);
+};
 $.elementAt$1$ax = function(receiver, a0) {
   return $.getInterceptor$ax(receiver).elementAt$1(receiver, a0);
 };
@@ -10876,6 +11205,9 @@ $.get$iterator$ax = function(receiver) {
 };
 $.get$length$asx = function(receiver) {
   return $.getInterceptor$asx(receiver).get$length(receiver);
+};
+$.get$location$x = function(receiver) {
+  return $.getInterceptor$x(receiver).get$location(receiver);
 };
 $.get$name$x = function(receiver) {
   return $.getInterceptor$x(receiver).get$name(receiver);
@@ -11101,6 +11433,8 @@ $.defineNativeMethods("HTMLInputElement", $.InputElement);
 $.defineNativeMethods("HTMLKeygenElement", $.KeygenElement);
 
 $.defineNativeMethods("HTMLLIElement", $.LIElement);
+
+$.defineNativeMethods("Location", $.Location);
 
 $.defineNativeMethods("HTMLMapElement", $.MapElement);
 

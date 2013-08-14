@@ -2,6 +2,7 @@ library app;
 
 import 'dart:html';
 import 'dart:json';
+import 'dart:math';
 import 'package:intl/intl.dart';
 
 const apiUrl = 'https://www.googleapis.com/plus/v1';
@@ -9,32 +10,50 @@ const userId = '104268957202871548605';
 const key = 'AIzaSyDjt9V66sWPDzuxoHhFZEZQGZR-0qySclI';
 const videoWidth = 240;
 const numColumns = 3;
-const maxResults = 12; // should be a multiple of numColumns
+const maxResults = numColumns * 4;
 
 main() {
-  loadGooglePlusData();
+  String url =
+    debug()
+    ? 'debug.json'
+    : '${apiUrl}/people/${userId}/activities/public?key=${key}&maxResults=${maxResults}';
+
+  HttpRequest.getString(url).then(populate);
 }
 
-void loadGooglePlusData() {
-  String url = '${apiUrl}/people/${userId}/activities/public?key=${key}&maxResults=${maxResults}';
-  HttpRequest.getString(url).then(onActivityDataLoaded);
+bool debug() {
+  List<String> request = document.window.location.toString().split('?');
+
+  if (request.length != 2)
+    return false;
+
+  return request[1].contains('debug');
 }
 
-void onActivityDataLoaded(String req) {
-  Map data = parse(req);
-  List activities = data['items'];
-
+void stopLoadingBar() {
   query('#circularG').remove();
+}
 
+void populate(String json) {
+  Map data = parse(json);
+
+  stopLoadingBar();
+  addColumns();
+  populateColumns(data['items']);
+}
+
+void addColumns() {
   for (int column = 0; column < numColumns; column++) {
     DivElement columnDiv = new DivElement();
     columnDiv.classes.add('column');
     columnDiv.classes.add('col${column}');
     query('#activities').append(columnDiv);
   }
+}
 
+void populateColumns(List activities) {
   int column = 0;
-  for (Map activity in data['items']) {
+  for (Map activity in activities) {
     query('#activities').query('.col${column}').append(activityToElement(activity));
     column++;
     column %= numColumns;
@@ -65,19 +84,18 @@ DivElement activityToElement(Map activity) {
   for (Map attachment in activity['object']['attachments']) {
     switch(attachment['objectType']) {
       case 'video':
-        IFrameElement iframe = new IFrameElement();
-        iframe.title = "YouTube video player";
-        iframe.classes.add('youtube-player');
-        iframe.src = attachment['embed']['url'];
-        iframe.attributes['allowFullScreen'] = '';
-
         var width = attachment['image']['width'];
         var height = attachment['image']['height'];
         var scaleFactor = width / videoWidth;
-        iframe.width = (width / scaleFactor).toString();
-        iframe.height = (height / scaleFactor).toString();
 
+        IFrameElement iframe = new IFrameElement();
+        iframe.id = 'ytplayer';
+        iframe.width = (width / scaleFactor).toString();
+        iframe.height = max(200, height / scaleFactor).toString();
+        iframe.src = attachment['embed']['url'];
+        iframe.attributes['frameborder'] = '0';
         activityBox.append(iframe);
+
         break;
 
       case 'album':

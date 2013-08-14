@@ -1,6 +1,11 @@
-fix video embed on iphone
-improved style for all 4 card types
-image viewer
+todo
+----
 defensive coding around service calls
+fix video embed on iphone
+image viewer
 improved color theme
+improved style for all 4 card types
+
+ongoing
+-------
 html5 compliance validation
