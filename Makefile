@@ -3,12 +3,9 @@ DART2JS_FLAGS=-c
 
 .SUFFIXES: .js .dart
 
-all: packages main.dart.js index.html
+all: packages web/main.dart.js
 
-index.html: web/index.html
-	ln -sf web/index.html index.html
-
-main.dart.js: main.dart lib/underdogma.dart
+%.dart.js: %.dart lib/underdogma.dart
 	$(DART_SDK)/bin/dart2js $(DART2JS_FLAGS) $< -o $@
 
 packages:
@@ -16,9 +13,9 @@ packages:
 	chmod -R a+rX ~/.pub-cache
 
 clean:
-	rm -f *.dart.js.map *.dart.js.deps
+	rm -f web/*.dart.js.map web/*.dart.js.deps
 
 distclean: clean
-	rm -rf packages *.dart.js index.html
+	rm -rf packages */packages web/*.dart.js
 
 .PHONY: clean

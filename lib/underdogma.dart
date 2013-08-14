@@ -15,7 +15,7 @@ const maxResults = numColumns * 4;
 load() {
   String url =
     debug()
-    ? 'test/debug.json'
+    ? 'sample-stream.json'
     : '${apiUrl}/people/${userId}/activities/public?key=${key}&maxResults=${maxResults}';
 
   HttpRequest.getString(url).then(populate);

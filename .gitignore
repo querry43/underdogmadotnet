@@ -1,4 +1,4 @@
 *.js.deps
 *.js.map
+*.dart.js
 packages
-/index.html
