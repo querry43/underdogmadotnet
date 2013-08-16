@@ -38,17 +38,23 @@ void populate(String json) {
   Map data = parse(json);
 
   stopLoadingBar();
-  addColumns();
+
+  for (var column in getColumns()) {
+    query('#activities').append(column);
+  }
+
   populateColumns(data['items']);
 }
 
-void addColumns() {
+List<DivElement> getColumns() {
+  List<DivElement> columns = new List<DivElement>();
   for (int column = 0; column < numColumns; column++) {
     DivElement columnDiv = new DivElement();
     columnDiv.classes.add('column');
     columnDiv.classes.add('col${column}');
-    query('#activities').append(columnDiv);
+    columns.add(columnDiv);
   }
+  return columns;
 }
 
 void populateColumns(List activities) {

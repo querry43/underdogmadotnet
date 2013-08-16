@@ -21,8 +21,20 @@ packages:
     description: logging
     source: hosted
     version: "0.6.13"
+  meta:
+    description: meta
+    source: hosted
+    version: "0.6.13"
   path:
     description: path
+    source: hosted
+    version: "0.6.13"
+  stack_trace:
+    description: stack_trace
+    source: hosted
+    version: "0.6.13"
+  unittest:
+    description: unittest
     source: hosted
     version: "0.6.13"
   unmodifiable_collection:
