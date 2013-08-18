@@ -14,20 +14,20 @@ const maxResults = numColumns * 4;
 
 load() {
   String url =
-    debug()
-    ? 'sample-stream.json'
+    isDebug()
+    ? '../test/sample-stream.json'
     : '${apiUrl}/people/${userId}/activities/public?key=${key}&maxResults=${maxResults}';
 
   HttpRequest.getString(url).then(populate);
 }
 
-bool debug() {
+bool isDebug() {
   List<String> request = document.window.location.toString().split('?');
 
   if (request.length != 2)
     return false;
 
-  return request[1].contains('debug');
+  return request.last.contains('debug');
 }
 
 void stopLoadingBar() {
@@ -36,96 +36,126 @@ void stopLoadingBar() {
 
 void populate(String json) {
   Map data = parse(json);
+  Element container = query('#activities');
 
   stopLoadingBar();
 
-  for (var column in getColumns()) {
-    query('#activities').append(column);
-  }
+  addColumns(container);
+  //addActivities(activities);
 
-  populateColumns(data['items']);
-}
-
-List<DivElement> getColumns() {
-  List<DivElement> columns = new List<DivElement>();
-  for (int column = 0; column < numColumns; column++) {
-    DivElement columnDiv = new DivElement();
-    columnDiv.classes.add('column');
-    columnDiv.classes.add('col${column}');
-    columns.add(columnDiv);
-  }
-  return columns;
-}
-
-void populateColumns(List activities) {
   int column = 0;
-  for (Map activity in activities) {
-    query('#activities').query('.col${column}').append(activityToElement(activity));
+  for (Map activity in data['items']) {
+    addActivityElement(container.query('.col${column}'), activity);
     column++;
     column %= numColumns;
   }
 }
 
-DivElement activityToElement(Map activity) {
-  DivElement activityBox = new DivElement();
-  activityBox.classes.add('activity');
+void addColumns(Element parent) {
+  for (int column = 0; column < numColumns; column++) {
+    DivElement columnDiv = new DivElement();
+    columnDiv.classes.add('column');
+    columnDiv.classes.add('col${column}');
 
-  ParagraphElement date = new ParagraphElement();
-  date.classes.add('date');
-  date.text = new DateFormat.yMMMMd().format(DateTime.parse(activity['published']));
-  activityBox.append(date);
-
-  if (activity['verb'] == 'share') {
-    ParagraphElement originallyShared = new ParagraphElement();
-    originallyShared.text = 'Originally shared by ';
-    originallyShared.appendHtml('<span class="originally-shared">${activity['object']['actor']['displayName']}</span>');
-    activityBox.append(originallyShared);
-    activityBox.append(new HRElement());
+    parent.append(columnDiv);
   }
+}
 
-  ParagraphElement body = new ParagraphElement();
-  body.appendHtml(activity['object']['content']);
-  activityBox.append(body);
+void addActivityElement(Element parent, Map activity) {
+  DivElement element = new DivElement();
+  element.classes.add('activity');
 
-  for (Map attachment in activity['object']['attachments']) {
+  addDateElement(element, activity['published']);
+  addOriginallySharedElement(element, activity);
+  addContent(element, activity['object']['content']);
+
+  addAttachmentElements(element, activity['object']['attachments']);
+
+  parent.append(element);
+}
+
+void addAttachmentElements(Element parent, List<Map> attachments) {
+  for (Map attachment in attachments) {
     switch(attachment['objectType']) {
       case 'video':
-        var width = attachment['image']['width'];
-        var height = attachment['image']['height'];
-        var scaleFactor = width / videoWidth;
-
-        IFrameElement iframe = new IFrameElement();
-        iframe.id = 'ytplayer';
-        iframe.width = (width / scaleFactor).toString();
-        iframe.height = max(200, height / scaleFactor).toString();
-        iframe.src = attachment['embed']['url'];
-        iframe.attributes['frameborder'] = '0';
-        activityBox.append(iframe);
-
+        addVideoAttachmentElement(parent, attachment);
         break;
 
       case 'album':
-        ImageElement imageElement = new ImageElement();
-        imageElement.src = attachment['thumbnails'][0]['image']['url'];
-        activityBox.append(imageElement);
+        addAlbumAttachmentElement(parent, attachment);
         break;
 
       case 'photo':
-        ImageElement imageElement = new ImageElement();
-        imageElement.src = attachment['image']['url'];
-        activityBox.append(imageElement);
+        addPhotoAttachmentElement(parent, attachment);
         break;
 
       case 'article':
-        ImageElement imageElement = new ImageElement();
-        imageElement.src = attachment['fullImage']['url'];
-        activityBox.append(imageElement);
+        addArticleAttachmentElement(parent, attachment);
         break;
 
       default:
         print(attachment);
     }
   }
+}
 
-  return activityBox;
+void addDateElement(Element parent, String date) {
+  ParagraphElement element = new ParagraphElement();
+  element.classes.add('date');
+  element.text = new DateFormat.yMMMMd().format(DateTime.parse(date));
+  parent.append(element);
+}
+
+void addOriginallySharedElement(Element parent, Map activity) {
+  if (activity['verb'] == 'share') {
+    ParagraphElement element = new ParagraphElement();
+    element.text = 'Originally shared by ';
+
+    SpanElement name = new SpanElement();
+    name.text = activity['object']['actor']['displayName'];
+    name.classes.add('originally-shared');
+    element.append(name);
+
+    parent.append(element);
+    parent.append(new HRElement());
+  }
+}
+
+void addContent(Element parent, String body) {
+  ParagraphElement element = new ParagraphElement();
+  element.appendHtml(body);
+  parent.append(element);
+}
+
+void addVideoAttachmentElement(Element parent, Map attachment) {
+  var width = attachment['image']['width'];
+  var height = attachment['image']['height'];
+  var scaleFactor = width / videoWidth;
+
+  IFrameElement iframe = new IFrameElement();
+  iframe.id = 'ytplayer';
+  iframe.width = (width / scaleFactor).toString();
+  iframe.height = max(200, height / scaleFactor).toString();
+  iframe.src = attachment['embed']['url'];
+  iframe.attributes['frameborder'] = '0';
+
+  parent.append(iframe);
+}
+
+void addAlbumAttachmentElement(Element parent, Map attachment) {
+  ImageElement imageElement = new ImageElement();
+  imageElement.src = attachment['thumbnails'][0]['image']['url'];
+  parent.append(imageElement);
+}
+
+void addPhotoAttachmentElement(Element parent, Map attachment) {
+  ImageElement imageElement = new ImageElement();
+  imageElement.src = attachment['image']['url'];
+  parent.append(imageElement);
+}
+
+void addArticleAttachmentElement(Element parent, Map attachment) {
+  ImageElement imageElement = new ImageElement();
+  imageElement.src = attachment['fullImage']['url'];
+  parent.append(imageElement);
 }
