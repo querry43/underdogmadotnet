@@ -3,7 +3,6 @@ import 'package:unittest/html_enhanced_config.dart';
 import 'package:unittest/unittest.dart';
 import '../lib/underdogma.dart';
 
- 
 void main() {
   useHtmlEnhancedConfiguration();
  
@@ -68,5 +67,35 @@ void main() {
       expect(parent.children, hasLength(0));
     });
   });
-}
 
+  group('addArticleAttachmentElement', () {
+    DivElement parent;
+    Map attachment;
+    Element firstElement, secondElement;
+
+    setUp(() {
+      attachment = {
+        'displayName': 'Crochet Locutus',
+        'url': 'http://www.instructables.com/id/Crochet-Locutus/',
+        'fullImage': {
+          'url': 'http://www.instructables.com/files/deriv/FI3/XZ5N/HJW8WH4K/FI3XZ5NHJW8WH4K.SQUARE3.jpg',
+          'type': 'image/jpeg'
+        }
+      };
+
+      parent = new DivElement();
+      addArticleAttachmentElement(parent, attachment);
+      firstElement = parent.children[0];
+      secondElement = parent.children[1];
+    });
+
+    test('adds 2 elements', () { expect(parent.children, hasLength(2)); });
+
+    test('adds name', () { expect(firstElement.text, equals('Crochet Locutus')); });
+    test('sets name class', () { expect(firstElement.classes.contains('name'), isTrue); });
+
+    test('adds anchor', () { expect(secondElement.href, equals('http://www.instructables.com/id/Crochet-Locutus/')); });
+    test('adds image', () { expect(secondElement.children.first.src, equals('http://www.instructables.com/files/deriv/FI3/XZ5N/HJW8WH4K/FI3XZ5NHJW8WH4K.SQUARE3.jpg')); });
+          
+  });
+}

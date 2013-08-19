@@ -155,7 +155,17 @@ void addPhotoAttachmentElement(Element parent, Map attachment) {
 }
 
 void addArticleAttachmentElement(Element parent, Map attachment) {
-  ImageElement imageElement = new ImageElement();
-  imageElement.src = attachment['fullImage']['url'];
-  parent.append(imageElement);
+  ParagraphElement name = new ParagraphElement();
+  name.text = attachment['displayName'];
+  name.classes.add('name');
+
+  ImageElement image = new ImageElement();
+  image.src = attachment['fullImage']['url'];
+
+  AnchorElement anchor = new AnchorElement();
+  anchor.href = attachment['url'];
+  anchor.append(image);
+
+  parent.append(name);
+  parent.append(anchor);
 }
