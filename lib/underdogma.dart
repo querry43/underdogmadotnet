@@ -149,9 +149,14 @@ void addAlbumAttachmentElement(Element parent, Map attachment) {
 }
 
 void addPhotoAttachmentElement(Element parent, Map attachment) {
-  ImageElement imageElement = new ImageElement();
-  imageElement.src = attachment['image']['url'];
-  parent.append(imageElement);
+  ImageElement image = new ImageElement();
+  image.src = attachment['image']['url'];
+
+  AnchorElement anchor = new AnchorElement();
+  anchor.href = attachment['url'];
+  anchor.append(image);
+
+  parent.append(anchor);
 }
 
 void addArticleAttachmentElement(Element parent, Map attachment) {
