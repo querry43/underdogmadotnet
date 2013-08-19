@@ -96,6 +96,46 @@ void main() {
 
     test('adds anchor', () { expect(secondElement.href, equals('http://www.instructables.com/id/Crochet-Locutus/')); });
     test('adds image', () { expect(secondElement.children.first.src, equals('http://www.instructables.com/files/deriv/FI3/XZ5N/HJW8WH4K/FI3XZ5NHJW8WH4K.SQUARE3.jpg')); });
-          
+  });
+
+  group('addVideoAttachmentElement', () {
+    DivElement parent;
+    Element firstElement;
+    Map attachment;
+
+    setUp(() {
+      attachment = {
+        'image': {
+          'height': 350,
+          'width': 300,
+        },
+        'embed': {
+          'url': 'http://www.youtube.com/v/J4LhdU3a1KM?version=3&autohide=1',
+        },
+      };
+
+      parent = new DivElement();
+      addVideoAttachmentElement(parent, attachment);
+      firstElement = parent.children.first;
+    });
+
+    test('adds 1 element', () { expect(parent.children, hasLength(1)); });
+    test('sets src', () { expect(firstElement.src, equals('http://www.youtube.com/v/J4LhdU3a1KM?version=3&autohide=1')); });
+
+    test('scales height and width', () {
+      String width = 240.toString();
+      String height = (350 * (240 / 300)).toInt().toString();
+      expect(firstElement.width, equals(width));
+      expect(firstElement.height, equals(height));
+    });
+
+    test('limits minimum height', () {
+      attachment['image']['height'] = 100;
+      parent = new DivElement();
+      addVideoAttachmentElement(parent, attachment);
+      firstElement = parent.children.first;
+
+      expect(firstElement.height, equals(200.toString()));
+    });
   });
 }

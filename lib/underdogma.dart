@@ -134,8 +134,8 @@ void addVideoAttachmentElement(Element parent, Map attachment) {
 
   IFrameElement iframe = new IFrameElement();
   iframe.id = 'ytplayer';
-  iframe.width = (width / scaleFactor).toString();
-  iframe.height = max(200, height / scaleFactor).toString();
+  iframe.width = (width ~/ scaleFactor).toString();
+  iframe.height = max(200, height ~/ scaleFactor).toString();
   iframe.src = attachment['embed']['url'];
   iframe.attributes['frameborder'] = '0';
 
