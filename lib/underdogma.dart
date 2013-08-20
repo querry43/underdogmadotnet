@@ -8,7 +8,7 @@ import 'package:intl/intl.dart';
 const apiUrl = 'https://www.googleapis.com/plus/v1';
 const userId = '104268957202871548605';
 const key = 'AIzaSyDjt9V66sWPDzuxoHhFZEZQGZR-0qySclI';
-const videoWidth = 240;
+const columnWidth = 240;
 const numColumns = 3;
 const maxResults = numColumns * 4;
 
@@ -130,7 +130,7 @@ void addContent(Element parent, String body) {
 void addVideoAttachmentElement(Element parent, Map attachment) {
   var width = attachment['image']['width'];
   var height = attachment['image']['height'];
-  var scaleFactor = width / videoWidth;
+  var scaleFactor = width / columnWidth;
 
   IFrameElement iframe = new IFrameElement();
   iframe.id = 'ytplayer';
@@ -143,9 +143,40 @@ void addVideoAttachmentElement(Element parent, Map attachment) {
 }
 
 void addAlbumAttachmentElement(Element parent, Map attachment) {
-  ImageElement imageElement = new ImageElement();
-  imageElement.src = attachment['thumbnails'][0]['image']['url'];
-  parent.append(imageElement);
+  var width = attachment['thumbnails'][0]['image']['width'];
+  var scaleFactor = width / columnWidth;
+  var height = attachment['thumbnails'][0]['image']['height'] ~/ scaleFactor;
+
+  DivElement div = new DivElement();
+  div.classes.add('album');
+  div.style.height = "${height.toString()}px";
+
+  ImageElement image = new ImageElement();
+  image.src = attachment['thumbnails'][0]['image']['url'];
+  image.style.zIndex = '10';
+  image.style.top = '0px';
+  image.style.left = '0px';
+  div.append(image);
+
+  image = new ImageElement();
+  image.src = attachment['thumbnails'][1]['image']['url'];
+  image.style.zIndex = '9';
+  image.style.top = '10px';
+  image.style.left = '10px';
+  div.append(image);
+
+  image = new ImageElement();
+  image.src = attachment['thumbnails'][2]['image']['url'];
+  image.style.zIndex = '8';
+  image.style.top = '20px';
+  image.style.left = '20px';
+  div.append(image);
+
+  AnchorElement anchor = new AnchorElement();
+  anchor.href = attachment['url'];
+  anchor.append(div);
+
+  parent.append(anchor);
 }
 
 void addPhotoAttachmentElement(Element parent, Map attachment) {
