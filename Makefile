@@ -8,7 +8,7 @@ all: packages web/main.dart.js
 %.dart.js: %.dart lib/underdogma.dart
 	$(DART_SDK)/bin/dart2js $(DART2JS_FLAGS) $< -o $@
 
-packages:
+packages: pubspec.yaml
 	$(DART_SDK)/bin/pub install
 	chmod -R a+rX ~/.pub-cache
 

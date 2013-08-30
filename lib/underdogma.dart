@@ -13,6 +13,8 @@ const numColumns = 3;
 const maxResults = numColumns * 4;
 
 load() {
+  setValidatorURL();
+
   String url =
     isDebug()
     ? '../test/sample-stream.json'
@@ -28,6 +30,10 @@ bool isDebug() {
     return false;
 
   return request.last.contains('debug');
+}
+
+void setValidatorURL() {
+  (query('#compliance') as AnchorElement).href = "http://validator.w3.org/check?uri=${Uri.encodeComponent(document.window.location.toString())}";
 }
 
 void stopLoadingBar() {
