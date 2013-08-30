@@ -41,7 +41,6 @@ void populate(String json) {
   stopLoadingBar();
 
   addColumns(container);
-  //addActivities(activities);
 
   int column = 0;
   for (Map activity in data['items']) {
@@ -128,45 +127,39 @@ void addContent(Element parent, String body) {
 }
 
 void addVideoAttachmentElement(Element parent, Map attachment) {
-  ImageElement image = new ImageElement();
-  image.src = attachment['image']['url'];
-
-  AnchorElement anchor = new AnchorElement();
-  anchor.href = attachment['url'];
-  anchor.append(image);
-
-  parent.append(anchor);
+  addPhotoAttachmentElement(parent, attachment);
 }
 
 void addAlbumAttachmentElement(Element parent, Map attachment) {
-  var width = attachment['thumbnails'][0]['image']['width'];
-  var scaleFactor = width / columnWidth;
-  var height = attachment['thumbnails'][0]['image']['height'] ~/ scaleFactor;
 
   DivElement div = new DivElement();
   div.classes.add('album');
-  div.style.height = "${height.toString()}px";
 
-  ImageElement image = new ImageElement();
-  image.src = attachment['thumbnails'][0]['image']['url'];
-  image.style.zIndex = '10';
-  image.style.top = '0px';
-  image.style.left = '0px';
-  div.append(image);
+  ImageElement image;
 
-  image = new ImageElement();
-  image.src = attachment['thumbnails'][1]['image']['url'];
-  image.style.zIndex = '9';
-  image.style.top = '10px';
-  image.style.left = '10px';
-  div.append(image);
+  int maxHeight = 0;
 
-  image = new ImageElement();
-  image.src = attachment['thumbnails'][2]['image']['url'];
-  image.style.zIndex = '8';
-  image.style.top = '20px';
-  image.style.left = '20px';
-  div.append(image);
+  [0, 1, 2].forEach((i) {
+    image = new ImageElement();
+
+    if (attachment['thumbnails'].length > i) {
+      image.src = attachment['thumbnails'][i]['image']['url'];
+
+      var width = attachment['thumbnails'][i]['image']['width'];
+      var scaleFactor = width / columnWidth;
+      var height = attachment['thumbnails'][i]['image']['height'] ~/ scaleFactor;
+      maxHeight = max(maxHeight, height);
+    } else {
+      image.src = 'missing.gif';
+    }
+
+    image.style.zIndex = (10 - i).toString();
+    image.style.top = '${(i)*10}px';
+    image.style.left = '${(i)*10}px';
+    div.append(image);
+  });
+
+  div.style.height = "${maxHeight}px";
 
   AnchorElement anchor = new AnchorElement();
   anchor.href = attachment['url'];

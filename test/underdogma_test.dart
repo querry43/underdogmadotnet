@@ -120,4 +120,78 @@ void main() {
     test('sets href', () { expect(firstElement.href, equals('http://youtube/some-video')); });
     test('sets image src', () { expect(firstElement.children.first.src, equals('http://youtube/some-video-image')); });
   });
+
+  group('addPhotoAttachmentElement', () {
+    DivElement parent;
+    Map attachment;
+    Element firstElement;
+
+    setUp(() {
+      attachment = {
+        'url': 'http://page-url/',
+        'image': {
+          'url': 'http://image-url/'
+        }
+      };
+
+      parent = new DivElement();
+      addPhotoAttachmentElement(parent, attachment);
+      firstElement = parent.children.first;
+    });
+
+    test('adds 1 element', () { expect(parent.children, hasLength(1)); });
+    test('sets href', () { expect(firstElement.href, equals('http://page-url/')); });
+    test('sets image src', () { expect(firstElement.children.first.src, equals('http://image-url/')); });
+  });
+
+  group('addAlbumAttachmentElement', () {
+    DivElement parent;
+    Map attachment;
+    Element firstElement;
+
+    setUp(() {
+      attachment = {
+        'url': 'http://page-url/',
+        'thumbnails': [
+          {
+            'image': { 'url': 'http://site/1.png', 'width': 100, 'height': 100 }
+          },
+          {
+            'image': { 'url': 'http://site/2.png', 'width': 240, 'height': 100 }
+          },
+          {
+            'image': { 'url': 'http://site/3.png', 'width': 120, 'height': 240 }
+          },
+          {
+            'image': { 'url': 'http://site/4.png' }
+          },
+        ],
+      };
+
+      parent = new DivElement();
+      addAlbumAttachmentElement(parent, attachment);
+      firstElement = parent.children.first;
+    });
+
+    test('adds 1 element', () { expect(parent.children, hasLength(1)); });
+    test('sets href', () { expect(firstElement.href, equals('http://page-url/')); });
+    test('scales div height', () { expect(firstElement.children.first.style.height, equals('480px')); });
+
+    test('displays first three images', () {
+      List<Element> images = firstElement.children.first.children;
+      expect(images, hasLength(3));
+      expect(images.map((i) => i.src), equals(['http://site/1.png', 'http://site/2.png', 'http://site/3.png']));
+    });
+
+    test('displays stub image if fewer than three images', () { 
+      [3, 2, 1].forEach((i) => attachment['thumbnails'].removeAt(i));
+      parent = new DivElement();
+      addAlbumAttachmentElement(parent, attachment);
+      firstElement = parent.children.first;
+
+      List<Element> images = firstElement.children.first.children;
+      expect(images, hasLength(3));
+      expect(images.map((i) => i.src.split('/').last), equals(['1.png', 'missing.gif', 'missing.gif']));
+    });
+  });
 }
