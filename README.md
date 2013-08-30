@@ -1,11 +1,9 @@
 todo
 ----
 defensive coding around service calls
-fix video embed on iphone
-image viewer
+fix validator url
 improved color theme
-improved style for all 4 card types
-testing
+testing for album card
 
 ongoing
 -------

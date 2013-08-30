@@ -105,12 +105,9 @@ void main() {
 
     setUp(() {
       attachment = {
+        'url': 'http://youtube/some-video',
         'image': {
-          'height': 350,
-          'width': 300,
-        },
-        'embed': {
-          'url': 'http://www.youtube.com/v/J4LhdU3a1KM?version=3&autohide=1',
+          'url': 'http://youtube/some-video-image',
         },
       };
 
@@ -120,22 +117,7 @@ void main() {
     });
 
     test('adds 1 element', () { expect(parent.children, hasLength(1)); });
-    test('sets src', () { expect(firstElement.src, equals('http://www.youtube.com/v/J4LhdU3a1KM?version=3&autohide=1')); });
-
-    test('scales height and width', () {
-      String width = 240.toString();
-      String height = (350 * (240 / 300)).toInt().toString();
-      expect(firstElement.width, equals(width));
-      expect(firstElement.height, equals(height));
-    });
-
-    test('limits minimum height', () {
-      attachment['image']['height'] = 100;
-      parent = new DivElement();
-      addVideoAttachmentElement(parent, attachment);
-      firstElement = parent.children.first;
-
-      expect(firstElement.height, equals(200.toString()));
-    });
+    test('sets href', () { expect(firstElement.href, equals('http://youtube/some-video')); });
+    test('sets image src', () { expect(firstElement.children.first.src, equals('http://youtube/some-video-image')); });
   });
 }

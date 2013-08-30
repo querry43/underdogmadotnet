@@ -128,18 +128,14 @@ void addContent(Element parent, String body) {
 }
 
 void addVideoAttachmentElement(Element parent, Map attachment) {
-  var width = attachment['image']['width'];
-  var height = attachment['image']['height'];
-  var scaleFactor = width / columnWidth;
+  ImageElement image = new ImageElement();
+  image.src = attachment['image']['url'];
 
-  IFrameElement iframe = new IFrameElement();
-  iframe.id = 'ytplayer';
-  iframe.width = (width ~/ scaleFactor).toString();
-  iframe.height = max(200, height ~/ scaleFactor).toString();
-  iframe.src = attachment['embed']['url'];
-  iframe.attributes['frameborder'] = '0';
+  AnchorElement anchor = new AnchorElement();
+  anchor.href = attachment['url'];
+  anchor.append(image);
 
-  parent.append(iframe);
+  parent.append(anchor);
 }
 
 void addAlbumAttachmentElement(Element parent, Map attachment) {
