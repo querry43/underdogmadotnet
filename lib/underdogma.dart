@@ -83,7 +83,7 @@ void addAttachmentElements(Element parent, List<Map> attachments) {
   for (Map attachment in attachments) {
     switch(attachment['objectType']) {
       case 'video':
-        addVideoAttachmentElement(parent, attachment);
+        addPhotoAttachmentElement(parent, attachment);
         break;
 
       case 'album':
@@ -130,10 +130,6 @@ void addContent(Element parent, String body) {
   ParagraphElement element = new ParagraphElement();
   element.appendHtml(body);
   parent.append(element);
-}
-
-void addVideoAttachmentElement(Element parent, Map attachment) {
-  addPhotoAttachmentElement(parent, attachment);
 }
 
 void addAlbumAttachmentElement(Element parent, Map attachment) {
@@ -189,14 +185,16 @@ void addArticleAttachmentElement(Element parent, Map attachment) {
   ParagraphElement name = new ParagraphElement();
   name.text = attachment['displayName'];
   name.classes.add('name');
-
-  ImageElement image = new ImageElement();
-  image.src = attachment['fullImage']['url'];
-
-  AnchorElement anchor = new AnchorElement();
-  anchor.href = attachment['url'];
-  anchor.append(image);
-
   parent.append(name);
-  parent.append(anchor);
+
+  if (attachment['fullImage'] != null) {
+    ImageElement image = new ImageElement();
+    image.src = attachment['fullImage']['url'];
+
+    AnchorElement anchor = new AnchorElement();
+    anchor.href = attachment['url'];
+    anchor.append(image);
+
+    parent.append(anchor);
+  }
 }

@@ -96,29 +96,14 @@ void main() {
 
     test('adds anchor', () { expect(secondElement.href, equals('http://www.instructables.com/id/Crochet-Locutus/')); });
     test('adds image', () { expect(secondElement.children.first.src, equals('http://www.instructables.com/files/deriv/FI3/XZ5N/HJW8WH4K/FI3XZ5NHJW8WH4K.SQUARE3.jpg')); });
-  });
 
-  group('addVideoAttachmentElement', () {
-    DivElement parent;
-    Element firstElement;
-    Map attachment;
-
-    setUp(() {
-      attachment = {
-        'url': 'http://youtube/some-video',
-        'image': {
-          'url': 'http://youtube/some-video-image',
-        },
-      };
+    test('omits image when absent', () {
+      attachment.remove('fullImage');
 
       parent = new DivElement();
-      addVideoAttachmentElement(parent, attachment);
-      firstElement = parent.children.first;
+      addArticleAttachmentElement(parent, attachment);
+      expect(parent.children, hasLength(1));
     });
-
-    test('adds 1 element', () { expect(parent.children, hasLength(1)); });
-    test('sets href', () { expect(firstElement.href, equals('http://youtube/some-video')); });
-    test('sets image src', () { expect(firstElement.children.first.src, equals('http://youtube/some-video-image')); });
   });
 
   group('addPhotoAttachmentElement', () {
@@ -142,6 +127,20 @@ void main() {
     test('adds 1 element', () { expect(parent.children, hasLength(1)); });
     test('sets href', () { expect(firstElement.href, equals('http://page-url/')); });
     test('sets image src', () { expect(firstElement.children.first.src, equals('http://image-url/')); });
+
+    test('handles videos', () {
+      attachment = {
+        'url': 'http://youtube/some-video',
+        'image': {
+          'url': 'http://youtube/some-video-image',
+        },
+      };
+
+      parent = new DivElement();
+      addPhotoAttachmentElement(parent, attachment);
+
+      expect(parent.children, hasLength(1));
+    });
   });
 
   group('addAlbumAttachmentElement', () {
