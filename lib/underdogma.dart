@@ -10,7 +10,7 @@ const userId = '104268957202871548605';
 const key = 'AIzaSyDjt9V66sWPDzuxoHhFZEZQGZR-0qySclI';
 const columnWidth = 240;
 const numColumns = 3;
-const maxResults = numColumns * 4;
+const maxResults = numColumns * 6;
 
 load() {
   setValidatorURL();
@@ -37,7 +37,7 @@ void setValidatorURL() {
 }
 
 void stopLoadingBar() {
-  query('#circularG').remove();
+  query('#loading').remove();
 }
 
 void populate(String json) {

@@ -43,6 +43,8 @@ div { overflow: hidden; }
 body {
   background-color: grey;
   margin: 0;
+  background-image:url('background.jpg');
+  background-repeat:repeat;
 }
 
 #content {
@@ -52,6 +54,7 @@ body {
   margin-left: auto;
   margin-right: auto;
   min-height: 100%;
+  text-align: center;
 
   header {
     .round-corners(3px);
@@ -66,10 +69,16 @@ body {
     padding: 5px;
   }
 
-  #circularG {
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 50px;
+  #loading {
+    display: inline-block;
+    padding: 50px;
+    margin: 50px;
+
+    .round-corners(20px);
+    .inset-shadow(1px);
+    border: solid 3px;
+    border-color: #cccccc;
+    background-color: #666666;
   }
 
   #activities {
