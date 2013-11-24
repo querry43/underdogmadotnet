@@ -1,4 +1,6 @@
 name: underdogmadotnet
+description: Matt Harrington's personal website
+
 dependencies:
   browser: any
   intl: any

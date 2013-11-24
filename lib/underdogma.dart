@@ -1,7 +1,7 @@
 library underdogma;
 
 import 'dart:html';
-import 'dart:json';
+import 'dart:convert';
 import 'dart:math';
 import 'package:intl/intl.dart';
 
@@ -41,7 +41,7 @@ void stopLoadingBar() {
 }
 
 void populate(String json) {
-  Map data = parse(json);
+  Map data = JSON.decode(json);
   Element container = query('#activities');
 
   stopLoadingBar();

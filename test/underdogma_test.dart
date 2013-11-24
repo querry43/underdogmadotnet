@@ -58,7 +58,7 @@ void main() {
     test('sets child class', () { expect(firstElement.children.first.classes.contains('originally-shared'), isTrue); });
     test('sets child text', () { expect(firstElement.children.first.text, equals('Adafruit Industries')); });
 
-    test('adds hr', () { expect(secondElement is HrElement, isTrue); });
+    test('adds hr', () { expect(secondElement is HRElement, isTrue); });
 
     test('only adds element when verb = share', () {
       activity['verb'] = 'post';
