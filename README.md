@@ -1,5 +1,5 @@
 todo
 ----
-defensive coding around service calls
-monitor.us badge
-google analytics
+* defensive coding around service calls
+* monitor.us badge
+* google analytics

@@ -74,7 +74,8 @@ void addActivityElement(Element parent, Map activity) {
   addOriginallySharedElement(element, activity);
   addContent(element, activity['object']['content']);
 
-  addAttachmentElements(element, activity['object']['attachments']);
+  if (activity['object']['attachments'] != null)
+    addAttachmentElements(element, activity['object']['attachments']);
 
   parent.append(element);
 }

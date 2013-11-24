@@ -4789,7 +4789,7 @@ H.IV(y)
 x=H.lD(C.BZ.ex(document,"p",null),"$isSN")
 J.IR(x,"beforeend",y)
 J.WB(z,x)
-R.BD(z,J.UQ(b.t(b,"object"),"attachments"))
+if(J.UQ(b.t(b,"object"),"attachments")!=null)R.BD(z,J.UQ(b.t(b,"object"),"attachments"))
 J.WB(a,z)},BD:function(a,b){var z,y,x
 for(z=J.GP(H.qI(b,"$isList",[P.T8],"$aszM"));z.G();){y=H.lD(z.gl(),"$isT8")
 switch(y.t(y,"objectType")){case"video":R.J0(a,y)

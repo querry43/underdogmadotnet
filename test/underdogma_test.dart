@@ -33,7 +33,7 @@ void main() {
 
     test('adds 1 element', () { expect(parent.children, hasLength(1)); });
     test('sets class', () { expect(firstChild.classes.contains('date'), isTrue); });
-    test('formatts date string', () { expect(firstChild.text, equals('August 8, 2013')); });
+    test('formats date string', () { expect(firstChild.text, equals('August 8, 2013')); });
   });
 
   group('addOriginallySharedElement', () {
@@ -191,6 +191,21 @@ void main() {
       List<Element> images = firstElement.children.first.children;
       expect(images, hasLength(3));
       expect(images.map((i) => i.src.split('/').last), equals(['1.png', 'missing.gif', 'missing.gif']));
+    });
+  });
+
+  group('addActivityElement', () {
+    test('does not die when no attachments', () {
+      Map activity = {
+        'published': '2013-08-08T14:59:23.795Z',
+        'object': {
+          'content': 'somecontent',
+          'attachments': null,
+        },
+      };
+
+      DivElement parent = new DivElement();
+      addActivityElement(parent, activity);
     });
   });
 }
