@@ -1,21 +1,17 @@
-DART_SDK=/usr/lib/dart
-DART2JS_FLAGS=-c --minify
+PUB=/usr/lib/dart/bin/pub
 
 .SUFFIXES: .js .dart
 
-all: packages web/main.dart.js
+all: build/web/main.dart.js
 
-%.dart.js: %.dart lib/underdogma.dart
-	$(DART_SDK)/bin/dart2js $(DART2JS_FLAGS) $< -o $@
-
-packages: pubspec.yaml
-	$(DART_SDK)/bin/pub install
-	chmod -R a+rX ~/.pub-cache
+build/web/main.dart.js: pubspec.yaml lib/underdogma.dart
+	$(PUB) get
+	$(PUB) build
 
 clean:
-	rm -f web/*.dart.js.map web/*.dart.js.deps
+	rm -rf build
 
 distclean: clean
-	rm -rf packages */packages web/*.dart.js
+	rm -rf packages */packages
 
 .PHONY: clean
