@@ -1,4 +1,4 @@
-DART_SDK=/home/matt/dart-sdk
+DART_SDK=/usr/lib/dart
 DART2JS_FLAGS=-c --minify
 
 .SUFFIXES: .js .dart
