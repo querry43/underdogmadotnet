@@ -41,7 +41,6 @@ void stopLoadingBar() {
 }
 
 void populate(String json) {
-  Map data = JSON.decode(json);
   Element container = query('#activities');
 
   stopLoadingBar();
@@ -49,11 +48,33 @@ void populate(String json) {
   addColumns(container);
 
   int column = 0;
-  for (Map activity in data['items']) {
+  for (Map activity in googlePlusJSONToActivities(json)) {
     addActivityElement(container.query('.col${column}'), activity);
     column++;
     column %= numColumns;
   }
+}
+
+Map googlePlusJSONToActivities(String json) {
+  Map data = JSON.decode(json);
+  List<Map> activities = new List<Map>();
+
+  for (Map activity in data['items']) {
+    Map activityDescription = new Map();
+    activityDescription['date'] = activity['published'];
+    activityDescription['content'] = activity['object']['content'];
+    if (activity['verb'] == 'share') {
+      activityDescription['reshared'] = true;
+      activityDescription['reshared_source'] = activity['object']['actor']['displayName'];
+    }
+    activityDescription['attachments'] = new List<Map>();
+    if (activity['object']['attachments'] != null)
+      activityDescription['attachments'] = activity['object']['attachments'];
+
+    activities.add(activityDescription);
+  }
+
+  return activities;
 }
 
 void addColumns(Element parent) {
@@ -70,12 +91,10 @@ void addActivityElement(Element parent, Map activity) {
   DivElement element = new DivElement();
   element.classes.add('activity');
 
-  addDateElement(element, activity['published']);
+  addDateElement(element, activity['date']);
   addOriginallySharedElement(element, activity);
-  addContent(element, activity['object']['content']);
-
-  if (activity['object']['attachments'] != null)
-    addAttachmentElements(element, activity['object']['attachments']);
+  addContent(element, activity['content']);
+  addAttachmentElements(element, activity['attachments']);
 
   parent.append(element);
 }
@@ -113,12 +132,12 @@ void addDateElement(Element parent, String date) {
 }
 
 void addOriginallySharedElement(Element parent, Map activity) {
-  if (activity['verb'] == 'share') {
+  if (activity['reshared']) {
     ParagraphElement element = new ParagraphElement();
     element.text = 'Originally shared by ';
 
     SpanElement name = new SpanElement();
-    name.text = activity['object']['actor']['displayName'];
+    name.text = activity['reshared_source'];
     name.classes.add('originally-shared');
     element.append(name);
 

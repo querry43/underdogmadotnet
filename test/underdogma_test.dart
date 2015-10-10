@@ -43,8 +43,8 @@ void main() {
 
     setUp(() {
       activity = {
-        'verb': 'share',
-        'object': { 'actor': { 'displayName': 'Adafruit Industries' } },
+        'reshared': true,
+        'reshared_source': 'Adafruit Industries',
       };
       parent = new DivElement();
       addOriginallySharedElement(parent, activity);
@@ -60,8 +60,8 @@ void main() {
 
     test('adds hr', () { expect(secondElement is HRElement, isTrue); });
 
-    test('only adds element when verb = share', () {
-      activity['verb'] = 'post';
+    test('only adds element when reshared', () {
+      activity['reshared'] = false;
       parent = new DivElement();
       addOriginallySharedElement(parent, activity);
       expect(parent.children, hasLength(0));
@@ -197,11 +197,9 @@ void main() {
   group('addActivityElement', () {
     test('does not die when no attachments', () {
       Map activity = {
-        'published': '2013-08-08T14:59:23.795Z',
-        'object': {
-          'content': 'somecontent',
-          'attachments': null,
-        },
+        'date': '2013-08-08T14:59:23.795Z',
+        'content': 'somecontent',
+        'attachments': [],
       };
 
       DivElement parent = new DivElement();
