@@ -1,7 +1,8 @@
 library underdogma;
 
-import 'dart:html';
 import 'dart:convert';
+import 'dart:html';
+import 'dart:js';
 import 'dart:math';
 import 'package:intl/intl.dart';
 
@@ -15,12 +16,23 @@ const maxResults = numColumns * 6;
 load() {
   setValidatorURL();
 
-  String url =
-    isDebug()
-    ? '../test/sample-stream.json'
-    : '${apiUrl}/people/${userId}/activities/public?key=${key}&maxResults=${maxResults}';
+  // String url =
+  //   isDebug()
+  //   ? '../test/sample-stream.json'
+  //   : '${apiUrl}/people/${userId}/activities/public?key=${key}&maxResults=${maxResults}';
 
-  HttpRequest.getString(url).then(populate);
+  // HttpRequest.getString(url).then(populate);
+
+
+  context['processData'] = (JsObject data) {
+    print('processData');
+    populate(data.toString());
+  };
+
+  // make the call
+  ScriptElement script = new ScriptElement();
+  script.src = 'https://sites.google.com/feeds/content/underdogma.net/wiki/?ancestor=620825043256417770&kind=announcement&callback=processData';
+  document.body.children.add(script);
 }
 
 bool isDebug() {
@@ -33,29 +45,66 @@ bool isDebug() {
 }
 
 void setValidatorURL() {
-  (query('#compliance') as AnchorElement).href = "http://validator.w3.org/check?uri=${Uri.encodeComponent(document.window.location.toString())}";
+  (querySelector('#compliance') as AnchorElement).href = "http://validator.w3.org/check?uri=${Uri.encodeComponent(document.window.location.toString())}";
 }
 
 void stopLoadingBar() {
-  query('#loading').remove();
+  querySelector('#loading').remove();
 }
 
 void populate(String json) {
-  Element container = query('#activities');
+  Element container = querySelector('#activities');
 
   stopLoadingBar();
 
   addColumns(container);
 
   int column = 0;
-  for (Map activity in googlePlusJSONToActivities(json)) {
-    addActivityElement(container.query('.col${column}'), activity);
+  for (Map activity in googleSitesAtomToActivities(json)) {
+  //for (Map activity in googlePlusJSONToActivities(json)) {
+    addActivityElement(container.querySelector('.col${column}'), activity);
     column++;
     column %= numColumns;
   }
 }
 
-Map googlePlusJSONToActivities(String json) {
+List<Map> googleSitesAtomToActivities(String atom) {
+  Document data = new DomParser().parseFromString(atom, 'text/xml');
+  List<Map> activities = new List<Map>();
+
+  List<Node> nodes = data.querySelectorAll('entry');
+  print(nodes.length);
+
+  for (HtmlElement activity in data.querySelectorAll('entry')) {
+    Map activityDescription = new Map();
+
+    String url = activity.querySelector('link[rel="alternate"]').attributes['href'];
+    String content = activity.querySelector('content').text;
+
+    if (content.length > 200)
+        content = content.substring(0, 200) + '...';
+
+    activityDescription['date'] = activity.querySelector('published').text;
+    activityDescription['content'] = content;
+    activityDescription['attachments'] = new List<Map>();
+
+    ImageElement img = activity.querySelector('img');
+    if (img != null) {
+      Map attachment = new Map();
+      attachment['objectType'] = 'photo';
+      attachment['image'] = new Map();
+      attachment['image']['url'] = img.src;
+      attachment['url'] = url;
+      activityDescription['attachments'].add(attachment);
+    }
+
+    activities.add(activityDescription);
+  }
+
+  return activities;
+}
+
+List<Map> googlePlusJSONToActivities(String json) {
   Map data = JSON.decode(json);
   List<Map> activities = new List<Map>();
 
