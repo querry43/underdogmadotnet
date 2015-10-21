@@ -95,12 +95,16 @@ body {
       width: 300px;
       border: solid 1px;
       border-color: #cccccc;
-      .round-corners(3px);
+      .round-corners(1px);
       .inset-shadow(1px);
     }
 
     a:hover, a:active {
-      background-color: #7A991A;
+      background-color: #539A52;
+    }
+
+    a.selected {
+      background-color: #7FA77E;
     }
   }
 
@@ -116,7 +120,7 @@ body {
     background-color: #666666;
   }
 
-  #activities {
+  #tabContainer {
     div.col0 {
       margin-left: 10px;
     }
@@ -128,7 +132,7 @@ body {
       margin-right: 10px;
     }
 
-    div.activity {
+    div.entry {
       background-color: white;
       .round-corners;
       .inset-shadow;

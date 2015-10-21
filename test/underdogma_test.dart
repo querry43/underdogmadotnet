@@ -194,7 +194,7 @@ void main() {
     });
   });
 
-  group('addActivityElement', () {
+  group('addEntryElement', () {
     test('does not die when no attachments', () {
       Map activity = {
         'date': '2013-08-08T14:59:23.795Z',
@@ -203,7 +203,7 @@ void main() {
       };
 
       DivElement parent = new DivElement();
-      addActivityElement(parent, activity);
+      addEntryElement(parent, activity);
     });
   });
 }

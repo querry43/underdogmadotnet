@@ -13,26 +13,82 @@ const columnWidth = 240;
 const numColumns = 3;
 const maxResults = numColumns * 6;
 
+int numTabs = 0;
+int numLoadedTabs = 0;
+
 load() {
+  addTabs();
   setValidatorURL();
+  loadInterests();
+  loadProjects();
+}
 
-  // String url =
-  //   isDebug()
-  //   ? '../test/sample-stream.json'
-  //   : '${apiUrl}/people/${userId}/activities/public?key=${key}&maxResults=${maxResults}';
+void loadInterests() {
+  String url =
+    isDebug()
+    ? '../test/sample-stream.json'
+    : '${apiUrl}/people/${userId}/activities/public?key=${key}&maxResults=${maxResults}';
 
-  // HttpRequest.getString(url).then(populate);
+  HttpRequest.getString(url).then(
+    (String data) { loadTab(googlePlusJSONToEntries(data), '#interests_container'); }
+  );
+}
 
-
+void loadProjects() {
   context['processData'] = (JsObject data) {
-    print('processData');
-    populate(data.toString());
+    loadTab(googleSitesAtomToEntries(data.toString()), '#projects_container');
   };
 
-  // make the call
   ScriptElement script = new ScriptElement();
   script.src = 'https://sites.google.com/feeds/content/underdogma.net/wiki/?ancestor=620825043256417770&kind=announcement&callback=processData';
   document.body.children.add(script);
+}
+
+void addTabs() {
+  UListElement menu = querySelector('#navbar');
+  Element tabContainer = querySelector('#tabContainer');
+
+  addTab(menu, tabContainer, 'interests', 'Interests', true);
+  addTab(menu, tabContainer, 'projects', 'Projects');
+
+  for (AnchorElement link in menu.querySelectorAll('a')) {
+    link.onClick.listen(
+      (event) {
+        for (AnchorElement link in menu.querySelectorAll('a'))
+          link.classes.remove('selected');
+
+        for (DivElement div in tabContainer.querySelectorAll('.tabContainer'))
+          div.style.display = 'none';
+
+        link.classes.add('selected');
+        tabContainer.querySelector('#'+link.attributes['rel']+'_container').style.display = 'initial';
+      }
+    );
+  }
+}
+
+void addTab(Element menu, Element tabContainer, String name, String text, [bool def = false]) {
+  AnchorElement link = new AnchorElement(href: '#' + name);
+  link.attributes['rel'] = name;
+  link.text = text;
+
+  LIElement li = new LIElement();
+  li.append(link);
+
+  menu.append(li);
+
+  DivElement div = new DivElement();
+  div.id = name + '_container';
+  div.style.display = 'none';
+  div.classes.add('tabContainer');
+  tabContainer.append(div);
+
+  if (window.location.hash == '#'+name || (window.location.hash == '' && def)) {
+    link.classes.add('selected');
+    div.style.display = 'initial';
+  }
+
+  numTabs++;
 }
 
 bool isDebug() {
@@ -52,75 +108,74 @@ void stopLoadingBar() {
   querySelector('#loading').remove();
 }
 
-void populate(String json) {
-  Element container = querySelector('#activities');
+void loadTab(List<Map> entries, String tab) {
+  Element tabElement = querySelector(tab);
 
-  stopLoadingBar();
+  if (++numLoadedTabs == numTabs)
+    stopLoadingBar();
 
-  addColumns(container);
+  addColumns(tabElement);
 
   int column = 0;
-  for (Map activity in googleSitesAtomToActivities(json)) {
-  //for (Map activity in googlePlusJSONToActivities(json)) {
-    addActivityElement(container.querySelector('.col${column}'), activity);
+  for (Map entry in entries) {
+    addEntryElement(tabElement.querySelector('.col${column}'), entry);
     column++;
     column %= numColumns;
   }
 }
 
-List<Map> googleSitesAtomToActivities(String atom) {
+List<Map> googleSitesAtomToEntries(String atom) {
   Document data = new DomParser().parseFromString(atom, 'text/xml');
   List<Map> activities = new List<Map>();
 
   List<Node> nodes = data.querySelectorAll('entry');
-  print(nodes.length);
 
-  for (HtmlElement activity in data.querySelectorAll('entry')) {
-    Map activityDescription = new Map();
+  for (HtmlElement entry in data.querySelectorAll('entry')) {
+    Map entryDescription = new Map();
 
-    String url = activity.querySelector('link[rel="alternate"]').attributes['href'];
-    String content = activity.querySelector('content').text;
+    String url = entry.querySelector('link[rel="alternate"]').attributes['href'];
+    String content = entry.querySelector('content').text;
 
     if (content.length > 200)
         content = content.substring(0, 200) + '...';
 
-    activityDescription['date'] = activity.querySelector('published').text;
-    activityDescription['content'] = content;
-    activityDescription['attachments'] = new List<Map>();
+    entryDescription['date'] = entry.querySelector('published').text;
+    entryDescription['content'] = content;
+    entryDescription['attachments'] = new List<Map>();
 
-    ImageElement img = activity.querySelector('img');
+    ImageElement img = entry.querySelector('img');
     if (img != null) {
       Map attachment = new Map();
       attachment['objectType'] = 'photo';
       attachment['image'] = new Map();
       attachment['image']['url'] = img.src;
       attachment['url'] = url;
-      activityDescription['attachments'].add(attachment);
+      entryDescription['attachments'].add(attachment);
     }
 
-    activities.add(activityDescription);
+    activities.add(entryDescription);
   }
 
   return activities;
 }
 
-List<Map> googlePlusJSONToActivities(String json) {
+List<Map> googlePlusJSONToEntries(String json) {
   Map data = JSON.decode(json);
   List<Map> activities = new List<Map>();
 
-  for (Map activity in data['items']) {
-    Map activityDescription = new Map();
-    activityDescription['date'] = activity['published'];
-    activityDescription['content'] = activity['object']['content'];
-    if (activity['verb'] == 'share') {
-      activityDescription['reshared'] = true;
-      activityDescription['reshared_source'] = activity['object']['actor']['displayName'];
+  for (Map entry in data['items']) {
+    Map entryDescription = new Map();
+    entryDescription['date'] = entry['published'];
+    entryDescription['content'] = entry['object']['content'];
+    if (entry['verb'] == 'share') {
+      entryDescription['reshared'] = true;
+      entryDescription['reshared_source'] = entry['object']['actor']['displayName'];
     }
-    activityDescription['attachments'] = new List<Map>();
-    if (activity['object']['attachments'] != null)
-      activityDescription['attachments'] = activity['object']['attachments'];
+    entryDescription['attachments'] = new List<Map>();
+    if (entry['object']['attachments'] != null)
+      entryDescription['attachments'] = entry['object']['attachments'];
 
-    activities.add(activityDescription);
+    activities.add(entryDescription);
   }
 
   return activities;
@@ -136,14 +191,14 @@ void addColumns(Element parent) {
   }
 }
 
-void addActivityElement(Element parent, Map activity) {
+void addEntryElement(Element parent, Map entry) {
   DivElement element = new DivElement();
-  element.classes.add('activity');
+  element.classes.add('entry');
 
-  addDateElement(element, activity['date']);
-  addOriginallySharedElement(element, activity);
-  addContent(element, activity['content']);
-  addAttachmentElements(element, activity['attachments']);
+  addDateElement(element, entry['date']);
+  addOriginallySharedElement(element, entry);
+  addContent(element, entry['content']);
+  addAttachmentElements(element, entry['attachments']);
 
   parent.append(element);
 }
@@ -180,13 +235,13 @@ void addDateElement(Element parent, String date) {
   parent.append(element);
 }
 
-void addOriginallySharedElement(Element parent, Map activity) {
-  if (activity['reshared']) {
+void addOriginallySharedElement(Element parent, Map entry) {
+  if (entry['reshared']) {
     ParagraphElement element = new ParagraphElement();
     element.text = 'Originally shared by ';
 
     SpanElement name = new SpanElement();
-    name.text = activity['reshared_source'];
+    name.text = entry['reshared_source'];
     name.classes.add('originally-shared');
     element.append(name);
 
