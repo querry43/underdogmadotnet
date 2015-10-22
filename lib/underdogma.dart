@@ -147,6 +147,22 @@ List<Map> googleSitesAtomToEntries(String atom) {
     entryDescription['attachments'] = new List<Map>();
 
     ImageElement img = entry.querySelector('img');
+    IFrameElement video = entry.querySelector('iframe.youtube-player');
+
+    if (video != null) {
+      String embedUrl = video.attributes['src'];
+      int index = embedUrl.indexOf('embed/') + 6;
+      String videoId = embedUrl.substring(index, index + 11);
+      String imageUrl = '//img.youtube.com/vi/'+videoId+'/1.jpg';
+
+      Map attachment = new Map();
+      attachment['objectType'] = 'video';
+      attachment['image'] = new Map();
+      attachment['image']['url'] = imageUrl;
+      attachment['url'] = url;
+      entryDescription['attachments'].add(attachment);
+    }
+
     if (img != null) {
       Map attachment = new Map();
       attachment['objectType'] = 'photo';
