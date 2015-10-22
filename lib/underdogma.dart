@@ -26,7 +26,7 @@ load() {
 void loadInterests() {
   String url =
     isDebug()
-    ? '../test/sample-stream.json'
+    ? '../test/sample-gplus-stream.json'
     : '${apiUrl}/people/${userId}/activities/public?key=${key}&maxResults=${maxResults}';
 
   HttpRequest.getString(url).then(
@@ -40,7 +40,10 @@ void loadProjects() {
   };
 
   ScriptElement script = new ScriptElement();
-  script.src = 'https://sites.google.com/feeds/content/underdogma.net/wiki/?ancestor=620825043256417770&kind=announcement&callback=processData';
+  script.src =
+    isDebug()
+    ? '../test/sample-sites-stream'
+    : 'https://sites.google.com/feeds/content/underdogma.net/wiki/?ancestor=620825043256417770&kind=announcement&callback=processData';
   document.body.children.add(script);
 }
 
