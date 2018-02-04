@@ -125,6 +125,10 @@ void loadTab(List<Map> entries, String tab) {
     column++;
     column %= numColumns;
   }
+
+  for (ImageElement imgElement in querySelectorAll('img')) {
+    imgElement.setAttribute('onerror', "this.style.display='none'");
+  }
 }
 
 List<Map> googleSitesAtomToEntries(String atom) {
