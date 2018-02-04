@@ -155,15 +155,12 @@ List<Map> googleSitesAtomToEntries(String atom) {
 
     if (video != null) {
       String embedUrl = video.attributes['src'];
-      int index = embedUrl.indexOf('embed/') + 6;
-      String videoId = embedUrl.substring(index, index + 11);
-      String imageUrl = '//img.youtube.com/vi/'+videoId+'/1.jpg';
 
       Map attachment = new Map();
       attachment['objectType'] = 'video';
-      attachment['image'] = new Map();
-      attachment['image']['url'] = imageUrl;
-      attachment['url'] = url;
+      attachment['embed'] = new Map();
+      attachment['embed']['url'] = embedUrl;
+
       entryDescription['attachments'].add(attachment);
     }
 
@@ -230,7 +227,7 @@ void addAttachmentElements(Element parent, List<Map> attachments) {
   for (Map attachment in attachments) {
     switch(attachment['objectType']) {
       case 'video':
-        addPhotoAttachmentElement(parent, attachment);
+        addVideoAttachmentElement(parent, attachment);
         break;
 
       case 'album':
@@ -326,6 +323,26 @@ void addPhotoAttachmentElement(Element parent, Map attachment) {
   anchor.append(image);
 
   parent.append(anchor);
+}
+
+void addVideoAttachmentElement(Element parent, Map attachment) {
+  if (attachment.containsKey('embed')) {
+    ParagraphElement name = new ParagraphElement();
+    name.text = attachment['displayName'];
+
+    EmbedElement embed = new EmbedElement();
+    embed.src = removeQueryParametersFromUrl(attachment['embed']['url']);
+
+    parent.append(name);
+    parent.append(embed);
+  } else {
+    addPhotoAttachmentElement(parent, attachment);
+  }
+}
+
+String removeQueryParametersFromUrl(String url) {
+  Uri uri = Uri.parse(url);
+  return uri.origin + uri.path;
 }
 
 void addArticleAttachmentElement(Element parent, Map attachment) {
