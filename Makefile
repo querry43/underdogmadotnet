@@ -8,10 +8,13 @@ build/web/main.dart.js: pubspec.yaml lib/underdogma.dart
 	$(PUB) get
 	$(PUB) build
 
+test:
+	QT_QPA_PLATFORM=offscreen $(PUB) run test -p phantomjs test/underdogma_test.dart
+
 clean:
 	rm -rf build
 
 distclean: clean
 	rm -rf packages */packages
 
-.PHONY: clean
+.PHONY: test clean distclean

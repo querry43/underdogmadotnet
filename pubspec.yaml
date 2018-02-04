@@ -4,4 +4,6 @@ description: Matt Harrington's personal website
 dependencies:
   browser: any
   intl: any
-  unittest: any
+
+dev_dependencies:
+  test: any

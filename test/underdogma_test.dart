@@ -1,11 +1,8 @@
 import 'dart:html';
-import 'package:unittest/html_enhanced_config.dart';
-import 'package:unittest/unittest.dart';
+import 'package:test/test.dart';
 import '../lib/underdogma.dart';
 
 void main() {
-  useHtmlEnhancedConfiguration();
- 
   group('getColumns', () {
     DivElement parent;
 
@@ -71,7 +68,8 @@ void main() {
   group('addArticleAttachmentElement', () {
     DivElement parent;
     Map attachment;
-    Element firstElement, secondElement;
+    Element firstElement;
+    AnchorElement secondElement;
 
     setUp(() {
       attachment = {
@@ -95,7 +93,7 @@ void main() {
     test('sets name class', () { expect(firstElement.classes.contains('name'), isTrue); });
 
     test('adds anchor', () { expect(secondElement.href, equals('http://www.instructables.com/id/Crochet-Locutus/')); });
-    test('adds image', () { expect(secondElement.children.first.src, equals('http://www.instructables.com/files/deriv/FI3/XZ5N/HJW8WH4K/FI3XZ5NHJW8WH4K.SQUARE3.jpg')); });
+    test('adds image', () { expect((secondElement.children.first as ImageElement).src, equals('http://www.instructables.com/files/deriv/FI3/XZ5N/HJW8WH4K/FI3XZ5NHJW8WH4K.SQUARE3.jpg')); });
 
     test('omits image when absent', () {
       attachment.remove('fullImage');
@@ -109,7 +107,7 @@ void main() {
   group('addPhotoAttachmentElement', () {
     DivElement parent;
     Map attachment;
-    Element firstElement;
+    AnchorElement firstElement;
 
     setUp(() {
       attachment = {
@@ -126,7 +124,7 @@ void main() {
 
     test('adds 1 element', () { expect(parent.children, hasLength(1)); });
     test('sets href', () { expect(firstElement.href, equals('http://page-url/')); });
-    test('sets image src', () { expect(firstElement.children.first.src, equals('http://image-url/')); });
+    test('sets image src', () { expect((firstElement.children.first as ImageElement).src, equals('http://image-url/')); });
 
     test('handles videos', () {
       attachment = {
@@ -146,7 +144,7 @@ void main() {
   group('addAlbumAttachmentElement', () {
     DivElement parent;
     Map attachment;
-    Element firstElement;
+    AnchorElement firstElement;
 
     setUp(() {
       attachment = {

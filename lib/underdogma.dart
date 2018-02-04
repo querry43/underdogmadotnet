@@ -256,7 +256,7 @@ void addDateElement(Element parent, String date) {
 }
 
 void addOriginallySharedElement(Element parent, Map entry) {
-  if (entry['reshared']) {
+  if (entry.containsKey('reshared') && entry['reshared']) {
     ParagraphElement element = new ParagraphElement();
     element.text = 'Originally shared by ';
 
