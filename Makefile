@@ -4,8 +4,10 @@ PUB=/usr/lib/dart/bin/pub
 
 all: build/web/main.dart.js
 
-build/web/main.dart.js: pubspec.yaml lib/underdogma.dart
-	$(PUB) get
+deps:
+	$(PUB) get --packages-dir
+
+build/web/main.dart.js: deps pubspec.yaml lib/underdogma.dart
 	$(PUB) build
 
 test:
@@ -17,4 +19,4 @@ clean:
 distclean: clean
 	rm -rf packages */packages
 
-.PHONY: test clean distclean
+.PHONY: test deps clean distclean
