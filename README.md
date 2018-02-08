@@ -1,5 +1,4 @@
-todo
+# underdogmadotnet
 ----
-* defensive coding around service calls
-* monitor.us badge
-* google analytics
+
+Matt Harrington's personal website based on google+ and google sites feeds.
