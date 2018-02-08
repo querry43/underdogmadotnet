@@ -1,0 +1,9 @@
+language: dart
+dart:
+- stable
+- dev
+- "1.24.2"
+dart_task:
+- test: --platform phantomjs
+- dartfmt: true
+- dartanalyzer: --fatal-warnings .

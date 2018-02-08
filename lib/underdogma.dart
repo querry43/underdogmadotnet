@@ -24,14 +24,13 @@ load() {
 }
 
 void loadInterests() {
-  String url =
-    isDebug()
-    ? '../test/sample-gplus-stream.json'
-    : '${apiUrl}/people/${userId}/activities/public?key=${key}&maxResults=${maxResults}';
+  String url = isDebug()
+      ? '../test/sample-gplus-stream.json'
+      : '${apiUrl}/people/${userId}/activities/public?key=${key}&maxResults=${maxResults}';
 
-  HttpRequest.getString(url).then(
-    (String data) { loadTab(googlePlusJSONToEntries(data), '#interests_container'); }
-  );
+  HttpRequest.getString(url).then((String data) {
+    loadTab(googlePlusJSONToEntries(data), '#interests_container');
+  });
 }
 
 void loadProjects() {
@@ -40,10 +39,9 @@ void loadProjects() {
   };
 
   ScriptElement script = new ScriptElement();
-  script.src =
-    isDebug()
-    ? '../test/sample-sites-stream'
-    : 'https://sites.google.com/feeds/content/underdogma.net/wiki/?ancestor=620825043256417770&kind=announcement&callback=processData';
+  script.src = isDebug()
+      ? '../test/sample-sites-stream'
+      : 'https://sites.google.com/feeds/content/underdogma.net/wiki/?ancestor=620825043256417770&kind=announcement&callback=processData';
   document.body.children.add(script);
 }
 
@@ -55,22 +53,24 @@ void addTabs() {
   addTab(menu, tabContainer, 'projects', 'Projects');
 
   for (AnchorElement link in menu.querySelectorAll('a')) {
-    link.onClick.listen(
-      (event) {
-        for (AnchorElement link in menu.querySelectorAll('a'))
-          link.classes.remove('selected');
+    link.onClick.listen((event) {
+      for (AnchorElement link in menu.querySelectorAll('a'))
+        link.classes.remove('selected');
 
-        for (DivElement div in tabContainer.querySelectorAll('.tabContainer'))
-          div.style.display = 'none';
+      for (DivElement div in tabContainer.querySelectorAll('.tabContainer'))
+        div.style.display = 'none';
 
-        link.classes.add('selected');
-        tabContainer.querySelector('#'+link.attributes['rel']+'_container').style.display = 'initial';
-      }
-    );
+      link.classes.add('selected');
+      tabContainer
+          .querySelector('#' + link.attributes['rel'] + '_container')
+          .style
+          .display = 'initial';
+    });
   }
 }
 
-void addTab(Element menu, Element tabContainer, String name, String text, [bool def = false]) {
+void addTab(Element menu, Element tabContainer, String name, String text,
+    [bool def = false]) {
   AnchorElement link = new AnchorElement(href: '#' + name);
   link.attributes['rel'] = name;
   link.text = text;
@@ -86,7 +86,8 @@ void addTab(Element menu, Element tabContainer, String name, String text, [bool 
   div.classes.add('tabContainer');
   tabContainer.append(div);
 
-  if (window.location.hash == '#'+name || (window.location.hash == '' && def)) {
+  if (window.location.hash == '#' + name ||
+      (window.location.hash == '' && def)) {
     link.classes.add('selected');
     div.style.display = 'initial';
   }
@@ -97,14 +98,14 @@ void addTab(Element menu, Element tabContainer, String name, String text, [bool 
 bool isDebug() {
   List<String> request = document.window.location.toString().split('?');
 
-  if (request.length != 2)
-    return false;
+  if (request.length != 2) return false;
 
   return request.last.contains('debug');
 }
 
 void setValidatorURL() {
-  (querySelector('#compliance') as AnchorElement).href = "http://validator.w3.org/check?uri=${Uri.encodeComponent(document.window.location.toString())}";
+  (querySelector('#compliance') as AnchorElement).href =
+      "http://validator.w3.org/check?uri=${Uri.encodeComponent(document.window.location.toString())}";
 }
 
 void stopLoadingBar() {
@@ -114,8 +115,7 @@ void stopLoadingBar() {
 void loadTab(List<Map> entries, String tab) {
   Element tabElement = querySelector(tab);
 
-  if (++numLoadedTabs == numTabs)
-    stopLoadingBar();
+  if (++numLoadedTabs == numTabs) stopLoadingBar();
 
   addColumns(tabElement);
 
@@ -140,11 +140,11 @@ List<Map> googleSitesAtomToEntries(String atom) {
   for (HtmlElement entry in data.querySelectorAll('entry')) {
     Map entryDescription = new Map();
 
-    String url = entry.querySelector('link[rel="alternate"]').attributes['href'];
+    String url =
+        entry.querySelector('link[rel="alternate"]').attributes['href'];
     String content = entry.querySelector('content').text;
 
-    if (content.length > 200)
-        content = content.substring(0, 200) + '...';
+    if (content.length > 200) content = content.substring(0, 200) + '...';
 
     entryDescription['date'] = entry.querySelector('published').text;
     entryDescription['content'] = content;
@@ -189,7 +189,8 @@ List<Map> googlePlusJSONToEntries(String json) {
     entryDescription['content'] = entry['object']['content'];
     if (entry['verb'] == 'share') {
       entryDescription['reshared'] = true;
-      entryDescription['reshared_source'] = entry['object']['actor']['displayName'];
+      entryDescription['reshared_source'] =
+          entry['object']['actor']['displayName'];
     }
     entryDescription['attachments'] = new List<Map>();
     if (entry['object']['attachments'] != null)
@@ -225,7 +226,7 @@ void addEntryElement(Element parent, Map entry) {
 
 void addAttachmentElements(Element parent, List<Map> attachments) {
   for (Map attachment in attachments) {
-    switch(attachment['objectType']) {
+    switch (attachment['objectType']) {
       case 'video':
         addVideoAttachmentElement(parent, attachment);
         break;
@@ -277,7 +278,6 @@ void addContent(Element parent, String body) {
 }
 
 void addAlbumAttachmentElement(Element parent, Map attachment) {
-
   DivElement div = new DivElement();
   div.classes.add('album');
 
@@ -293,7 +293,8 @@ void addAlbumAttachmentElement(Element parent, Map attachment) {
 
       var width = attachment['thumbnails'][i]['image']['width'];
       var scaleFactor = width / columnWidth;
-      var height = attachment['thumbnails'][i]['image']['height'] ~/ scaleFactor;
+      var height =
+          attachment['thumbnails'][i]['image']['height'] ~/ scaleFactor;
       maxHeight = max(maxHeight, height);
     } else {
       image.src = 'missing.gif';
