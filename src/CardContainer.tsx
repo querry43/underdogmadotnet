@@ -1,8 +1,6 @@
 import * as React from 'react'
 import * as tumblr from 'tumblr.js'
 
-import './CardContainer.css'
-
 class CardContainer extends React.Component {
   public async componentDidMount() {
     const client = tumblr.createClient({
