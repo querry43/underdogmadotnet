@@ -39,7 +39,8 @@ class App extends React.Component<IAppProps> {
               consumer_key="yEVqlLGq1iSM7PM93SK1QUx4KmSN7ncuC6zQpGQfaqhN2yiZOA" />
           </TabBody>
           <TabBody tabId="#projects">
-            <SitesCardContainer thing="thing" />
+            <SitesCardContainer
+              ancestor="620825043256417770" />
           </TabBody>
         </TabBodyContainer>
       </div>
