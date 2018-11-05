@@ -4,9 +4,14 @@ import App from './App'
 import './index.css'
 import registerServiceWorker from './registerServiceWorker'
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('root') as HTMLElement
-)
+function update() {
+  ReactDOM.render(
+    <App tabId={window.location.hash} />,
+    document.getElementById('root') as HTMLElement
+  )
+}
+
+update()
+window.addEventListener('hashchange', e => update())
 
 registerServiceWorker()

@@ -33,9 +33,9 @@ const navbarAHoverStyle : React.CSSProperties = {
 }
 
 interface ITabProps {
+  default : boolean,
   name : string,
-  selected : boolean,
-  tag : string
+  tabId : string
 }
 
 interface ITabState {
@@ -43,9 +43,18 @@ interface ITabState {
 }
 
 class Tab extends React.Component<ITabProps, ITabState> {
+  public static defaultProps: Partial<ITabProps> = {
+    default: false
+  }
+
   public state : ITabState = { hover: false }
   public hoverOn = (e: React.MouseEvent<HTMLAnchorElement>) : void => this.setState({ hover: true })
   public hoverOff = (e: React.MouseEvent<HTMLAnchorElement>) : void => this.setState({ hover: false })
+
+  public isSelected() : boolean {
+    return (this.props.default && window.location.hash === "")
+      || (this.props.tabId === window.location.hash)
+  }
 
   public render() {
     return (
@@ -54,10 +63,10 @@ class Tab extends React.Component<ITabProps, ITabState> {
             style={
               this.state.hover
                 ? navbarAHoverStyle
-                : this.props.selected
+                : this.isSelected()
                   ? navbarASelectedStyle
                   : navbarAStyle}
-            href={this.props.tag}
+            href={this.props.tabId}
             onMouseEnter={this.hoverOn}
             onMouseLeave={this.hoverOff}
         >
