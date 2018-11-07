@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Header from './Header'
 import NavBar from './NavBar'
 import Tab from './Tab'
-import TumblrCardContainer from './TumblrCardContainer'
+import TumblrCardContainer from './tumblr/TumblrCardContainer'
 
 const contentStyle : React.CSSProperties = {
   backgroundColor: '#333333',
