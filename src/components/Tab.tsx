@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 import { insetShadowStyles, roundCornersStyles } from './StyleHelper'
 
@@ -34,7 +34,6 @@ const navbarAHoverStyle : React.CSSProperties = {
 }
 
 interface ITabProps {
-  default : boolean,
   name : string,
   path : string
 }
@@ -44,36 +43,26 @@ interface ITabState {
 }
 
 class Tab extends React.Component<ITabProps, ITabState> {
-  public static defaultProps: Partial<ITabProps> = {
-    default: false
-  }
-
   public state : ITabState = { hover: false }
   public hoverOn = (e: React.MouseEvent<HTMLAnchorElement>) : void => this.setState({ hover: true })
   public hoverOff = (e: React.MouseEvent<HTMLAnchorElement>) : void => this.setState({ hover: false })
 
-  public isSelected() : boolean {
-    return false
-    // return (this.props.default && window.location.hash === "")
-    //   || (this.props.tabId === window.location.hash)
-  }
-
   public render() {
     return (
       <li style={navbarLiStyle}>
-        <Link
+        <NavLink
+            exact={true}
             to={this.props.path}
             style={
               this.state.hover
                 ? navbarAHoverStyle
-                : this.isSelected()
-                  ? navbarASelectedStyle
-                  : navbarAStyle}
+                : navbarAStyle}
+            activeStyle={navbarASelectedStyle}
             onMouseEnter={this.hoverOn}
             onMouseLeave={this.hoverOff}
         >
           {this.props.name}
-        </Link>
+        </NavLink>
       </li>
     )
   }

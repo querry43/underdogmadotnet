@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Redirect, Route } from 'react-router-dom'
 
 import Header from './Header'
 import NavBar from './NavBar'
@@ -17,30 +17,28 @@ const contentStyle : React.CSSProperties = {
   width: '790px'
 }
 
-const App = () => (
+const App = () =>
   <Router>
     <div style={contentStyle}>
       <Header />
       <NavBar>
-        <Tab name="Interests" path="/" default={true} />
+        <Tab name="Interests" path="/" />
         <Tab name="Projects" path="/projects" />
       </NavBar>
       <Route exact={true} path="/" component={Interests} />
       <Route path="/projects" component={Projects} />
+      <Redirect from="*" to="/" />
     </div>
   </Router>
-)
 
-const Interests = () => (
+const Interests = () =>
   <TumblrCardContainer
     blog="qrry43.tumblr.com"
     consumer_key="yEVqlLGq1iSM7PM93SK1QUx4KmSN7ncuC6zQpGQfaqhN2yiZOA" />
-)
 
-const Projects = () => (
+const Projects = () =>
   <TumblrCardContainer
     blog="qrry43-projects.tumblr.com"
     consumer_key="yEVqlLGq1iSM7PM93SK1QUx4KmSN7ncuC6zQpGQfaqhN2yiZOA" />
-)
 
 export default App
