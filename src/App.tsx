@@ -1,11 +1,9 @@
 import * as React from 'react'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 import Header from './Header'
 import NavBar from './NavBar'
-import SitesCardContainer from './SitesCardContainer'
 import Tab from './Tab'
-import TabBody from './TabBody'
-import TabBodyContainer from './TabBodyContainer'
 import TumblrCardContainer from './TumblrCardContainer'
 
 const contentStyle : React.CSSProperties = {
@@ -19,33 +17,30 @@ const contentStyle : React.CSSProperties = {
   width: '790px'
 }
 
-interface IAppProps {
-  tabId : string
-}
+const App = () => (
+  <Router>
+    <div style={contentStyle}>
+      <Header />
+      <NavBar>
+        <Tab name="Interests" path="/" default={true} />
+        <Tab name="Projects" path="/projects" />
+      </NavBar>
+      <Route exact={true} path="/" component={Interests} />
+      <Route path="/projects" component={Projects} />
+    </div>
+  </Router>
+)
 
-class App extends React.Component<IAppProps> {
-  public render() {
-    return (
-      <div style={contentStyle}>
-        <Header />
-        <NavBar>
-          <Tab name="Interests" tabId="#interests" default={true} />
-          <Tab name="Projects" tabId="#projects" />
-        </NavBar>
-        <TabBodyContainer>
-          <TabBody tabId="#interests" default={true}>
-            <TumblrCardContainer
-              blog="qrry43.tumblr.com"
-              consumer_key="yEVqlLGq1iSM7PM93SK1QUx4KmSN7ncuC6zQpGQfaqhN2yiZOA" />
-          </TabBody>
-          <TabBody tabId="#projects">
-            <SitesCardContainer
-              ancestor="620825043256417770" />
-          </TabBody>
-        </TabBodyContainer>
-      </div>
-    )
-  }
-}
+const Interests = () => (
+  <TumblrCardContainer
+    blog="qrry43.tumblr.com"
+    consumer_key="yEVqlLGq1iSM7PM93SK1QUx4KmSN7ncuC6zQpGQfaqhN2yiZOA" />
+)
+
+const Projects = () => (
+  <TumblrCardContainer
+    blog="qrry43-projects.tumblr.com"
+    consumer_key="yEVqlLGq1iSM7PM93SK1QUx4KmSN7ncuC6zQpGQfaqhN2yiZOA" />
+)
 
 export default App
