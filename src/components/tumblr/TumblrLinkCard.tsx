@@ -2,11 +2,20 @@ import * as React from 'react'
 
 import TumblrCard from './TumblrCard'
 
+const imgStyle : React.CSSProperties = {
+  margin: '10px'
+}
+
 class TumblrLinkCard extends TumblrCard {
-  public render() {
+  protected content() {
     return (
       <div>
-        {this.props.post.type}
+        <a href={this.props.post.url}>
+          <div dangerouslySetInnerHTML={{ __html: this.props.post.description }} />
+          <img style={imgStyle} src={this.props.post.link_image} />
+        </a>
+        <p>{this.props.post.excerpt}</p>
+        <p>{new Date(this.props.post.timestamp * 1000).toLocaleString()}</p>
       </div>
     )
   }
