@@ -6,9 +6,7 @@ const navbarStyle : React.CSSProperties = {
   listStyleType: 'none',
   margin: 'auto',
   overflow: 'hidden',
-  padding: '0',
-  paddingBottom: '10px',
-  width: '80%'
+  width: '75%'
 }
 
 class NavBar extends React.Component {

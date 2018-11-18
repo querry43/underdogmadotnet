@@ -18,7 +18,7 @@ const contentStyle : React.CSSProperties = {
   overflow: 'hidden',
   position: 'relative',
   textAlign: 'center',
-  width: '790px'
+  width: '900px'
 }
 
 const initialState = {

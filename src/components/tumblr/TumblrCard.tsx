@@ -6,7 +6,9 @@ const tumblrCardStyle : React.CSSProperties = {
   ...insetShadowStyles('3px'),
   ...roundCornersStyles('5px'),
   background: 'white',
-  margin: '0 10px 0 10px'
+  fontFamily: 'sans-serif',
+  margin: '10px',
+  padding: '10px'
 }
 
 interface ITumblrCardProps {
@@ -16,7 +18,7 @@ interface ITumblrCardProps {
 class TumblrCard extends React.Component<ITumblrCardProps> {
   public render() {
     return (
-      <div style={tumblrCardStyle}>
+      <div data-card-type={this.props.post.type} style={tumblrCardStyle}>
         {this.content()}
       </div>
     )
