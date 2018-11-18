@@ -1,7 +1,5 @@
 import * as React from 'react'
-import { BrowserRouter as Router, Redirect, Route } from 'react-router-dom'
-
-import {getBlogPosts} from './TumblrHelper'
+import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom'
 
 import Header from './Header'
 import NavBar from './NavBar'
@@ -21,34 +19,17 @@ const contentStyle : React.CSSProperties = {
   width: '900px'
 }
 
-const initialState = {
-  interestsPosts: [],
-  projectsPosts: []
-}
-
-type State = Readonly<typeof initialState>
-
-class App extends React.Component<object, State> {
-  public readonly state: State = initialState
-
-  public async componentDidMount() {
-    this.setState({
-      interestsPosts: await getBlogPosts('qrry43.tumblr.com', 0, 20, consumerKey),
-      projectsPosts: await getBlogPosts('qrry43-projects.tumblr.com', 0, 20, consumerKey)
-    })
-    global.console.log(this.state)
-  }
-
+class App extends React.Component {
   public render() {
     const interests = () => {
       return (
-        <TumblrCardContainer posts={this.state.interestsPosts} />
+        <TumblrCardContainer blog='qrry43.tumblr.com' consumerKey={consumerKey} />
       )
     }
 
     const projects = () => {
       return (
-        <TumblrCardContainer posts={this.state.projectsPosts} />
+        <TumblrCardContainer blog='qrry43-projects.tumblr.com' consumerKey={consumerKey} />
       )
     }
 
@@ -57,12 +38,15 @@ class App extends React.Component<object, State> {
         <div style={contentStyle}>
           <Header />
           <NavBar>
-            <Tab name="Interests" path="/" />
+            <Tab name="Interests" path="/interests" />
             <Tab name="Projects" path="/projects" />
           </NavBar>
-          <Route exact={true} path="/" component={interests} />
-          <Route path="/projects" component={projects} />
-          <Redirect from="*" to="/" />
+          <Switch>
+            <Route path="/" exact={true} component={interests} />
+            <Route path="/interests" component={interests} />
+            <Route path="/projects" component={projects} />
+            <Redirect from="*" to="/" />
+          </Switch>
         </div>
       </Router>
     )
