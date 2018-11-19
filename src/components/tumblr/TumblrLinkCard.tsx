@@ -15,10 +15,6 @@ const excerptStyle : React.CSSProperties = {
   marginTop: '0'
 }
 
-const dateStyle : React.CSSProperties = {
-  fontSize: 'x-small'
-}
-
 class TumblrLinkCard extends TumblrCard {
   protected content() {
     const imgElement = this.props.post.description
@@ -32,7 +28,6 @@ class TumblrLinkCard extends TumblrCard {
           {imgElement}
         </a>
         <p style={excerptStyle}>{this.props.post.excerpt}</p>
-        <p style={dateStyle}>{new Date(this.props.post.timestamp * 1000).toLocaleString()}</p>
       </div>
     )
   }

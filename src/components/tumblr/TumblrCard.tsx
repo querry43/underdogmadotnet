@@ -11,6 +11,10 @@ const tumblrCardStyle : React.CSSProperties = {
   padding: '10px'
 }
 
+const dateStyle : React.CSSProperties = {
+  fontSize: 'x-small'
+}
+
 interface ITumblrCardProps {
   post : any
 }
@@ -20,6 +24,7 @@ class TumblrCard extends React.Component<ITumblrCardProps> {
     return (
       <div data-card-type={this.props.post.type} style={tumblrCardStyle}>
         {this.content()}
+        <p style={dateStyle}>{new Date(this.props.post.timestamp * 1000).toLocaleString()}</p>
       </div>
     )
   }

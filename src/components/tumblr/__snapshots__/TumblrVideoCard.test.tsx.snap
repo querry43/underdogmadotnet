@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<TumblrVideoCard
+  post={
+    Object {
+      "blog": Object {},
+      "blog_name": "qrry43",
+      "can_like": false,
+      "can_reblog": false,
+      "can_reply": false,
+      "can_send_in_message": true,
+      "caption": "",
+      "date": "2018-11-04 02:56:56 GMT",
+      "display_avatar": true,
+      "format": "html",
+      "html5_capable": true,
+      "id": 179739805093,
+      "is_blocks_post_format": false,
+      "note_count": 0,
+      "permalink_url": "https://www.youtube.com/watch?v=glZnkpIDWSE",
+      "player": Object {},
+      "post_url": "https://qrry43.tumblr.com/post/179739805093",
+      "reblog": Object {},
+      "reblog_key": "BAfm55p0",
+      "recommended_color": null,
+      "recommended_source": null,
+      "short_url": "https://tmblr.co/ZlGD6Y2dPKyMb",
+      "slug": "",
+      "state": "published",
+      "summary": "",
+      "tags": Object {},
+      "thumbnail_height": 360,
+      "thumbnail_url": "https://i.ytimg.com/vi/glZnkpIDWSE/hqdefault.jpg",
+      "thumbnail_width": 480,
+      "timestamp": 1541300216,
+      "trail": Object {},
+      "type": "video",
+      "video": Object {},
+      "video_type": "youtube",
+    }
+  }
+/>
+`;
