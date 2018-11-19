@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { Helmet } from 'react-helmet'
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom'
 
 import Header from './Header'
@@ -21,17 +22,19 @@ const contentStyle : React.CSSProperties = {
 
 class App extends React.Component {
   public render() {
-    const interests = () => {
+    const cardContainer = (name : string, blog : string) => {
       return (
-        <TumblrCardContainer blog='qrry43.tumblr.com' consumerKey={consumerKey} />
+        <div>
+          <Helmet>
+            <title>Matt Harrington | {name}</title>
+          </Helmet>
+          <TumblrCardContainer blog={blog} consumerKey={consumerKey} />
+        </div>
       )
     }
 
-    const projects = () => {
-      return (
-        <TumblrCardContainer blog='qrry43-projects.tumblr.com' consumerKey={consumerKey} />
-      )
-    }
+    const interests = () => cardContainer('Interests', 'qrry43.tumblr.com')
+    const projects = () => cardContainer('Projects', 'qrry43-projects.tumblr.com')
 
     return (
       <Router>
