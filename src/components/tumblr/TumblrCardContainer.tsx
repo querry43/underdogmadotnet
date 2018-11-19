@@ -10,6 +10,18 @@ import TumblrQuoteCard from './TumblrQuoteCard'
 import TumblrTextCard from './TumblrTextCard'
 import TumblrVideoCard from './TumblrVideoCard'
 
+import { insetShadowStyles, roundCornersStyles } from './../StyleHelper'
+
+const loadingStyle : React.CSSProperties = {
+  ...insetShadowStyles('3px'),
+  ...roundCornersStyles('5px'),
+  background: 'white',
+  fontFamily: 'sans-serif',
+  margin: '10px auto',
+  padding: '10px',
+  width: '80%'
+}
+
 interface ITumblrCardContainerProps {
   blog : string,
   consumerKey : string
@@ -49,7 +61,7 @@ class TumblrCardContainer extends React.Component<ITumblrCardContainerProps, Sta
       <InfiniteScroll
           loadMore={loadMore}
           hasMore={this.state.hasMore}
-          loader={<div key={0}>Loading ...</div>}
+          loader={<div key={0} style={loadingStyle}>Loading ...</div>}
       >
         {this.state.posts.map((post : any) => {
           switch(post.type) {

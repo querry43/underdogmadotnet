@@ -15,6 +15,6 @@ export const getBlogPosts = async (blog : string, offset : number, limit : numbe
     return data.posts
   } catch (error) {
     global.console.warn(error)
-    return {}
+    return []
   }
 }

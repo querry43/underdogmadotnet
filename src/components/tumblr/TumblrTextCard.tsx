@@ -3,10 +3,10 @@ import * as React from 'react'
 import TumblrCard from './TumblrCard'
 
 class TumblrTextCard extends TumblrCard {
-  public render() {
+  protected content() {
     return (
       <div>
-        {this.props.post.type}
+        I do not know how to render card type {this.props.post.type}
       </div>
     )
   }
