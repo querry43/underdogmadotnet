@@ -18,7 +18,7 @@ const headerStyle : React.CSSProperties = {
 class Header extends React.Component {
   public render() {
     return (
-      <header style={headerStyle}>Matt Harrington</header>
+      <header style={headerStyle}>Matt Harrington's Stuff</header>
     )
   }
 }
