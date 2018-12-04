@@ -2,6 +2,7 @@
   "name": "underdogmadotnet",
   "version": "0.1.0",
   "private": false,
+  "homepage": ".",
   "dependencies": {
     "@types/node": "^10.12.10",
     "@types/react": "^16.7.7",
@@ -15,18 +16,25 @@
     "react-infinite-scroller": "^1.2.2",
     "react-player": "^1.7.0",
     "react-router-dom": "^4.3.1",
-    "react-scripts-ts": "3.1.0",
+    "react-scripts-ts": "^4.0.8",
     "tumblr.js": "^2.0.0",
     "typescript": "^3.1.6"
   },
   "scripts": {
     "start": "react-scripts-ts start",
     "build": "react-scripts-ts build",
+    "deploy": "aws s3 sync --delete build/ s3://test.underdogma.net/",
     "test": "react-scripts-ts test --env=jsdom",
     "eject": "react-scripts-ts eject"
   },
   "devDependencies": {
     "@types/jest": "^23.3.9",
     "jest": "^23.6.0"
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
