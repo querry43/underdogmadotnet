@@ -24,6 +24,7 @@
     "start": "react-scripts-ts start",
     "build": "react-scripts-ts build",
     "deploy": "aws s3 sync --delete build/ s3://test.underdogma.net/",
+    "deploy-live": "aws s3 sync --delete build/ s3://www.underdogma.net/",
     "test": "react-scripts-ts test --env=jsdom",
     "eject": "react-scripts-ts eject"
   },

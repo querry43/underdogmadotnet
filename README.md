@@ -5,3 +5,30 @@
 [![Website](https://img.shields.io/website-up-down-green-red/https/underdogma.net.svg?label=underdogma.net)](https://underdogma.net/)
 
 Matt Harrington's personal website using tumblr as backend storage.
+
+## Running
+
+```
+nvm use
+npm install
+npm start
+```
+
+## Testing
+
+```
+npm test
+```
+
+## Installing
+
+```
+npm run build
+npm run deploy
+```
+
+To deploy live:
+
+```
+npm run deploy-live
+```
