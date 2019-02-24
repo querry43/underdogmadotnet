@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<TumblrTextCard
+  post={
+    Object {
+      "blog": Object {},
+      "blog_name": "qrry43",
+      "body": "<p>
+
+test text
+
+<br/></p>",
+      "can_like": false,
+      "can_reblog": false,
+      "can_reply": false,
+      "can_send_in_message": true,
+      "date": "2018-11-05 05:13:20 GMT",
+      "display_avatar": true,
+      "format": "html",
+      "id": 179779160723,
+      "is_blocks_post_format": false,
+      "note_count": 0,
+      "post_url": "https://qrry43.tumblr.com/post/179779160723/test-text",
+      "reblog": Object {},
+      "reblog_key": "oZOxjg3Z",
+      "recommended_color": null,
+      "recommended_source": null,
+      "short_url": "https://tmblr.co/ZlGD6Y2dRh4gJ",
+      "slug": "test-text",
+      "state": "published",
+      "summary": "test text",
+      "tags": Object {},
+      "timestamp": 1541394800,
+      "title": "test text",
+      "trail": Object {},
+      "type": "text",
+    }
+  }
+/>
+`;
