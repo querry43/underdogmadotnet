@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<TumblrPhotoCard
+  post={
+    Object {
+      "blog": Object {},
+      "blog_name": "qrry43",
+      "can_like": false,
+      "can_reblog": false,
+      "can_reply": false,
+      "can_send_in_message": true,
+      "caption": "",
+      "date": "2018-11-04 02:32:37 GMT",
+      "display_avatar": true,
+      "format": "html",
+      "id": 179739183803,
+      "image_permalink": "https://qrry43.tumblr.com/image/179739183803",
+      "is_blocks_post_format": false,
+      "note_count": 0,
+      "photos": Object {},
+      "post_url": "https://qrry43.tumblr.com/post/179739183803",
+      "reblog": Object {},
+      "reblog_key": "ltvXxLHV",
+      "recommended_color": null,
+      "recommended_source": null,
+      "short_url": "https://tmblr.co/ZlGD6Y2dPIagx",
+      "slug": "",
+      "state": "published",
+      "summary": "",
+      "tags": Object {},
+      "timestamp": 1541298757,
+      "trail": Object {},
+      "type": "photo",
+    }
+  }
+/>
+`;

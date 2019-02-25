@@ -4,7 +4,7 @@ import * as React from 'react'
 
 import TumblrLinkCard from './TumblrLinkCard'
 
-it('matches snapshot with link_image', () => {
+it('matches snapshot', () => {
   const post = {
     "type": "link",
     "blog_name": "qrry43",
