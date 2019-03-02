@@ -39,7 +39,7 @@ class App extends React.Component {
     return (
       <Router>
         <div style={contentStyle}>
-          <Header />
+          <Header>Matt Harrington's Stuff</Header>
           <NavBar>
             <Tab name="Interests" path="/interests" />
             <Tab name="Projects" path="/projects" />

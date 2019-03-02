@@ -1,26 +1,15 @@
-import * as React from 'react'
+import styled from '../styled-components'
+import RoundedDiv from './RoundedDiv'
 
-import {insetShadowStyles, roundCornersStyles} from './StyleHelper'
-
-const headerStyle : React.CSSProperties = {
-  ...roundCornersStyles('3px'),
-  ...insetShadowStyles('1px'),
-  backgroundColor: '#999999',
-  border: 'solid 3px',
-  borderColor: '#cccccc',
-  fontFamily: 'sans-serif',
-  fontSize: '2.5em',
-  margin: '10px',
-  padding: '5px',
-  textAlign: 'center'
-}
-
-class Header extends React.Component {
-  public render() {
-    return (
-      <header style={headerStyle}>Matt Harrington's Stuff</header>
-    )
-  }
-}
+const Header = styled(RoundedDiv)`
+  background-color: #999999;
+  border: solid 3px;
+  border-color: #cccccc;
+  font-family: sans-serif;
+  font-size: 2.5em;
+  margin: 10px;
+  padding: 5px;
+  text-align: center;
+`
 
 export default Header
