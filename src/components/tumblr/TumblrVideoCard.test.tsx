@@ -43,4 +43,4 @@ it('matches snapshot', () => {
   }
 
   expect(<TumblrVideoCard post={post} />).toMatchSnapshot()
-)
+})

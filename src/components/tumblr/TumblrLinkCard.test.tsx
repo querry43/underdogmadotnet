@@ -185,4 +185,4 @@ it('matches snapshot with description', () => {
   }
 
   expect(<TumblrLinkCard post={post} />).toMatchSnapshot()
-)
+})

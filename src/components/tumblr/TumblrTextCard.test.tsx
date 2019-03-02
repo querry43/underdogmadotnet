@@ -36,4 +36,4 @@ it('matches snapshot', () => {
   }
 
   expect(<TumblrTextCard post={post} />).toMatchSnapshot()
-)
+})

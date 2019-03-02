@@ -4,7 +4,6 @@ import TumblrCard from './TumblrCard'
 
 class TumblrPhotoCard extends TumblrCard {
   protected content() {
-    global.console.log(this.props.post)
     return (
       <div>
         <p dangerouslySetInnerHTML={{ __html: this.props.post.caption }} />
