@@ -1,16 +1,17 @@
 import * as React from 'react'
 import ReactPlayer from 'react-player'
 
+import styled from '../../styled-components'
 import TumblrCard from './TumblrCard'
 
-const playerStyle : React.CSSProperties = {
-  margin: 'auto'
-}
+const Player = styled(ReactPlayer)`
+  margin: auto;
+`
 
 class TumblrVideoCard extends TumblrCard {
   protected content() {
     return (
-      <ReactPlayer style={playerStyle} url={this.props.post.permalink_url} />
+      <Player url={this.props.post.permalink_url} />
     )
   }
 }

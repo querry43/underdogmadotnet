@@ -1,19 +1,23 @@
 import * as React from 'react'
 
+import styled from '../../styled-components'
 import TumblrCard from './TumblrCard'
-import './TumblrTextCard.css'
 
-const titleStyle : React.CSSProperties = {
-  color: 'black',
-  textDecoration: 'none'
-}
+const Title = styled.p`
+  color: black;
+  text-decoration: none;
+`
+
+const Content = styled.div`
+  ul { text-align: left; }
+`
 
 class TumblrTextCard extends TumblrCard {
   protected content() {
     return (
-      <div className="TumblrTextCard">
-        <p style={titleStyle}>{this.props.post.title}</p>
-        <div className="TumblrTextCard_body" dangerouslySetInnerHTML={{ __html: this.props.post.body }} />
+      <div>
+        <Title>{this.props.post.title}</Title>
+        <Content dangerouslySetInnerHTML={{ __html: this.props.post.body }} />
       </div>
     )
   }

@@ -7,18 +7,20 @@ import NavBar from './NavBar'
 import NavBarItem from './NavBarItem'
 import TumblrCardContainer from './tumblr/TumblrCardContainer'
 
+import styled from '../styled-components'
+
 const consumerKey = 'yEVqlLGq1iSM7PM93SK1QUx4KmSN7ncuC6zQpGQfaqhN2yiZOA'
 
-const contentStyle : React.CSSProperties = {
-  backgroundColor: '#333333',
-  marginLeft: 'auto',
-  marginRight: 'auto',
-  minHeight: '100%',
-  overflow: 'hidden',
-  position: 'relative',
-  textAlign: 'center',
-  width: '900px'
-}
+const Content = styled.div`
+  background-color: #333333;
+  margin-left: auto;
+  margin-right: auto;
+  min-height: 100%;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  width: 900px;
+`
 
 class App extends React.Component {
   public render() {
@@ -38,7 +40,7 @@ class App extends React.Component {
 
     return (
       <Router>
-        <div style={contentStyle}>
+        <Content>
           <Header>Matt Harrington's Stuff</Header>
           <NavBar>
             <NavBarItem to="/">Interests</NavBarItem>
@@ -49,7 +51,7 @@ class App extends React.Component {
             <Route path="/projects" component={projects} />
             <Redirect from="*" to="/" />
           </Switch>
-        </div>
+        </Content>
       </Router>
     )
   }
