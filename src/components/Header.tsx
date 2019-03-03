@@ -1,3 +1,6 @@
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+
 import styled from '../styled-components'
 import { RoundedCornerStyle } from './StyleHelper'
 
@@ -13,4 +16,10 @@ const Header = styled.div`
   text-align: center;
 `
 
-export default Header
+const mapStateToProps = (state : any, props : any) => ({
+  counter: state.counter
+})
+
+const mapDispatchToProps = (dispatch : any) => bindActionCreators({}, dispatch)
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header)
