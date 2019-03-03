@@ -3,15 +3,18 @@ import ReactPlayer from 'react-player'
 
 import styled from '../../styled-components'
 import TumblrCard from './TumblrCard'
+import { IPostProps } from './TumblrCardHelper'
 
 const Player = styled(ReactPlayer)`
   margin: auto;
 `
 
-class TumblrVideoCard extends TumblrCard {
-  protected content() {
+class TumblrVideoCard extends React.Component<IPostProps> {
+  public render() {
     return (
-      <Player url={this.props.post.permalink_url} />
+      <TumblrCard timestamp={this.props.post.timestamp}>
+        <Player url={this.props.post.permalink_url} />
+      </TumblrCard>
     )
   }
 }

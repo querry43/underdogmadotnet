@@ -16,21 +16,17 @@ const DateTag = styled.p`
 `
 
 interface ITumblrCardProps {
-  post : any
+  timestamp : number
 }
 
 class TumblrCard extends React.Component<ITumblrCardProps> {
   public render() {
     return (
-      <Card data-card-type={this.props.post.type}>
-        {this.content()}
-        <DateTag>{new Date(this.props.post.timestamp * 1000).toLocaleString()}</DateTag>
+      <Card>
+        {this.props.children}
+        <DateTag>{new Date(this.props.timestamp * 1000).toLocaleString()}</DateTag>
       </Card>
     )
-  }
-
-  protected content() {
-    return (<div />)
   }
 }
 

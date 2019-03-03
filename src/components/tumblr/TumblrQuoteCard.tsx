@@ -1,13 +1,14 @@
 import * as React from 'react'
 
 import TumblrCard from './TumblrCard'
+import { IPostProps } from './TumblrCardHelper'
 
-class TumblrQuoteCard extends TumblrCard {
-  protected content() {
+class TumblrQuoteCard extends React.Component<IPostProps> {
+  public render() {
     return (
-      <div>
+      <TumblrCard timestamp={this.props.post.timestamp}>
         I do not know how to render card type {this.props.post.type}
-      </div>
+      </TumblrCard>
     )
   }
 }
