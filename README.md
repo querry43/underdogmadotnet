@@ -23,12 +23,12 @@ yarn test
 ## Installing
 
 ```
-yarn run build
-yarn run deploy
+yarn build
+yarn deploy
 ```
 
 To deploy live:
 
 ```
-yarn run deploy-live
+yarn deploy-live
 ```
