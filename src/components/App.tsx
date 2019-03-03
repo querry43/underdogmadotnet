@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-d
 
 import Header from './Header'
 import NavBar from './NavBar'
-import Tab from './Tab'
+import NavBarItem from './NavBarItem'
 import TumblrCardContainer from './tumblr/TumblrCardContainer'
 
 const consumerKey = 'yEVqlLGq1iSM7PM93SK1QUx4KmSN7ncuC6zQpGQfaqhN2yiZOA'
@@ -41,12 +41,11 @@ class App extends React.Component {
         <div style={contentStyle}>
           <Header>Matt Harrington's Stuff</Header>
           <NavBar>
-            <Tab name="Interests" path="/interests" />
-            <Tab name="Projects" path="/projects" />
+            <NavBarItem to="/">Interests</NavBarItem>
+            <NavBarItem to="/projects">Projects</NavBarItem>
           </NavBar>
           <Switch>
             <Route path="/" exact={true} component={interests} />
-            <Route path="/interests" component={interests} />
             <Route path="/projects" component={projects} />
             <Redirect from="*" to="/" />
           </Switch>

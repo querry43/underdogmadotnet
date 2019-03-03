@@ -1,9 +1,8 @@
 import * as React from 'react'
 
-import { insetShadowStyles, roundCornersStyles } from './../StyleHelper'
+import { roundCornersStyles } from './../StyleHelper'
 
 const tumblrCardStyle : React.CSSProperties = {
-  ...insetShadowStyles('3px'),
   ...roundCornersStyles('5px'),
   background: 'white',
   fontFamily: 'sans-serif',

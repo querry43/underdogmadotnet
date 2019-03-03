@@ -10,10 +10,9 @@ import TumblrQuoteCard from './TumblrQuoteCard'
 import TumblrTextCard from './TumblrTextCard'
 import TumblrVideoCard from './TumblrVideoCard'
 
-import { insetShadowStyles, roundCornersStyles } from './../StyleHelper'
+import { roundCornersStyles } from './../StyleHelper'
 
 const loadingStyle : React.CSSProperties = {
-  ...insetShadowStyles('3px'),
   ...roundCornersStyles('5px'),
   background: 'white',
   fontFamily: 'sans-serif',

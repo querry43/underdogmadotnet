@@ -1,22 +1,12 @@
-import * as React from 'react'
+import styled from '../styled-components'
 
-const navbarStyle : React.CSSProperties = {
-  fontFamily: 'sans-serif',
-  fontSize: '1.2em',
-  listStyleType: 'none',
-  margin: 'auto',
-  overflow: 'hidden',
-  width: '75%'
-}
-
-class NavBar extends React.Component {
-  public render() {
-    return (
-      <ul style={navbarStyle}>
-        {this.props.children}
-      </ul>
-    )
-  }
-}
+const NavBar = styled.ul`
+  font-family: sans-serif;
+  font-size: 1.2em;
+  list-style-type: none;
+  margin: auto;
+  overflow: hidden;
+  width: 75%;
+`
 
 export default NavBar

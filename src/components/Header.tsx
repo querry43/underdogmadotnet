@@ -1,7 +1,8 @@
 import styled from '../styled-components'
-import RoundedDiv from './RoundedDiv'
+import { RoundedCornerStyle } from './StyleHelper'
 
-const Header = styled(RoundedDiv)`
+const Header = styled.div`
+  ${props => RoundedCornerStyle};
   background-color: #999999;
   border: solid 3px;
   border-color: #cccccc;
