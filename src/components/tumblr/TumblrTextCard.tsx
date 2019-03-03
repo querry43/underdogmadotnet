@@ -1,8 +1,8 @@
 import * as React from 'react'
 
 import styled from '../../styled-components'
-import TumblrCard from './TumblrCard'
-import { IPostProps } from './TumblrCardHelper'
+import Card from '../Card'
+import { ITumblrCardProps } from './TumblrCardHelper'
 
 const Title = styled.p`
   color: black;
@@ -13,13 +13,13 @@ const Content = styled.div`
   ul { text-align: left; }
 `
 
-class TumblrTextCard extends React.Component<IPostProps> {
+class TumblrTextCard extends React.Component<ITumblrCardProps> {
   public render() {
     return (
-      <TumblrCard timestamp={this.props.post.timestamp}>
+      <Card timestamp={this.props.post.timestamp}>
         <Title>{this.props.post.title}</Title>
         <Content dangerouslySetInnerHTML={{ __html: this.props.post.body }} />
-      </TumblrCard>
+      </Card>
     )
   }
 }

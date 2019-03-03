@@ -1,19 +1,19 @@
 import * as React from 'react'
 
-import TumblrCard from './TumblrCard'
-import { IPostProps } from './TumblrCardHelper'
+import Card from '../Card'
+import { ITumblrCardProps } from './TumblrCardHelper'
 
-class TumblrPhotoCard extends React.Component<IPostProps> {
+class TumblrPhotoCard extends React.Component<ITumblrCardProps> {
    public render() {
     return (
-      <TumblrCard timestamp={this.props.post.timestamp}>
+      <Card timestamp={this.props.post.timestamp}>
         <p dangerouslySetInnerHTML={{ __html: this.props.post.caption }} />
         {this.props.post.photos.map((img : any, i : number) =>
           <div key={i}>
             <img src={img.original_size.url} />
           </div>
         )}
-      </TumblrCard>
+      </Card>
     )
   }
 }

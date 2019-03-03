@@ -2,19 +2,19 @@ import * as React from 'react'
 import ReactPlayer from 'react-player'
 
 import styled from '../../styled-components'
-import TumblrCard from './TumblrCard'
-import { IPostProps } from './TumblrCardHelper'
+import Card from '../Card'
+import { ITumblrCardProps } from './TumblrCardHelper'
 
 const Player = styled(ReactPlayer)`
   margin: auto;
 `
 
-class TumblrVideoCard extends React.Component<IPostProps> {
+class TumblrVideoCard extends React.Component<ITumblrCardProps> {
   public render() {
     return (
-      <TumblrCard timestamp={this.props.post.timestamp}>
+      <Card timestamp={this.props.post.timestamp}>
         <Player url={this.props.post.permalink_url} />
-      </TumblrCard>
+      </Card>
     )
   }
 }

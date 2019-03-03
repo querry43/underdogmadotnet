@@ -1,3 +1,3 @@
-export interface IPostProps {
+export interface ITumblrCardProps {
   post : any
 }

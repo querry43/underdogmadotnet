@@ -1,9 +1,9 @@
 import * as React from 'react'
 
-import styled from '../../styled-components'
-import { RoundedCornerStyle } from '../StyleHelper'
+import styled from '../styled-components'
+import { RoundedCornerStyle } from './StyleHelper'
 
-const Card = styled.div`
+const CardDiv = styled.div`
   ${props => RoundedCornerStyle};
   background: white;
   font-family: sans-serif;
@@ -15,19 +15,19 @@ const DateTag = styled.p`
   font-size: x-small;
 `
 
-interface ITumblrCardProps {
+interface ICardProps {
   timestamp : number
 }
 
-class TumblrCard extends React.Component<ITumblrCardProps> {
+class Card extends React.Component<ICardProps> {
   public render() {
     return (
-      <Card>
+      <CardDiv>
         {this.props.children}
         <DateTag>{new Date(this.props.timestamp * 1000).toLocaleString()}</DateTag>
-      </Card>
+      </CardDiv>
     )
   }
 }
 
-export default TumblrCard
+export default Card
