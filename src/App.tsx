@@ -2,12 +2,12 @@ import * as React from 'react'
 import { Helmet } from 'react-helmet'
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom'
 
-import Header from './Header'
-import NavBar from './NavBar'
-import NavBarItem from './NavBarItem'
-import TumblrCardContainer from './tumblr/TumblrCardContainer'
+import Header from './components/Header'
+import NavBar from './components/NavBar'
+import NavBarItem from './components/NavBarItem'
+import TumblrCardContainer from './components/tumblr/TumblrCardContainer'
 
-import styled from '../styled-components'
+import styled from './styled-components'
 
 const consumerKey = 'yEVqlLGq1iSM7PM93SK1QUx4KmSN7ncuC6zQpGQfaqhN2yiZOA'
 

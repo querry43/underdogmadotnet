@@ -2,7 +2,6 @@ import * as React from 'react'
 import ReactPlayer from 'react-player'
 
 import styled from '../../styled-components'
-import Card from '../Card'
 import { ITumblrCardProps } from './TumblrCardHelper'
 
 const Player = styled(ReactPlayer)`
@@ -12,9 +11,9 @@ const Player = styled(ReactPlayer)`
 class TumblrVideoCard extends React.Component<ITumblrCardProps> {
   public render() {
     return (
-      <Card timestamp={this.props.post.timestamp}>
+      <div>
         <Player url={this.props.post.permalink_url} />
-      </Card>
+      </div>
     )
   }
 }

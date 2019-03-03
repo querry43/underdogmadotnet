@@ -1,7 +1,6 @@
 import * as React from 'react'
 
 import styled from '../../styled-components'
-import Card from '../Card'
 import { ITumblrCardProps } from './TumblrCardHelper'
 
 const Link = styled.a`
@@ -24,13 +23,13 @@ class TumblrLinkCard extends React.Component<ITumblrCardProps> {
       : <Image src={this.props.post.link_image} />
 
     return (
-      <Card timestamp={this.props.post.timestamp}>
+      <div>
         <Link href={this.props.post.url}>
           <p>{this.props.post.publisher}</p>
           {imgElement}
         </Link>
         <Excerpt>{this.props.post.excerpt}</Excerpt>
-      </Card>
+      </div>
     )
   }
 }

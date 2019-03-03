@@ -2,13 +2,7 @@ import * as React from 'react'
 import * as InfiniteScroll from 'react-infinite-scroller'
 import {getBlogPosts} from './TumblrHelper'
 
-import TumblrAudioCard from './TumblrAudioCard'
-import TumblrChatCard from './TumblrChatCard'
-import TumblrLinkCard from './TumblrLinkCard'
-import TumblrPhotoCard from './TumblrPhotoCard'
-import TumblrQuoteCard from './TumblrQuoteCard'
-import TumblrTextCard from './TumblrTextCard'
-import TumblrVideoCard from './TumblrVideoCard'
+import TumblrCard from './TumblrCard'
 
 import styled from '../../styled-components'
 import { RoundedCornerStyle } from '../StyleHelper'
@@ -64,32 +58,7 @@ class TumblrCardContainer extends React.Component<ITumblrCardContainerProps, Sta
           loader={<Loader key={0}>Loading ...</Loader>}
       >
         {this.state.posts.map((post : any) => {
-          switch(post.type) {
-            case 'audio':
-              return <TumblrAudioCard key={post.id} post={post} />
-
-            case 'chat':
-              return <TumblrChatCard key={post.id} post={post} />
-
-            case 'link':
-              return <TumblrLinkCard key={post.id} post={post} />
-
-            case 'photo':
-              return <TumblrPhotoCard key={post.id} post={post} />
-
-            case 'quote':
-              return <TumblrQuoteCard key={post.id} post={post} />
-
-            case 'text':
-              return <TumblrTextCard key={post.id} post={post} />
-
-            case 'video':
-              return <TumblrVideoCard key={post.id} post={post} />
-
-            default: {
-              return <TumblrTextCard key={post.id} post={post} />
-            }
-          }
+          return <TumblrCard key={post.id} post={post} />
         })}
       </InfiniteScroll>
     )
