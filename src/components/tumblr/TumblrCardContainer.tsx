@@ -2,19 +2,8 @@ import * as React from 'react'
 import * as InfiniteScroll from 'react-infinite-scroller'
 import {getBlogPosts} from './TumblrHelper'
 
+import Card from '../Card'
 import TumblrCard from './TumblrCard'
-
-import styled from '../../styled-components'
-import { RoundedCornerStyle } from '../StyleHelper'
-
-const Loader = styled.div`
-  ${props => RoundedCornerStyle};
-  background: 'white',
-  fontFamily: 'sans-serif',
-  margin: '10px auto',
-  padding: '10px',
-  width: '80%'
-`
 
 interface ITumblrCardContainerProps {
   blog : string,
@@ -36,7 +25,7 @@ class TumblrCardContainer extends React.Component<ITumblrCardContainerProps, Sta
       const nextPosts = await getBlogPosts(
         this.props.blog,
         this.state.posts.length,
-        20,
+        10,
         this.props.consumerKey
       )
 
@@ -55,7 +44,7 @@ class TumblrCardContainer extends React.Component<ITumblrCardContainerProps, Sta
       <InfiniteScroll
           loadMore={loadMore}
           hasMore={this.state.hasMore}
-          loader={<Loader key={0}>Loading ...</Loader>}
+          loader={<Card key={0}>Loading ...</Card>}
       >
         {this.state.posts.map((post : any) => {
           return <TumblrCard key={post.id} post={post} />

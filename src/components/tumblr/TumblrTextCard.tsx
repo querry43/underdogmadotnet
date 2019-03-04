@@ -12,15 +12,11 @@ const Content = styled.div`
   ul { text-align: left; }
 `
 
-class TumblrTextCard extends React.Component<ITumblrCardProps> {
-  public render() {
-    return (
-      <div>
-        <Title>{this.props.post.title}</Title>
-        <Content dangerouslySetInnerHTML={{ __html: this.props.post.body }} />
-      </div>
-    )
-  }
-}
+const TumblrTextCard : React.SFC<ITumblrCardProps> = (props) => (
+  <div>
+    <Title>{props.post.title}</Title>
+    <Content dangerouslySetInnerHTML={{ __html: props.post.body }} />
+  </div>
+)
 
 export default TumblrTextCard

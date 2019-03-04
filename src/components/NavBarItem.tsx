@@ -36,16 +36,12 @@ interface INavBarItemProps {
   to : string
 }
 
-class NavBarItem extends React.Component<INavBarItemProps> {
-  public render() {
-    return (
-      <NavBarLinkContainer>
-        <NavBarLink exact={true} to={this.props.to}>
-          {this.props.children}
-        </NavBarLink>
-      </NavBarLinkContainer>
-    )
-  }
-}
+const NavBarItem : React.SFC<INavBarItemProps> = (props) => (
+  <NavBarLinkContainer>
+    <NavBarLink exact={true} to={props.to}>
+      {props.children}
+    </NavBarLink>
+  </NavBarLinkContainer>
+)
 
 export default NavBarItem

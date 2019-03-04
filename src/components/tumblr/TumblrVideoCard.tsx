@@ -8,15 +8,8 @@ const Player = styled(ReactPlayer)`
   margin: auto;
 `
 
-class TumblrVideoCard extends React.Component<ITumblrCardProps> {
-  public render() {
-    return (
-      <div>
-        <Player url={this.props.post.permalink_url} />
-      </div>
-    )
-  }
-}
+const TumblrVideoCard : React.SFC<ITumblrCardProps> = (props) =>
+  <Player url={props.post.permalink_url} />
 
 export default TumblrVideoCard
 

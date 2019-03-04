@@ -16,22 +16,21 @@ const Excerpt = styled.p`
   margin-top: 0;
 `
 
-class TumblrLinkCard extends React.Component<ITumblrCardProps> {
-  public render() {
-    const imgElement = this.props.post.description
-      ? <div dangerouslySetInnerHTML={{ __html: this.props.post.description }} />
-      : <Image src={this.props.post.link_image} />
+const TumblrLinkCard : React.SFC<ITumblrCardProps> = (props) => {
+  global.console.log(props)
+  const imgElement = props.post.description
+    ? <div dangerouslySetInnerHTML={{ __html: props.post.description }} />
+    : <Image src={props.post.link_image} />
 
-    return (
-      <div>
-        <Link href={this.props.post.url}>
-          <p>{this.props.post.publisher}</p>
-          {imgElement}
-        </Link>
-        <Excerpt>{this.props.post.excerpt}</Excerpt>
-      </div>
-    )
-  }
+  return (
+    <div>
+      <Link href={props.post.url}>
+        <p>{props.post.publisher}</p>
+        {imgElement}
+      </Link>
+      <Excerpt>{props.post.excerpt}</Excerpt>
+    </div>
+  )
 }
 
 export default TumblrLinkCard

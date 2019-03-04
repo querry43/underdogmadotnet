@@ -10,34 +10,32 @@ import TumblrVideoCard from './TumblrVideoCard'
 
 import { ITumblrCardProps } from './TumblrCardHelper'
 
-class TumblrCard extends React.Component<ITumblrCardProps> {
-  public render() {
-    const getCardSpecialization = (post : any) => {
-      switch(post.type) {
-        case 'link':
-          return <TumblrLinkCard post={post} />
+const TumblrCard : React.SFC<ITumblrCardProps> = (props) => {
+  const getCardSpecialization = (post : any) => {
+    switch(post.type) {
+      case 'link':
+        return <TumblrLinkCard post={post} />
 
-        case 'photo':
-          return <TumblrPhotoCard post={post} />
+      case 'photo':
+        return <TumblrPhotoCard post={post} />
 
-        case 'text':
-          return <TumblrTextCard post={post} />
+      case 'text':
+        return <TumblrTextCard post={post} />
 
-        case 'video':
-          return <TumblrVideoCard post={post} />
+      case 'video':
+        return <TumblrVideoCard post={post} />
 
-        default: {
-          return <TumblrUnknownCard post={post} />
-        }
+      default: {
+        return <TumblrUnknownCard post={post} />
       }
     }
-
-    return (
-      <Card timestamp={this.props.post.timestamp}>
-        {getCardSpecialization(this.props.post)}
-      </Card>
-    )
   }
+
+  return (
+    <Card timestamp={props.post.timestamp}>
+      {getCardSpecialization(props.post)}
+    </Card>
+  )
 }
 
 export default TumblrCard

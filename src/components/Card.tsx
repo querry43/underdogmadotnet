@@ -16,18 +16,20 @@ const DateTag = styled.p`
 `
 
 interface ICardProps {
-  timestamp : number
+  timestamp? : number
 }
 
-class Card extends React.Component<ICardProps> {
-  public render() {
-    return (
-      <CardDiv>
-        {this.props.children}
-        <DateTag>{new Date(this.props.timestamp * 1000).toLocaleString()}</DateTag>
-      </CardDiv>
-    )
-  }
+const Card : React.SFC<ICardProps> = (props) => {
+  const dateTag = props.timestamp
+    ? <DateTag>{new Date(props.timestamp * 1000).toLocaleString()}</DateTag>
+    : ""
+
+  return (
+    <CardDiv>
+      {props.children}
+      {dateTag}
+    </CardDiv>
+  )
 }
 
 export default Card
