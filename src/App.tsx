@@ -19,7 +19,11 @@ const Content = styled.div`
   overflow: hidden;
   position: relative;
   text-align: center;
+
   width: 900px;
+  @media (max-width: 900px) {
+    width: 100%;
+  }
 `
 
 class App extends React.Component {

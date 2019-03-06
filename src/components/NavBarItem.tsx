@@ -5,8 +5,7 @@ import { RoundedCornerStyle } from './StyleHelper'
 import styled from '../styled-components'
 
 const NavBarLinkContainer = styled.li`
-  display: inline;
-  float: left;
+  display: inline-block;
 `
 
 // should have radius 1px
@@ -22,6 +21,7 @@ const NavBarLink = styled(NavLink)`
   text-align: center;
   text-decoration: none;
   width: 300px;
+  color: black;
 
   &:hover {
     background-color: #539A52;
