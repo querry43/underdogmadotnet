@@ -10,6 +10,7 @@ const Title = styled.p`
 
 const Content = styled.div`
   ul { text-align: left; }
+  img { max-width: 100%; }
 `
 
 const TumblrTextCard : React.SFC<ITumblrCardProps> = (props) => (

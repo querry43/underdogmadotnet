@@ -8,8 +8,13 @@ const Link = styled.a`
   text-decoration: none;
 `
 
+const Container = styled.div`
+  img { max-width: 100%; }
+`
+
 const Image = styled.img`
-  margin: 10px;
+  margin-bottom: 10px;
+  max-width: 100%;
 `
 
 const Excerpt = styled.p`
@@ -17,9 +22,8 @@ const Excerpt = styled.p`
 `
 
 const TumblrLinkCard : React.SFC<ITumblrCardProps> = (props) => {
-  global.console.log(props)
   const imgElement = props.post.description
-    ? <div dangerouslySetInnerHTML={{ __html: props.post.description }} />
+    ? <Container dangerouslySetInnerHTML={{ __html: props.post.description }} />
     : <Image src={props.post.link_image} />
 
   return (
