@@ -6,6 +6,7 @@ import { ITumblrCardProps } from './TumblrCardHelper'
 
 const Player = styled(ReactPlayer)`
   margin: auto;
+  max-width: 100%;
 `
 
 const TumblrVideoCard : React.SFC<ITumblrCardProps> = (props) =>
