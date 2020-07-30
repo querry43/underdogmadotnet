@@ -10,24 +10,31 @@ Matt Harrington's personal website using tumblr as backend storage.
 
 ```
 nvm use
-yarn
-yarn start
+npm install
+npm start
 ```
 
 ## Testing
 
 ```
-yarn test
+npm test
 ```
 
 ## Installing
 
+Build:
+
 ```
-yarn build
-yarn deploy
+npm run build
 ```
 
-To deploy live:
+Deploy test:
+
+```
+npm run deploy
+```
+
+Deploy live:
 
 ```
 yarn deploy-live
